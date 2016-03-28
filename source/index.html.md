@@ -231,54 +231,308 @@ ID | The ID of the user whose data is to be retrieved
 
 ## Get all Cars
 
+### HTTP Request
+
+`GET http://<BASE_URL>/cars/`
+
+### URL Parameters
+
+None
+
+
 ## Get a specific Car 
+
+### HTTP Request
+
+`GET http://<BASE_URL>/cars/<ID>/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the car, the data of which is to be retrieved 
+
 
 ## Get all Makes
 
+### HTTP Request
+
+`GET http://<BASE_URL>/cars/makes/`
+
+### URL Parameters
+
+None
+
+
 ## Get all Models
+
+### HTTP Request
+
+`GET http://<BASE_URL>/cars/models/?make=<MAKE>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+MAKE | The Make of the car whose list of Models is to be retrieved
+
 
 ## Get all Links
 
+### HTTP Request
+
+`GET http://<BASE_URL>/cars/links/?make=<MAKE>&model=<MODEL>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+MAKE | The Make of the car, the links of which have to be retrieved  
+MODEL | The Model of the car, the links of which have to be retrieved 
+
+
 ## Get Car overview
+
+### HTTP Request
+
+`GET http://<BASE_URL>/cars/<ID>/overview/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the car, the data of which is to be retrieved 
+
 
 ## Get Car status
 
+### HTTP Request
+
+`GET http://<BASE_URL>/cars/<ID>/status/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the car, the data of which is to be retrieved 
+
+
 ## Get Car statistics 
+
+### HTTP Request
+
+`GET http://<BASE_URL>/cars/<ID>/statistics`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the car, the data of which is to be retrieved 
+
 
 ## Get Car's carbon footprint
 
+### HTTP Request
+
+`GET http://<BASE_URL>/cars/<ID>/carbonfp/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the car, the data of which is to be retrieved 
+
+
 ## Get Car's speed limit
+
+### HTTP Request
+
+`GET http://<BASE_URL>/cars/<ID>/speedlimit/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the car, the data of which is to be retrieved 
+
 
 ## Get all Users using a car
 
+### HTTP Request
+
+`GET http://<BASE_URL>/cars/<ID>/users/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the car, the data of which is to be retrieved 
+
+
 ## Get all Trips made by a car
 
+### HTTP Request
+
+`GET http://<BASE_URL>/cars/<ID>/trips/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the car, the data of which is to be retrieved 
+
+
 ## Get Car Graphs 
+
+### HTTP Request
+
+`GET http://<BASE_URL>/graphs/<ID>/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the car, the data of which is to be retrieved 
+
 
 # Devices
 
 ## Get all Devices
 
+### HTTP Request
+
+`GET http://<BASE_URL>/devices/`
+
+### URL Parameters
+
+None
+
+
 ## Get a specific Device
 
+### HTTP Request
+
+`GET http://<BASE_URL>/devices/<ID>/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the device, the data of which is to be retrieved 
+
+
 ## Get Device Info
+
+### HTTP Request
+
+`GET http://<BASE_URL>/devices/<ID>/info/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the device, the info of which is to be retrieved 
+
 
 # Trip 
 
 ## Get all Trips
 
+### HTTP Request
+
+`GET http://<BASE_URL>/data/trips/`
+
+### URL Parameters
+
+None
+
+
 ## Get a specific Trip 
+
+### HTTP Request
+
+`GET http://<BASE_URL>/data/trips/<ID>/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the trip which is to be retrieved  
+
 
 ## Get Trip overview
 
+### HTTP Request
+
+`GET http://<BASE_URL>/data/trips/<ID>/overview/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the trip, the data of which is to be retrieved 
+
+
 ## Get Trip details
+
+### HTTP Request
+
+`GET http://<BASE_URL>/data/trips/<ID>/details/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the trip, the data of which is to be retrieved 
+
 
 ## Get a Trip's reportcard
 
+### HTTP Request
+
+`GET http://<BASE_URL>/data/trips/<ID>/reportcard/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the trip, the data of which is to be retrieved 
+
+
 ## Get Trip Graphs 
+
+### HTTP Request
+
+`GET http://<BASE_URL>/data/trips/<ID>/graph/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the trip, the data of which is to be retrieved 
+
 
 # OBD
 
-## Get all OBDData points
+## Get all OBD data points
+
+### HTTP Request
+
+`GET http://<BASE_URL>/data/obd/`
+
+### URL Parameters
+
+None
+
 
 ## Get a specific OBDData point
+
+### HTTP Request
+
+`GET http://<BASE_URL>/data/obd/<ID>/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the OBD data point which is to be retrieved  
