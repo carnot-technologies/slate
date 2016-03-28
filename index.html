@@ -246,7 +246,9 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="nt">"econtacts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[{phone: 9820204040, email: help@carnot.com}]"</span><span class="p">}</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"econtacts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[{phone: 9820204040, email: help@carnot.com}]"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <p>This endpoint retrieves a user&rsquo;s emergency contact details.</p>
@@ -270,6 +272,19 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </tbody></table>
 
 <h2 id="get-user-39-s-cars">Get User&rsquo;s cars</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/2/cars/"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"related_cars"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves the list of cars a user has access to. </p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -290,6 +305,19 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </tbody></table>
 
 <h2 id="get-user-39-s-trips">Get User&rsquo;s trips</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/2/trips/"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"related_trips"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves the list of trips belonging to a particular user. </p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -310,6 +338,26 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </tbody></table>
 
 <h2 id="get-driver-profile-overview">Get Driver Profile overview</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/2/overview/"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"age"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"lname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Donald"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">89.0</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"fname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alan"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/assets/res/img/layout/profile/default-large.jpg"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"ntrips"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves the profile overview of the driver. 
+Useful for populating the list of drivers in the Car Garage page in the app. </p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -330,6 +378,25 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </tbody></table>
 
 <h2 id="get-driver-profile">Get Driver Profile</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/2/driverprofile/"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"dob"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1996-03-28"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/assets/res/img/layout/profile/default-large.jpg"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"lname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Donald"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"econtacts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[{phone: 9820204040, email: help@carnot.com}]"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"fname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alan"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves the profile of the driver. 
+Useful when populating the Driver Profile screen on the app. </p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -350,6 +417,26 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </tbody></table>
 
 <h2 id="get-driver-statistics">Get Driver Statistics</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/2/driverstats/"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"total_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">18000</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"lname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Donald"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"fname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alan"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"avg_speed"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.0</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"driver_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">89.0</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"ntrips"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"total_dist"</span><span class="p">:</span><span class="w"> </span><span class="mf">200.0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves the driving statistics of the driver. 
+Useful when populating the Driver Profile screen on the app. </p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -370,10 +457,58 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </tbody></table>
 
 <h2 id="get-driver-points">Get Driver Points</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/2/driverpoints/"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"mil_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"idl_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"spd_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"cmp_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"hbr_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"hac_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/2/driverpoints/?graph=True"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"mil_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"idl_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"spd_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"graph"</span><span class="p">:</span><span class="w"> 
+  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="nt">"scr"</span><span class="p">:</span><span class="w"> </span><span class="mf">89.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"scr"</span><span class="p">:</span><span class="w"> </span><span class="mf">89.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"scr"</span><span class="p">:</span><span class="w"> </span><span class="mf">89.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"scr"</span><span class="p">:</span><span class="w"> </span><span class="mf">89.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"scr"</span><span class="p">:</span><span class="w"> </span><span class="mf">89.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"scr"</span><span class="p">:</span><span class="w"> </span><span class="mf">89.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"scr"</span><span class="p">:</span><span class="w"> </span><span class="mf">89.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"scr"</span><span class="p">:</span><span class="w"> </span><span class="mf">89.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"scr"</span><span class="p">:</span><span class="w"> </span><span class="mf">89.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"scr"</span><span class="p">:</span><span class="w"> </span><span class="mf">89.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w"> 
+  </span><span class="nt">"cmp_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"hbr_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"hac_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves the scoring / points break up for a driver. 
+Useful when populating the Driver Profile screen on the app. </p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/users/&lt;ID&gt;/driverpoints/</code></p>
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/users/&lt;ID&gt;/driverpoints/?graph=&lt;BOOL&gt;</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -387,9 +522,40 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <td>ID</td>
 <td>The ID of the user whose data is to be retrieved</td>
 </tr>
+<tr>
+<td>BOOL</td>
+<td>True or False indicating if the method should return driver points for graphing</td>
+</tr>
 </tbody></table>
 
 <h2 id="get-user-graphs">Get User Graphs</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/2/graphs/"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"graph"</span><span class="p">:</span><span class="w"> 
+  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves the data points for the past trips graph for a driver. 
+Useful when populating the Driver Profile screen on the app. 
+Returns the list of trips and their timestamps of occuring. </p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -850,6 +1016,18 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <td>The ID of the OBD data point which is to be retrieved</td>
 </tr>
 </tbody></table>
+
+<h1 id="accounts">Accounts</h1>
+
+<h1 id="alerts">Alerts</h1>
+
+<h1 id="dtc">DTC</h1>
+
+<h1 id="documents">Documents</h1>
+
+<h1 id="servicing">Servicing</h1>
+
+<h1 id="badges">Badges</h1>
 
           <h1 id="errors">Errors</h1>
 
