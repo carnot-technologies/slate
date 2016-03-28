@@ -160,19 +160,18 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"user"</span><span class="p">:{</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="nt">"username"</span><span class="p">:</span><span class="s2">"U001"</span><span class="p">,</span><span class="nt">"email"</span><span class="p">:</span><span class="s2">"U001@carnotmail.com"</span><span class="p">},</span><span class="w">
+    </span><span class="nt">"gender"</span><span class="p">:</span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"age"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"dob"</span><span class="p">:</span><span class="s2">"1996-03-28"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cars"</span><span class="p">:[{</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">"device"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"C001"</span><span class="p">,</span><span class="nt">"numberplate"</span><span class="p">:</span><span class="s2">"MH01AB0001"</span><span class="p">}],</span><span class="w">
+    </span><span class="nt">"emergencycontacts"</span><span class="p">:</span><span class="s2">"[{phone: 9820204040, email: help@carnot.com}]"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"driverscore"</span><span class="p">:</span><span class="mf">89.0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"totalnumtrips"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"totaldistance"</span><span class="p">:</span><span class="mf">200.0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"totaltime"</span><span class="p">:</span><span class="mi">18000</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"averagespeed"</span><span class="p">:</span><span class="mf">40.0</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -200,11 +199,18 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"user"</span><span class="p">:{</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="nt">"username"</span><span class="p">:</span><span class="s2">"U011"</span><span class="p">,</span><span class="nt">"email"</span><span class="p">:</span><span class="s2">"U011@carnotmail.com"</span><span class="p">},</span><span class="w">
+  </span><span class="nt">"gender"</span><span class="p">:</span><span class="s2">"M"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"age"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"dob"</span><span class="p">:</span><span class="s2">"1996-03-28"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"cars"</span><span class="p">:[{</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="nt">"device"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"C011"</span><span class="p">,</span><span class="nt">"numberplate"</span><span class="p">:</span><span class="s2">"MH01AB0011"</span><span class="p">}],</span><span class="w">
+  </span><span class="nt">"emergencycontacts"</span><span class="p">:</span><span class="s2">"[{phone: 9820204040, email: help@carnot.com}]"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"driverscore"</span><span class="p">:</span><span class="mf">89.0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"totalnumtrips"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"totaldistance"</span><span class="p">:</span><span class="mf">200.0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"totaltime"</span><span class="p">:</span><span class="mi">18000</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"averagespeed"</span><span class="p">:</span><span class="mf">40.0</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -233,6 +239,17 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 </tbody></table>
 
 <h2 id="get-user-39-s-emergency-contact-details">Get User&rsquo;s emergency contact details</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/2/econtacts/"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="nt">"econtacts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[{phone: 9820204040, email: help@carnot.com}]"</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves a user&rsquo;s emergency contact details.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
