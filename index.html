@@ -396,57 +396,443 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 
 <h2 id="get-all-cars">Get all Cars</h2>
 
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<p>None</p>
+
 <h2 id="get-a-specific-car">Get a specific Car</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the car, the data of which is to be retrieved</td>
+</tr>
+</tbody></table>
 
 <h2 id="get-all-makes">Get all Makes</h2>
 
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/makes/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<p>None</p>
+
 <h2 id="get-all-models">Get all Models</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/models/?make=&lt;MAKE&gt;</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>MAKE</td>
+<td>The Make of the car whose list of Models is to be retrieved</td>
+</tr>
+</tbody></table>
 
 <h2 id="get-all-links">Get all Links</h2>
 
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/links/?make=&lt;MAKE&gt;&amp;model=&lt;MODEL&gt;</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>MAKE</td>
+<td>The Make of the car, the links of which have to be retrieved</td>
+</tr>
+<tr>
+<td>MODEL</td>
+<td>The Model of the car, the links of which have to be retrieved</td>
+</tr>
+</tbody></table>
+
 <h2 id="get-car-overview">Get Car overview</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/overview/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the car, the data of which is to be retrieved</td>
+</tr>
+</tbody></table>
 
 <h2 id="get-car-status">Get Car status</h2>
 
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/status/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the car, the data of which is to be retrieved</td>
+</tr>
+</tbody></table>
+
 <h2 id="get-car-statistics">Get Car statistics</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/statistics</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the car, the data of which is to be retrieved</td>
+</tr>
+</tbody></table>
 
 <h2 id="get-car-39-s-carbon-footprint">Get Car&rsquo;s carbon footprint</h2>
 
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/carbonfp/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the car, the data of which is to be retrieved</td>
+</tr>
+</tbody></table>
+
 <h2 id="get-car-39-s-speed-limit">Get Car&rsquo;s speed limit</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/speedlimit/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the car, the data of which is to be retrieved</td>
+</tr>
+</tbody></table>
 
 <h2 id="get-all-users-using-a-car">Get all Users using a car</h2>
 
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/users/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the car, the data of which is to be retrieved</td>
+</tr>
+</tbody></table>
+
 <h2 id="get-all-trips-made-by-a-car">Get all Trips made by a car</h2>
 
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/trips/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the car, the data of which is to be retrieved</td>
+</tr>
+</tbody></table>
+
 <h2 id="get-car-graphs">Get Car Graphs</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/graphs/&lt;ID&gt;/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the car, the data of which is to be retrieved</td>
+</tr>
+</tbody></table>
 
 <h1 id="devices">Devices</h1>
 
 <h2 id="get-all-devices">Get all Devices</h2>
 
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/devices/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<p>None</p>
+
 <h2 id="get-a-specific-device">Get a specific Device</h2>
 
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/devices/&lt;ID&gt;/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the device, the data of which is to be retrieved</td>
+</tr>
+</tbody></table>
+
 <h2 id="get-device-info">Get Device Info</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/devices/&lt;ID&gt;/info/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the device, the info of which is to be retrieved</td>
+</tr>
+</tbody></table>
 
 <h1 id="trip">Trip</h1>
 
 <h2 id="get-all-trips">Get all Trips</h2>
 
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/data/trips/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<p>None</p>
+
 <h2 id="get-a-specific-trip">Get a specific Trip</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/data/trips/&lt;ID&gt;/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the trip which is to be retrieved</td>
+</tr>
+</tbody></table>
 
 <h2 id="get-trip-overview">Get Trip overview</h2>
 
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/data/trips/&lt;ID&gt;/overview/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the trip, the data of which is to be retrieved</td>
+</tr>
+</tbody></table>
+
 <h2 id="get-trip-details">Get Trip details</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/data/trips/&lt;ID&gt;/details/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the trip, the data of which is to be retrieved</td>
+</tr>
+</tbody></table>
 
 <h2 id="get-a-trip-39-s-reportcard">Get a Trip&rsquo;s reportcard</h2>
 
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/data/trips/&lt;ID&gt;/reportcard/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the trip, the data of which is to be retrieved</td>
+</tr>
+</tbody></table>
+
 <h2 id="get-trip-graphs">Get Trip Graphs</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/data/trips/&lt;ID&gt;/graph/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the trip, the data of which is to be retrieved</td>
+</tr>
+</tbody></table>
 
 <h1 id="obd">OBD</h1>
 
-<h2 id="get-all-obddata-points">Get all OBDData points</h2>
+<h2 id="get-all-obd-data-points">Get all OBD data points</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/data/obd/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<p>None</p>
 
 <h2 id="get-a-specific-obddata-point">Get a specific OBDData point</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/data/obd/&lt;ID&gt;/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the OBD data point which is to be retrieved</td>
+</tr>
+</tbody></table>
 
           <h1 id="errors">Errors</h1>
 
