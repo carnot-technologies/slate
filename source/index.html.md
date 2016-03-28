@@ -3,8 +3,6 @@ title: API Reference
 
 language_tabs:
   - shell
-  - ruby
-  - python
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
@@ -18,27 +16,15 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to the Carnot API! You can use our API to access Carnot API endpoints, which can get information on various users, cars, devices and trips in our database.
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+We have language bindings in Shell. You can view code examples in the dark area to the right.
 
-This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+This API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
 
 # Authentication
 
 > To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
 
 ```shell
 # With shell, you can just pass the correct header with each request
@@ -48,9 +34,9 @@ curl "api_endpoint_here"
 
 > Make sure to replace `meowmeowmeow` with your API key.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+Carnot uses API keys to allow access to the API. You can get a new API key by writing to us at prathamesh1729@gmail.com
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+The API key must be included in all API requests to the server in a header that looks like the following:
 
 `Authorization: meowmeowmeow`
 
@@ -58,26 +44,12 @@ Kittn expects for the API key to be included in all API requests to the server i
 You must replace <code>meowmeowmeow</code> with your personal API key.
 </aside>
 
-# Kittens
+# Users
 
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
+## Get All Users
 
 ```shell
-curl "http://example.com/api/kittens"
+curl "http://<BASE_URL>/users/"
   -H "Authorization: meowmeowmeow"
 ```
 
@@ -102,41 +74,24 @@ curl "http://example.com/api/kittens"
 ]
 ```
 
-This endpoint retrieves all kittens.
+This endpoint retrieves all the users.
+
+<aside class="warning">
+ Deprecated API method
+</aside>
 
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
+`GET http://<BASE_URL>/users/`
 
 ### Query Parameters
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+None
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
+## Get a Specific User
 
 ```shell
-curl "http://example.com/api/kittens/2"
+curl "http://<BASE_URL>/users/2/"
   -H "Authorization: meowmeowmeow"
 ```
 
@@ -152,17 +107,178 @@ curl "http://example.com/api/kittens/2"
 }
 ```
 
-This endpoint retrieves a specific kitten.
+This endpoint retrieves a specific user.
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+<aside class="warning">
+  Deprecated API method  
+</aside>
 
 ### HTTP Request
 
-`GET http://example.com/kittens/<ID>`
+`GET http://<BASE_URL>/users/<ID>`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to retrieve
+ID | The ID of the user to retrieve
 
+
+## Get User's emergency contact details
+
+### HTTP Request
+
+`GET http://<BASE_URL>/users/<ID>/econtacts/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the user whose data is to be retrieved 
+
+
+## Get User's cars
+
+### HTTP Request
+
+`GET http://<BASE_URL>/users/<ID>/cars/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the user whose data is to be retrieved 
+
+## Get User's trips
+
+### HTTP Request
+
+`GET http://<BASE_URL>/users/<ID>/trips/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the user whose data is to be retrieved 
+
+
+## Get Driver Profile overview
+
+### HTTP Request
+
+`GET http://<BASE_URL>/users/<ID>/overview/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the user whose data is to be retrieved 
+
+
+## Get Driver Profile 
+
+### HTTP Request
+
+`GET http://<BASE_URL>/users/<ID>/driverprofile/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the user whose data is to be retrieved 
+
+
+## Get Driver Statistics
+
+### HTTP Request
+
+`GET http://<BASE_URL>/users/<ID>/driverstats/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the user whose data is to be retrieved 
+
+
+## Get Driver Points
+
+### HTTP Request
+
+`GET http://<BASE_URL>/users/<ID>/driverpoints/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the user whose data is to be retrieved 
+
+
+## Get User Graphs
+
+### HTTP Request
+
+`GET http://<BASE_URL>/users/<ID>/graphs/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the user whose data is to be retrieved 
+
+
+# Cars
+
+## Get all Cars
+
+## Get a specific Car 
+
+## Get all Makes
+
+## Get all Models
+
+## Get all Links
+
+## Get Car overview
+
+## Get Car status
+
+## Get Car statistics 
+
+## Get Car's carbon footprint
+
+## Get Car's speed limit
+
+## Get all Users using a car
+
+## Get all Trips made by a car
+
+## Get Car Graphs 
+
+# Devices
+
+## Get all Devices
+
+## Get a specific Device
+
+## Get Device Info
+
+# Trip 
+
+## Get all Trips
+
+## Get a specific Trip 
+
+## Get Trip overview
+
+## Get Trip details
+
+## Get a Trip's reportcard
+
+## Get Trip Graphs 
+
+# OBD
+
+## Get all OBDData points
+
+## Get a specific OBDData point
