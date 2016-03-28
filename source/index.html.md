@@ -140,7 +140,9 @@ curl "http://<BASE_URL>/users/2/econtacts/"
 > The above command returns JSON structured like this:
 
 ```json
-{"econtacts": "[{phone: 9820204040, email: help@carnot.com}]"}
+{
+  "econtacts": "[{phone: 9820204040, email: help@carnot.com}]"
+}
 ```
 
 This endpoint retrieves a user's emergency contact details.
@@ -158,6 +160,21 @@ ID | The ID of the user whose data is to be retrieved
 
 ## Get User's cars
 
+```shell
+curl "http://<BASE_URL>/users/2/cars/"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "related_cars": [2]
+}
+```
+
+This endpoint retrieves the list of cars a user has access to. 
+
 ### HTTP Request
 
 `GET http://<BASE_URL>/users/<ID>/cars/`
@@ -169,6 +186,21 @@ Parameter | Description
 ID | The ID of the user whose data is to be retrieved 
 
 ## Get User's trips
+
+```shell
+curl "http://<BASE_URL>/users/2/trips/"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "related_trips": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+```
+
+This endpoint retrieves the list of trips belonging to a particular user. 
 
 ### HTTP Request
 
@@ -183,6 +215,28 @@ ID | The ID of the user whose data is to be retrieved
 
 ## Get Driver Profile overview
 
+```shell
+curl "http://<BASE_URL>/users/2/overview/"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "gender": "M", 
+  "age": 20, 
+  "lname": "Donald", 
+  "score": 89.0, 
+  "fname": "Alan", 
+  "photo": "https://example.com/assets/res/img/layout/profile/default-large.jpg", 
+  "ntrips": 10
+}
+```
+
+This endpoint retrieves the profile overview of the driver. 
+Useful for populating the list of drivers in the Car Garage page in the app. 
+
 ### HTTP Request
 
 `GET http://<BASE_URL>/users/<ID>/overview/`
@@ -195,6 +249,27 @@ ID | The ID of the user whose data is to be retrieved
 
 
 ## Get Driver Profile 
+
+```shell
+curl "http://<BASE_URL>/users/2/driverprofile/"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "dob": "1996-03-28", 
+  "photo": "https://example.com/assets/res/img/layout/profile/default-large.jpg", 
+  "lname": "Donald", 
+  "econtacts": "[{phone: 9820204040, email: help@carnot.com}]", 
+  "fname": "Alan", 
+  "gender": "M"
+}
+```
+
+This endpoint retrieves the profile of the driver. 
+Useful when populating the Driver Profile screen on the app. 
 
 ### HTTP Request
 
@@ -209,6 +284,28 @@ ID | The ID of the user whose data is to be retrieved
 
 ## Get Driver Statistics
 
+```shell
+curl "http://<BASE_URL>/users/2/driverstats/"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "total_time": 18000, 
+  "lname": "Donald", 
+  "fname": "Alan", 
+  "avg_speed": 40.0, 
+  "driver_score": 89.0, 
+  "ntrips": 10, 
+  "total_dist": 200.0
+}
+```
+
+This endpoint retrieves the driving statistics of the driver. 
+Useful when populating the Driver Profile screen on the app. 
+
 ### HTTP Request
 
 `GET http://<BASE_URL>/users/<ID>/driverstats/`
@@ -222,18 +319,99 @@ ID | The ID of the user whose data is to be retrieved
 
 ## Get Driver Points
 
+```shell
+curl "http://<BASE_URL>/users/2/driverpoints/"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "mil_score": 20.0, 
+  "idl_score": 20.0, 
+  "spd_score": 20.0, 
+  "cmp_score": 20.0, 
+  "hbr_score": 20.0, 
+  "hac_score": 20.0
+}
+```
+
+```shell
+curl "http://<BASE_URL>/users/2/driverpoints/?graph=True"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "mil_score": 20.0, 
+  "idl_score": 20.0, 
+  "spd_score": 20.0, 
+  "graph": 
+  [
+    {"scr": 89.0, "id": 2, "sts": "2016-03-27T13:43:30.601Z"}, 
+    {"scr": 89.0, "id": 3, "sts": "2016-03-27T13:43:30.601Z"}, 
+    {"scr": 89.0, "id": 4, "sts": "2016-03-27T13:43:30.601Z"}, 
+    {"scr": 89.0, "id": 5, "sts": "2016-03-27T13:43:30.601Z"}, 
+    {"scr": 89.0, "id": 6, "sts": "2016-03-27T13:43:30.601Z"}, 
+    {"scr": 89.0, "id": 7, "sts": "2016-03-27T13:43:30.601Z"}, 
+    {"scr": 89.0, "id": 8, "sts": "2016-03-27T13:43:30.601Z"}, 
+    {"scr": 89.0, "id": 9, "sts": "2016-03-27T13:43:30.601Z"}, 
+    {"scr": 89.0, "id": 10, "sts": "2016-03-27T13:43:30.601Z"}, 
+    {"scr": 89.0, "id": 11, "sts": "2016-03-27T13:43:30.601Z"}
+  ], 
+  "cmp_score": 20.0, 
+  "hbr_score": 20.0, 
+  "hac_score": 20.0
+}
+```
+
+This endpoint retrieves the scoring / points break up for a driver. 
+Useful when populating the Driver Profile screen on the app. 
+
 ### HTTP Request
 
-`GET http://<BASE_URL>/users/<ID>/driverpoints/`
+`GET http://<BASE_URL>/users/<ID>/driverpoints/?graph=<BOOL>`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
 ID | The ID of the user whose data is to be retrieved 
-
+BOOL | True or False indicating if the method should return driver points for graphing
 
 ## Get User Graphs
+
+```shell
+curl "http://<BASE_URL>/users/2/graphs/"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "graph": 
+  [
+    {"id": 2, "sts": "2016-03-27T13:43:30.601Z"}, 
+    {"id": 3, "sts": "2016-03-27T13:43:30.601Z"}, 
+    {"id": 4, "sts": "2016-03-27T13:43:30.601Z"}, 
+    {"id": 5, "sts": "2016-03-27T13:43:30.601Z"}, 
+    {"id": 6, "sts": "2016-03-27T13:43:30.601Z"}, 
+    {"id": 7, "sts": "2016-03-27T13:43:30.601Z"}, 
+    {"id": 8, "sts": "2016-03-27T13:43:30.601Z"}, 
+    {"id": 9, "sts": "2016-03-27T13:43:30.601Z"}, 
+    {"id": 10, "sts": "2016-03-27T13:43:30.601Z"}, 
+    {"id": 11, "sts": "2016-03-27T13:43:30.601Z"}
+  ]
+}
+```
+
+This endpoint retrieves the data points for the past trips graph for a driver. 
+Useful when populating the Driver Profile screen on the app. 
+Returns the list of trips and their timestamps of occuring. 
 
 ### HTTP Request
 
@@ -555,3 +733,22 @@ None
 Parameter | Description
 --------- | -----------
 ID | The ID of the OBD data point which is to be retrieved  
+
+
+# Accounts
+
+
+# Alerts
+
+
+# DTC
+
+
+# Documents
+
+
+# Servicing
+
+
+# Badges 
+
