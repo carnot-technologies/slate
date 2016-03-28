@@ -57,19 +57,18 @@ curl "http://<BASE_URL>/users/"
 
 ```json
 [
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+  {"id":1,
+    "user":{"id":2,"username":"U001","email":"U001@carnotmail.com"},
+    "gender":"M",
+    "age":20,
+    "dob":"1996-03-28",
+    "cars":[{"id":1,"device":1,"name":"C001","numberplate":"MH01AB0001"}],
+    "emergencycontacts":"[{phone: 9820204040, email: help@carnot.com}]",
+    "driverscore":89.0,
+    "totalnumtrips":10,
+    "totaldistance":200.0,
+    "totaltime":18000,
+    "averagespeed":40.0
   }
 ]
 ```
@@ -99,11 +98,18 @@ curl "http://<BASE_URL>/users/2/"
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "id":2,
+  "user":{"id":3,"username":"U011","email":"U011@carnotmail.com"},
+  "gender":"M",
+  "age":20,
+  "dob":"1996-03-28",
+  "cars":[{"id":2,"device":2,"name":"C011","numberplate":"MH01AB0011"}],
+  "emergencycontacts":"[{phone: 9820204040, email: help@carnot.com}]",
+  "driverscore":89.0,
+  "totalnumtrips":10,
+  "totaldistance":200.0,
+  "totaltime":18000,
+  "averagespeed":40.0
 }
 ```
 
@@ -125,6 +131,19 @@ ID | The ID of the user to retrieve
 
 
 ## Get User's emergency contact details
+
+```shell
+curl "http://<BASE_URL>/users/2/econtacts/"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{"econtacts": "[{phone: 9820204040, email: help@carnot.com}]"}
+```
+
+This endpoint retrieves a user's emergency contact details.
 
 ### HTTP Request
 
