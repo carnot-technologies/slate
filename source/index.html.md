@@ -428,6 +428,38 @@ ID | The ID of the user whose data is to be retrieved
 
 ## Get all Cars
 
+```shell
+curl "http://<BASE_URL>/cars/"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "id":1,
+    "device":1,
+    "name":"C001",
+    "numberplate":"MH01AB0001"
+  },
+  {
+    "id":2,
+    "device":2,
+    "name":"C011",
+    "numberplate":"MH01AB0011"
+  },
+  {
+    "id":3,
+    "device":3,
+    "name":"C012",
+    "numberplate":"MH01AB0012"
+  }
+]
+```
+
+This endpoint retrieves all the cars.
+
 ### HTTP Request
 
 `GET http://<BASE_URL>/cars/`
@@ -438,6 +470,24 @@ None
 
 
 ## Get a specific Car 
+
+```shell
+curl "http://<BASE_URL>/cars/<ID>/"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id":4,
+  "device":4,
+  "name":"C013",
+  "numberplate":"MH01AB0013"
+}
+```
+
+This endpoint retrieves a specific car.
 
 ### HTTP Request
 
@@ -452,6 +502,28 @@ ID | The ID of the car, the data of which is to be retrieved
 
 ## Get all Makes
 
+```shell
+curl "http://<BASE_URL>/cars/makes/"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "makes": 
+  [
+    "Aston Martin", 
+    "Audi", 
+    "Bentley",
+    ...
+    "Volvo"
+  ]
+}
+```
+
+This endpoint retrieves all available car makes (manufacturers). 
+
 ### HTTP Request
 
 `GET http://<BASE_URL>/cars/makes/`
@@ -462,6 +534,24 @@ None
 
 
 ## Get all Models
+
+```shell
+curl "http://<BASE_URL>/cars/models/?make=Audi"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "models": 
+  [
+    "A3", "Q3", "A4", "A3 cabriolet", "A6", "Q5", "TT", "S5", "Q7", "S6", "RS5", "A8", "RS6 Avant", "RS7", "R8"
+  ]
+}
+```
+
+This endpoint retrieves all available car models for a given car make (manufacturer). 
 
 ### HTTP Request
 
@@ -475,6 +565,22 @@ MAKE | The Make of the car whose list of Models is to be retrieved
 
 
 ## Get all Links
+
+```shell
+curl "http://<BASE_URL>/cars/links/?make=Audi&model=TT"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "image_url": null, 
+  "video_url": null
+}
+```
+
+This endpoint retrieves the installation image and video URLs for a car with given Make and Model. Useful for the device installation screen on the app. 
 
 ### HTTP Request
 
@@ -490,6 +596,27 @@ MODEL | The Model of the car, the links of which have to be retrieved
 
 ## Get Car overview
 
+```shell
+curl "http://<BASE_URL>/cars/2/overview/"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "name":"C011",
+  "model":
+  {
+    "car_manufact":"Volkswagen",
+    "car_model":"Beetle",
+    "pin_url":null
+  }
+}
+```
+
+This endpoint retrieves the installation image and video URLs for a car with given Make and Model. Useful for the device installation screen on the app. 
+
 ### HTTP Request
 
 `GET http://<BASE_URL>/cars/<ID>/overview/`
@@ -502,6 +629,26 @@ ID | The ID of the car, the data of which is to be retrieved
 
 
 ## Get Car status
+
+```shell
+curl "http://<BASE_URL>/cars/2/status/"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "latitude": 19.124, 
+  "ontrip": false, 
+  "status_update_time": "2016-03-27T11:16:34Z", 
+  "speed": 40.0, 
+  "longitude": 71.893
+}
+```
+
+This endpoint retrieves the latest status of a particular car and the time when it was last updated. 
+Useful on all screens of the app where the live location of the car is to be displayed.  
 
 ### HTTP Request
 
@@ -516,9 +663,28 @@ ID | The ID of the car, the data of which is to be retrieved
 
 ## Get Car statistics 
 
+```shell
+curl "http://<BASE_URL>/cars/2/statistics/"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "total_time": 18000, 
+  "total_trips": 10, 
+  "avg_mileage": 12.0, 
+  "total_distance": 200.0, 
+  "carbon_fp": 1600.0
+}
+```
+
+This endpoint retrieves the overall statistics of the car. 
+
 ### HTTP Request
 
-`GET http://<BASE_URL>/cars/<ID>/statistics`
+`GET http://<BASE_URL>/cars/<ID>/statistics/`
 
 ### URL Parameters
 
@@ -528,6 +694,21 @@ ID | The ID of the car, the data of which is to be retrieved
 
 
 ## Get Car's carbon footprint
+
+```shell
+curl "http://<BASE_URL>/cars/2/carbonfp/"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "carbon_fp": 1600.0
+}
+```
+
+This endpoint retrieves the carbon footprint number of a particular car. 
 
 ### HTTP Request
 
@@ -542,6 +723,21 @@ ID | The ID of the car, the data of which is to be retrieved
 
 ## Get Car's speed limit
 
+```shell
+curl "http://<BASE_URL>/cars/2/speedlimit/"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "speed_limit": 100
+}
+```
+
+This endpoint retrieves the carbon footprint number of a particular car. 
+
 ### HTTP Request
 
 `GET http://<BASE_URL>/cars/<ID>/speedlimit/`
@@ -554,6 +750,21 @@ ID | The ID of the car, the data of which is to be retrieved
 
 
 ## Get all Users using a car
+
+```shell
+curl "http://<BASE_URL>/cars/2/users/"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "related_users": [2]
+}
+```
+
+This endpoint retrieves the list of users (drivers) using this car. 
 
 ### HTTP Request
 
@@ -568,6 +779,21 @@ ID | The ID of the car, the data of which is to be retrieved
 
 ## Get all Trips made by a car
 
+```shell
+curl "http://<BASE_URL>/cars/2/trips/"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "related_trips": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+```
+
+This endpoint retrieves the list of trips made by this car.
+
 ### HTTP Request
 
 `GET http://<BASE_URL>/cars/<ID>/trips/`
@@ -580,6 +806,34 @@ ID | The ID of the car, the data of which is to be retrieved
 
 
 ## Get Car Graphs 
+
+```shell
+curl "http://<BASE_URL>/cars/2/graphs/"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "graph": 
+  [
+    {"d": 20.0, "t": 120, "m": 12.0, "id": 2, "sts": "2016-03-27T13:43:30.601Z"}, 
+    {"d": 20.0, "t": 120, "m": 12.0, "id": 3, "sts": "2016-03-27T13:43:30.601Z"}, 
+    {"d": 20.0, "t": 120, "m": 12.0, "id": 4, "sts": "2016-03-27T13:43:30.601Z"}, 
+    {"d": 20.0, "t": 120, "m": 12.0, "id": 5, "sts": "2016-03-27T13:43:30.601Z"}, 
+    {"d": 20.0, "t": 120, "m": 12.0, "id": 6, "sts": "2016-03-27T13:43:30.601Z"}, 
+    {"d": 20.0, "t": 120, "m": 12.0, "id": 7, "sts": "2016-03-27T13:43:30.601Z"}, 
+    {"d": 20.0, "t": 120, "m": 12.0, "id": 8, "sts": "2016-03-27T13:43:30.601Z"}, 
+    {"d": 20.0, "t": 120, "m": 12.0, "id": 9, "sts": "2016-03-27T13:43:30.601Z"}, 
+    {"d": 20.0, "t": 120, "m": 12.0, "id": 10, "sts": "2016-03-27T13:43:30.601Z"}, 
+    {"d": 20.0, "t": 120, "m": 12.0, "id": 11, "sts": "2016-03-27T13:43:30.601Z"}
+  ]
+}
+```
+
+This endpoint retrieves the list of points to plot time series based graphs for distance, running time and mileage graphs.
+Data points for distance, run time, mileage are provided for each trip completed by the car. 
 
 ### HTTP Request
 
