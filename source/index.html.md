@@ -850,6 +850,34 @@ ID | The ID of the car, the data of which is to be retrieved
 
 ## Get all Devices
 
+```shell
+curl "http://<BASE_URL>/devices/"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "id":1,
+    "addressableid":"T001",
+    "latitude":19.124,
+    "longitude":17.893,
+    "speed":0.0,
+    "ontrip":false,
+    "gsmsignal":0,
+    "deviceplugged":true,
+    "bluetoothconn":false,
+    "stmid":0,
+    "nrfid":0,
+    "hwid":0
+  }
+]
+```
+
+This endpoint retrieves the entire list of devices registered in the database.
+
 ### HTTP Request
 
 `GET http://<BASE_URL>/devices/`
@@ -860,6 +888,32 @@ None
 
 
 ## Get a specific Device
+
+```shell
+curl "http://<BASE_URL>/devices/2/"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id":2,
+  "addressableid":"T011",
+  "latitude":19.124,
+  "longitude":17.893,
+  "speed":0.0,
+  "ontrip":false,
+  "gsmsignal":0,
+  "deviceplugged":true,
+  "bluetoothconn":false,
+  "stmid":0,
+  "nrfid":0,
+  "hwid":0
+}
+```
+
+This endpoint retrieves a particular device registered in the database.
 
 ### HTTP Request
 
@@ -873,6 +927,24 @@ ID | The ID of the device, the data of which is to be retrieved
 
 
 ## Get Device Info
+
+```shell
+curl "http://<BASE_URL>/devices/2/info/"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "stmid":0,
+  "nrfid":0,
+  "hwid":0
+}
+```
+
+This endpoint retrieves the info of a particular device.
+Useful for the Device Info screen on the app. 
 
 ### HTTP Request
 
@@ -889,6 +961,34 @@ ID | The ID of the device, the info of which is to be retrieved
 
 ## Get all Trips
 
+```shell
+curl "http://<BASE_URL>/data/trips/"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "id":1,
+    "device":1,
+    "trip_id":0,
+    "message_id":0,
+    "hard_acceleration_count":0,
+    "hard_break_count":0,
+    "trip_distance":20.0,
+    "trip_time":120,
+    "avg_speed":10.0,
+    "avg_mileage":12.0,
+    "total_CO2_emitted":100.0
+  },
+  ...
+]
+```
+
+This endpoint retrieves the list of all trips ever recorded on the database.  
+
 ### HTTP Request
 
 `GET http://<BASE_URL>/data/trips/`
@@ -899,6 +999,51 @@ None
 
 
 ## Get a specific Trip 
+
+```shell
+curl "http://<BASE_URL>/data/trips/2/"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "start_time": "2016-03-27T13:43:30.601Z", 
+  "user": 2, 
+  "trip_time": 120, 
+  "start_lat": 19.124, 
+  "avg_mileage": 12.0, 
+  "distance": 20.0, 
+  "end_lon": 71.895, 
+  "start_lon": 71.893, 
+  "car": 2, 
+  "route": 
+  [
+    {
+      "id": 101, 
+      "sts": "2016-03-25T15:35:52.444365Z", 
+      "mil": 12.0, 
+      "lat": 19.225, 
+      "lon": 72.994
+    }, 
+    {
+      "id": 102, 
+      "sts": "2016-03-25T15:35:52.585972Z", 
+      "mil": 12.0, 
+      "lat": 19.226, 
+      "lon": 72.99499999999999
+    },
+    ...
+  ],
+  "end_time": "2016-03-27T13:43:30.583Z", 
+  "end_lat": 19.126, 
+  "avg_speed": 10.0, 
+  "drive_score": 89.0
+} 
+```
+
+This endpoint retrieves info of a particular trip  
 
 ### HTTP Request
 
@@ -913,6 +1058,27 @@ ID | The ID of the trip which is to be retrieved
 
 ## Get Trip overview
 
+```shell
+curl "http://<BASE_URL>/data/trips/2/overview/"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "start_lon": 71.893, 
+  "car": 2, 
+  "start_time": "2016-03-27T13:43:30.601Z", 
+  "start_lat": 19.124, 
+  "avg_mileage": 12.0, 
+  "drive_score": 89.0
+}
+```
+
+This endpoint retrieves the overview info for a particular trip. 
+This is useful for displaying trip cards in the app. 
+
 ### HTTP Request
 
 `GET http://<BASE_URL>/data/trips/<ID>/overview/`
@@ -925,6 +1091,51 @@ ID | The ID of the trip, the data of which is to be retrieved
 
 
 ## Get Trip details
+
+```shell
+curl "http://<BASE_URL>/data/trips/2/details/"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "start_time": "2016-03-27T13:43:30.601Z", 
+  "user": 2, 
+  "trip_time": 120, 
+  "start_lat": 19.124, 
+  "avg_mileage": 12.0, 
+  "distance": 20.0, 
+  "end_lon": 71.895, 
+  "start_lon": 71.893, 
+  "car": 2, 
+  "route": 
+  [
+    {
+      "id": 101, 
+      "sts": "2016-03-25T15:35:52.444365Z", 
+      "mil": 12.0, 
+      "lat": 19.225, 
+      "lon": 72.994
+    }, 
+    {
+      "id": 102, 
+      "sts": "2016-03-25T15:35:52.585972Z", 
+      "mil": 12.0, 
+      "lat": 19.226, 
+      "lon": 72.99499999999999
+    },
+    ...
+  ],
+  "end_time": "2016-03-27T13:43:30.583Z", 
+  "end_lat": 19.126, 
+  "avg_speed": 10.0, 
+  "drive_score": 89.0
+} 
+```
+
+This endpoint retrieves detailed info for a particular trip.  
 
 ### HTTP Request
 
@@ -939,6 +1150,27 @@ ID | The ID of the trip, the data of which is to be retrieved
 
 ## Get a Trip's reportcard
 
+```shell
+curl "http://<BASE_URL>/data/trips/2/reportcard/"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "hbr_points": 20.0, 
+  "spd_points": 20.0, 
+  "idl_points": 20.0, 
+  "clt_points": 20.0, 
+  "hac_points": 20.0, 
+  "drive_score": 89.0
+}
+```
+
+This endpoint retrieves the breakdown of driving points for a particular trip. 
+Useful for the Trip Detailed view in the app. 
+
 ### HTTP Request
 
 `GET http://<BASE_URL>/data/trips/<ID>/reportcard/`
@@ -951,6 +1183,33 @@ ID | The ID of the trip, the data of which is to be retrieved
 
 
 ## Get Trip Graphs 
+
+```shell
+curl "http://<BASE_URL>/data/trips/2/graph/"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "graph": 
+  [
+    {"id": 101, "sts": "2016-03-25T15:35:52.444365Z", "mil": 12.0}, 
+    {"id": 102, "sts": "2016-03-25T15:35:52.585972Z", "mil": 12.0}, 
+    {"id": 103, "sts": "2016-03-25T15:35:52.764028Z", "mil": 12.0}, 
+    {"id": 104, "sts": "2016-03-25T15:35:52.910171Z", "mil": 12.0}, 
+    {"id": 105, "sts": "2016-03-25T15:35:53.055528Z", "mil": 12.0}, 
+    {"id": 106, "sts": "2016-03-25T15:35:53.200362Z", "mil": 12.0}, 
+    {"id": 107, "sts": "2016-03-25T15:35:53.334345Z", "mil": 12.0}, 
+    {"id": 108, "sts": "2016-03-25T15:35:53.468199Z", "mil": 12.0}, 
+    ...
+  ], 
+  "avg_mileage": 12.0
+}
+```
+
+This endpoint retrieves the complete mileage graphing info with average mileage for a particular trip.  
 
 ### HTTP Request
 
@@ -967,6 +1226,43 @@ ID | The ID of the trip, the data of which is to be retrieved
 
 ## Get all OBD data points
 
+```shell
+curl "http://<BASE_URL>/data/obd/"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "id":1,
+    "device":1,
+    "trip":1,
+    "sts":"2016-03-25T15:11:16.610534Z",
+    "message_id":0,
+    "lat":19.124,
+    "lon":71.893,
+    "speed":20.0,
+    "mil":12.0
+  },
+  {
+    "id":2,
+    "device":1,
+    "trip":1,
+    "sts":"2016-03-25T15:21:14.517005Z",
+    "message_id":1,
+    "lat":19.1241,
+    "lon":72.8931,
+    "speed":20.0,
+    "mil":12.0
+  },
+  ...
+]
+```
+
+This endpoint retrieves the entire list of all OBD data points recorded on the database.  
+
 ### HTTP Request
 
 `GET http://<BASE_URL>/data/obd/`
@@ -977,6 +1273,29 @@ None
 
 
 ## Get a specific OBDData point
+
+```shell
+curl "http://<BASE_URL>/data/obd/2/"
+  -H "Authorization: meowmeowmeow"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id":2,
+  "device":1,
+  "trip":1,
+  "sts":"2016-03-25T15:21:14.517005Z",
+  "message_id":1,
+  "lat":19.1241,
+  "lon":72.8931,
+  "speed":20.0,
+  "mil":12.0
+}
+```
+
+This endpoint retrieves info of a particular OBD data point. 
 
 ### HTTP Request
 
@@ -991,18 +1310,24 @@ ID | The ID of the OBD data point which is to be retrieved
 
 # Accounts
 
+API yet to be published
 
 # Alerts
 
+API yet to be published
 
 # DTC
 
+API yet to be published
 
 # Documents
 
+API yet to be published
 
 # Servicing
 
+API yet to be published
 
 # Badges 
 
+API yet to be published
