@@ -578,6 +578,36 @@ Returns the list of trips and their timestamps of occuring. </p>
 <h1 id="cars">Cars</h1>
 
 <h2 id="get-all-cars">Get all Cars</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"device"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"C001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"numberplate"</span><span class="p">:</span><span class="s2">"MH01AB0001"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"device"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"C011"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"numberplate"</span><span class="p">:</span><span class="s2">"MH01AB0011"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"device"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"C012"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"numberplate"</span><span class="p">:</span><span class="s2">"MH01AB0012"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves all the cars.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -588,6 +618,22 @@ Returns the list of trips and their timestamps of occuring. </p>
 <p>None</p>
 
 <h2 id="get-a-specific-car">Get a specific Car</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"device"</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"C013"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"numberplate"</span><span class="p">:</span><span class="s2">"MH01AB0013"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves a specific car.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -608,6 +654,26 @@ Returns the list of trips and their timestamps of occuring. </p>
 </tbody></table>
 
 <h2 id="get-all-makes">Get all Makes</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/makes/"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"makes"</span><span class="p">:</span><span class="w"> 
+  </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Aston Martin"</span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"Audi"</span><span class="p">,</span><span class="w"> 
+    </span><span class="s2">"Bentley"</span><span class="p">,</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+    </span><span class="s2">"Volvo"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves all available car makes (manufacturers). </p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -618,6 +684,22 @@ Returns the list of trips and their timestamps of occuring. </p>
 <p>None</p>
 
 <h2 id="get-all-models">Get all Models</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/models/?make=Audi"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"models"</span><span class="p">:</span><span class="w"> 
+  </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"A3"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Q3"</span><span class="p">,</span><span class="w"> </span><span class="s2">"A4"</span><span class="p">,</span><span class="w"> </span><span class="s2">"A3 cabriolet"</span><span class="p">,</span><span class="w"> </span><span class="s2">"A6"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Q5"</span><span class="p">,</span><span class="w"> </span><span class="s2">"TT"</span><span class="p">,</span><span class="w"> </span><span class="s2">"S5"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Q7"</span><span class="p">,</span><span class="w"> </span><span class="s2">"S6"</span><span class="p">,</span><span class="w"> </span><span class="s2">"RS5"</span><span class="p">,</span><span class="w"> </span><span class="s2">"A8"</span><span class="p">,</span><span class="w"> </span><span class="s2">"RS6 Avant"</span><span class="p">,</span><span class="w"> </span><span class="s2">"RS7"</span><span class="p">,</span><span class="w"> </span><span class="s2">"R8"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves all available car models for a given car make (manufacturer). </p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -638,6 +720,20 @@ Returns the list of trips and their timestamps of occuring. </p>
 </tbody></table>
 
 <h2 id="get-all-links">Get all Links</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/links/?make=Audi&amp;model=TT"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"video_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves the installation image and video URLs for a car with given Make and Model. Useful for the device installation screen on the app. </p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -662,6 +758,25 @@ Returns the list of trips and their timestamps of occuring. </p>
 </tbody></table>
 
 <h2 id="get-car-overview">Get Car overview</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/2/overview/"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"C011"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"model"</span><span class="p">:</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"car_manufact"</span><span class="p">:</span><span class="s2">"Volkswagen"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"car_model"</span><span class="p">:</span><span class="s2">"Beetle"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"pin_url"</span><span class="p">:</span><span class="kc">null</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves the installation image and video URLs for a car with given Make and Model. Useful for the device installation screen on the app. </p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -682,6 +797,24 @@ Returns the list of trips and their timestamps of occuring. </p>
 </tbody></table>
 
 <h2 id="get-car-status">Get Car status</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/2/status/"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.124</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"ontrip"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"status_update_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T11:16:34Z"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.0</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">71.893</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves the latest status of a particular car and the time when it was last updated. 
+Useful on all screens of the app where the live location of the car is to be displayed.  </p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -702,10 +835,27 @@ Returns the list of trips and their timestamps of occuring. </p>
 </tbody></table>
 
 <h2 id="get-car-statistics">Get Car statistics</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/2/statistics/"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"total_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">18000</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"total_trips"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"avg_mileage"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"total_distance"</span><span class="p">:</span><span class="w"> </span><span class="mf">200.0</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"carbon_fp"</span><span class="p">:</span><span class="w"> </span><span class="mf">1600.0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves the overall statistics of the car. </p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/statistics</code></p>
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/statistics/</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -722,6 +872,19 @@ Returns the list of trips and their timestamps of occuring. </p>
 </tbody></table>
 
 <h2 id="get-car-39-s-carbon-footprint">Get Car&rsquo;s carbon footprint</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/2/carbonfp/"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"carbon_fp"</span><span class="p">:</span><span class="w"> </span><span class="mf">1600.0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves the carbon footprint number of a particular car. </p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -742,6 +905,19 @@ Returns the list of trips and their timestamps of occuring. </p>
 </tbody></table>
 
 <h2 id="get-car-39-s-speed-limit">Get Car&rsquo;s speed limit</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/2/speedlimit/"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"speed_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves the carbon footprint number of a particular car. </p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -762,6 +938,19 @@ Returns the list of trips and their timestamps of occuring. </p>
 </tbody></table>
 
 <h2 id="get-all-users-using-a-car">Get all Users using a car</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/2/users/"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"related_users"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves the list of users (drivers) using this car. </p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -782,6 +971,19 @@ Returns the list of trips and their timestamps of occuring. </p>
 </tbody></table>
 
 <h2 id="get-all-trips-made-by-a-car">Get all Trips made by a car</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/2/trips/"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"related_trips"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves the list of trips made by this car.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -802,6 +1004,32 @@ Returns the list of trips and their timestamps of occuring. </p>
 </tbody></table>
 
 <h2 id="get-car-graphs">Get Car Graphs</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/2/graphs/"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"graph"</span><span class="p">:</span><span class="w"> 
+  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="nt">"d"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="nt">"m"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"d"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="nt">"m"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"d"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="nt">"m"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"d"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="nt">"m"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"d"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="nt">"m"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"d"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="nt">"m"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"d"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="nt">"m"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"d"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="nt">"m"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"d"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="nt">"m"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"d"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="nt">"m"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves the list of points to plot time series based graphs for distance, running time and mileage graphs.
+Data points for distance, run time, mileage are provided for each trip completed by the car. </p>
 
 <h3 id="http-request">HTTP Request</h3>
 
