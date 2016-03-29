@@ -1052,6 +1052,32 @@ Data points for distance, run time, mileage are provided for each trip completed
 <h1 id="devices">Devices</h1>
 
 <h2 id="get-all-devices">Get all Devices</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/devices/"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"addressableid"</span><span class="p">:</span><span class="s2">"T001"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">19.124</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">17.893</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"speed"</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ontrip"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"gsmsignal"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"deviceplugged"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"bluetoothconn"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"stmid"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"nrfid"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"hwid"</span><span class="p">:</span><span class="mi">0</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves the entire list of devices registered in the database.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1062,6 +1088,30 @@ Data points for distance, run time, mileage are provided for each trip completed
 <p>None</p>
 
 <h2 id="get-a-specific-device">Get a specific Device</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/devices/2/"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"addressableid"</span><span class="p">:</span><span class="s2">"T011"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">19.124</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">17.893</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"speed"</span><span class="p">:</span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"ontrip"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"gsmsignal"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"deviceplugged"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"bluetoothconn"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"stmid"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"nrfid"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"hwid"</span><span class="p">:</span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves a particular device registered in the database.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1082,6 +1132,22 @@ Data points for distance, run time, mileage are provided for each trip completed
 </tbody></table>
 
 <h2 id="get-device-info">Get Device Info</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/devices/2/info/"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"stmid"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"nrfid"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"hwid"</span><span class="p">:</span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves the info of a particular device.
+Useful for the Device Info screen on the app. </p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1104,6 +1170,32 @@ Data points for distance, run time, mileage are provided for each trip completed
 <h1 id="trip">Trip</h1>
 
 <h2 id="get-all-trips">Get all Trips</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/data/trips/"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"device"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"trip_id"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message_id"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"hard_acceleration_count"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"hard_break_count"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"trip_distance"</span><span class="p">:</span><span class="mf">20.0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"trip_time"</span><span class="p">:</span><span class="mi">120</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"avg_speed"</span><span class="p">:</span><span class="mf">10.0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"avg_mileage"</span><span class="p">:</span><span class="mf">12.0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"total_CO2_emitted"</span><span class="p">:</span><span class="mf">100.0</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves the list of all trips ever recorded on the database.  </p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1114,6 +1206,49 @@ Data points for distance, run time, mileage are provided for each trip completed
 <p>None</p>
 
 <h2 id="get-a-specific-trip">Get a specific Trip</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/data/trips/2/"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"trip_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"start_lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.124</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"avg_mileage"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"distance"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"end_lon"</span><span class="p">:</span><span class="w"> </span><span class="mf">71.895</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"start_lon"</span><span class="p">:</span><span class="w"> </span><span class="mf">71.893</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"car"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"route"</span><span class="p">:</span><span class="w"> 
+  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">101</span><span class="p">,</span><span class="w"> 
+      </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-25T15:35:52.444365Z"</span><span class="p">,</span><span class="w"> 
+      </span><span class="nt">"mil"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> 
+      </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.225</span><span class="p">,</span><span class="w"> 
+      </span><span class="nt">"lon"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.994</span><span class="w">
+    </span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">102</span><span class="p">,</span><span class="w"> 
+      </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-25T15:35:52.585972Z"</span><span class="p">,</span><span class="w"> 
+      </span><span class="nt">"mil"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> 
+      </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.226</span><span class="p">,</span><span class="w"> 
+      </span><span class="nt">"lon"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.99499999999999</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.583Z"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"end_lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.126</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"avg_speed"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"drive_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">89.0</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre>
+
+<p>This endpoint retrieves info of a particular trip  </p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1134,6 +1269,25 @@ Data points for distance, run time, mileage are provided for each trip completed
 </tbody></table>
 
 <h2 id="get-trip-overview">Get Trip overview</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/data/trips/2/overview/"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"start_lon"</span><span class="p">:</span><span class="w"> </span><span class="mf">71.893</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"car"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"start_lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.124</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"avg_mileage"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"drive_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">89.0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves the overview info for a particular trip. 
+This is useful for displaying trip cards in the app. </p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1154,6 +1308,49 @@ Data points for distance, run time, mileage are provided for each trip completed
 </tbody></table>
 
 <h2 id="get-trip-details">Get Trip details</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/data/trips/2/details/"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"user"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"trip_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"start_lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.124</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"avg_mileage"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"distance"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"end_lon"</span><span class="p">:</span><span class="w"> </span><span class="mf">71.895</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"start_lon"</span><span class="p">:</span><span class="w"> </span><span class="mf">71.893</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"car"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"route"</span><span class="p">:</span><span class="w"> 
+  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">101</span><span class="p">,</span><span class="w"> 
+      </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-25T15:35:52.444365Z"</span><span class="p">,</span><span class="w"> 
+      </span><span class="nt">"mil"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> 
+      </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.225</span><span class="p">,</span><span class="w"> 
+      </span><span class="nt">"lon"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.994</span><span class="w">
+    </span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">102</span><span class="p">,</span><span class="w"> 
+      </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-25T15:35:52.585972Z"</span><span class="p">,</span><span class="w"> 
+      </span><span class="nt">"mil"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> 
+      </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.226</span><span class="p">,</span><span class="w"> 
+      </span><span class="nt">"lon"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.99499999999999</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.583Z"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"end_lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.126</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"avg_speed"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"drive_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">89.0</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre>
+
+<p>This endpoint retrieves detailed info for a particular trip.  </p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1174,6 +1371,25 @@ Data points for distance, run time, mileage are provided for each trip completed
 </tbody></table>
 
 <h2 id="get-a-trip-39-s-reportcard">Get a Trip&rsquo;s reportcard</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/data/trips/2/reportcard/"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"hbr_points"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"spd_points"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"idl_points"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"clt_points"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"hac_points"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"drive_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">89.0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves the breakdown of driving points for a particular trip. 
+Useful for the Trip Detailed view in the app. </p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1194,6 +1410,31 @@ Data points for distance, run time, mileage are provided for each trip completed
 </tbody></table>
 
 <h2 id="get-trip-graphs">Get Trip Graphs</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/data/trips/2/graph/"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"graph"</span><span class="p">:</span><span class="w"> 
+  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">101</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-25T15:35:52.444365Z"</span><span class="p">,</span><span class="w"> </span><span class="nt">"mil"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">102</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-25T15:35:52.585972Z"</span><span class="p">,</span><span class="w"> </span><span class="nt">"mil"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">103</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-25T15:35:52.764028Z"</span><span class="p">,</span><span class="w"> </span><span class="nt">"mil"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">104</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-25T15:35:52.910171Z"</span><span class="p">,</span><span class="w"> </span><span class="nt">"mil"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">105</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-25T15:35:53.055528Z"</span><span class="p">,</span><span class="w"> </span><span class="nt">"mil"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">106</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-25T15:35:53.200362Z"</span><span class="p">,</span><span class="w"> </span><span class="nt">"mil"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">107</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-25T15:35:53.334345Z"</span><span class="p">,</span><span class="w"> </span><span class="nt">"mil"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">},</span><span class="w"> 
+    </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">108</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-25T15:35:53.468199Z"</span><span class="p">,</span><span class="w"> </span><span class="nt">"mil"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">},</span><span class="w"> 
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">],</span><span class="w"> 
+  </span><span class="nt">"avg_mileage"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves the complete mileage graphing info with average mileage for a particular trip.  </p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1216,6 +1457,41 @@ Data points for distance, run time, mileage are provided for each trip completed
 <h1 id="obd">OBD</h1>
 
 <h2 id="get-all-obd-data-points">Get all OBD data points</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/data/obd/"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"device"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"trip"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sts"</span><span class="p">:</span><span class="s2">"2016-03-25T15:11:16.610534Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message_id"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lat"</span><span class="p">:</span><span class="mf">19.124</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lon"</span><span class="p">:</span><span class="mf">71.893</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"speed"</span><span class="p">:</span><span class="mf">20.0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mil"</span><span class="p">:</span><span class="mf">12.0</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"device"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"trip"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sts"</span><span class="p">:</span><span class="s2">"2016-03-25T15:21:14.517005Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message_id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lat"</span><span class="p">:</span><span class="mf">19.1241</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lon"</span><span class="p">:</span><span class="mf">72.8931</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"speed"</span><span class="p">:</span><span class="mf">20.0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mil"</span><span class="p">:</span><span class="mf">12.0</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves the entire list of all OBD data points recorded on the database.  </p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1226,6 +1502,27 @@ Data points for distance, run time, mileage are provided for each trip completed
 <p>None</p>
 
 <h2 id="get-a-specific-obddata-point">Get a specific OBDData point</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/data/obd/2/"</span>
+  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"device"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"trip"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"sts"</span><span class="p">:</span><span class="s2">"2016-03-25T15:21:14.517005Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message_id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"lat"</span><span class="p">:</span><span class="mf">19.1241</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"lon"</span><span class="p">:</span><span class="mf">72.8931</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"speed"</span><span class="p">:</span><span class="mf">20.0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"mil"</span><span class="p">:</span><span class="mf">12.0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves info of a particular OBD data point. </p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1247,15 +1544,27 @@ Data points for distance, run time, mileage are provided for each trip completed
 
 <h1 id="accounts">Accounts</h1>
 
+<p>API yet to be published</p>
+
 <h1 id="alerts">Alerts</h1>
+
+<p>API yet to be published</p>
 
 <h1 id="dtc">DTC</h1>
 
+<p>API yet to be published</p>
+
 <h1 id="documents">Documents</h1>
+
+<p>API yet to be published</p>
 
 <h1 id="servicing">Servicing</h1>
 
+<p>API yet to be published</p>
+
 <h1 id="badges">Badges</h1>
+
+<p>API yet to be published</p>
 
           <h1 id="errors">Errors</h1>
 
