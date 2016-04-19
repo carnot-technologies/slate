@@ -18,7 +18,7 @@ search: true
 
 Welcome to the Carnot API! You can use our API to access Carnot API endpoints, which can get information on various users, cars, devices and trips in our database.
 
-We have language bindings in Shell. You can view code examples in the dark area to the right.
+You can view code examples to access the API in the dark area to the right.
 
 This API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
 
@@ -29,19 +29,24 @@ This API documentation page was created with [Slate](https://github.com/tripit/s
 ```shell
 # With shell, you can just pass the correct header with each request
 curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+> Make sure to replace `<api_key>` with your API key and `<auth_token>` with your Auth Token
 
 Carnot uses API keys to allow access to the API. You can get a new API key by writing to us at prathamesh1729@gmail.com
 
 The API key must be included in all API requests to the server in a header that looks like the following:
 
-`Authorization: meowmeowmeow`
+`Apikey: <api_key>`
+
+Apart from the API key all the endpoints that require user authentication require a Token. The token must be supplied in a header that looks as follows: 
+
+`Authorization: Token <auth_token>`
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>&lt;api_key&gt;</code> with your personal API key. You must replace <code>&lt;auth_token&gt;</code> with the user's auth token. 
 </aside>
 
 # Users
@@ -50,7 +55,8 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 
 ```shell
 curl "http://<BASE_URL>/users/"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -91,7 +97,8 @@ None
 
 ```shell
 curl "http://<BASE_URL>/users/2/"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -134,7 +141,8 @@ ID | The ID of the user to retrieve
 
 ```shell
 curl "http://<BASE_URL>/users/2/econtacts/"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -162,7 +170,8 @@ ID | The ID of the user whose data is to be retrieved
 
 ```shell
 curl "http://<BASE_URL>/users/2/cars/"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -189,7 +198,8 @@ ID | The ID of the user whose data is to be retrieved
 
 ```shell
 curl "http://<BASE_URL>/users/2/trips/"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -217,7 +227,8 @@ ID | The ID of the user whose data is to be retrieved
 
 ```shell
 curl "http://<BASE_URL>/users/2/overview/"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -252,7 +263,8 @@ ID | The ID of the user whose data is to be retrieved
 
 ```shell
 curl "http://<BASE_URL>/users/2/driverprofile/"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -286,7 +298,8 @@ ID | The ID of the user whose data is to be retrieved
 
 ```shell
 curl "http://<BASE_URL>/users/2/driverstats/"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -321,7 +334,8 @@ ID | The ID of the user whose data is to be retrieved
 
 ```shell
 curl "http://<BASE_URL>/users/2/driverpoints/"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -339,7 +353,8 @@ curl "http://<BASE_URL>/users/2/driverpoints/"
 
 ```shell
 curl "http://<BASE_URL>/users/2/driverpoints/?graph=True"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -386,7 +401,8 @@ BOOL | True or False indicating if the method should return driver points for gr
 
 ```shell
 curl "http://<BASE_URL>/users/2/graphs/"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -430,7 +446,8 @@ ID | The ID of the user whose data is to be retrieved
 
 ```shell
 curl "http://<BASE_URL>/cars/"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -473,7 +490,8 @@ None
 
 ```shell
 curl "http://<BASE_URL>/cars/<ID>/"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -504,7 +522,8 @@ ID | The ID of the car, the data of which is to be retrieved
 
 ```shell
 curl "http://<BASE_URL>/cars/makes/"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -537,7 +556,8 @@ None
 
 ```shell
 curl "http://<BASE_URL>/cars/models/?make=Audi"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -568,7 +588,8 @@ MAKE | The Make of the car whose list of Models is to be retrieved
 
 ```shell
 curl "http://<BASE_URL>/cars/links/?make=Audi&model=TT"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -598,7 +619,8 @@ MODEL | The Model of the car, the links of which have to be retrieved
 
 ```shell
 curl "http://<BASE_URL>/cars/2/overview/"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -632,7 +654,8 @@ ID | The ID of the car, the data of which is to be retrieved
 
 ```shell
 curl "http://<BASE_URL>/cars/2/status/"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -665,7 +688,8 @@ ID | The ID of the car, the data of which is to be retrieved
 
 ```shell
 curl "http://<BASE_URL>/cars/2/statistics/"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -697,7 +721,8 @@ ID | The ID of the car, the data of which is to be retrieved
 
 ```shell
 curl "http://<BASE_URL>/cars/2/carbonfp/"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -725,7 +750,8 @@ ID | The ID of the car, the data of which is to be retrieved
 
 ```shell
 curl "http://<BASE_URL>/cars/2/speedlimit/"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -753,7 +779,8 @@ ID | The ID of the car, the data of which is to be retrieved
 
 ```shell
 curl "http://<BASE_URL>/cars/2/users/"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -781,7 +808,8 @@ ID | The ID of the car, the data of which is to be retrieved
 
 ```shell
 curl "http://<BASE_URL>/cars/2/trips/"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -809,7 +837,8 @@ ID | The ID of the car, the data of which is to be retrieved
 
 ```shell
 curl "http://<BASE_URL>/cars/2/graphs/"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -852,7 +881,8 @@ ID | The ID of the car, the data of which is to be retrieved
 
 ```shell
 curl "http://<BASE_URL>/devices/"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -891,7 +921,8 @@ None
 
 ```shell
 curl "http://<BASE_URL>/devices/2/"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -930,7 +961,8 @@ ID | The ID of the device, the data of which is to be retrieved
 
 ```shell
 curl "http://<BASE_URL>/devices/2/info/"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -963,7 +995,8 @@ ID | The ID of the device, the info of which is to be retrieved
 
 ```shell
 curl "http://<BASE_URL>/data/trips/"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -1002,7 +1035,8 @@ None
 
 ```shell
 curl "http://<BASE_URL>/data/trips/2/"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -1060,7 +1094,8 @@ ID | The ID of the trip which is to be retrieved
 
 ```shell
 curl "http://<BASE_URL>/data/trips/2/overview/"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -1094,7 +1129,8 @@ ID | The ID of the trip, the data of which is to be retrieved
 
 ```shell
 curl "http://<BASE_URL>/data/trips/2/details/"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -1152,7 +1188,8 @@ ID | The ID of the trip, the data of which is to be retrieved
 
 ```shell
 curl "http://<BASE_URL>/data/trips/2/reportcard/"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -1186,7 +1223,8 @@ ID | The ID of the trip, the data of which is to be retrieved
 
 ```shell
 curl "http://<BASE_URL>/data/trips/2/graph/"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -1228,7 +1266,8 @@ ID | The ID of the trip, the data of which is to be retrieved
 
 ```shell
 curl "http://<BASE_URL>/data/obd/"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -1276,7 +1315,8 @@ None
 
 ```shell
 curl "http://<BASE_URL>/data/obd/2/"
-  -H "Authorization: meowmeowmeow"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
 ```
 
 > The above command returns JSON structured like this:
@@ -1310,7 +1350,103 @@ ID | The ID of the OBD data point which is to be retrieved
 
 # Accounts
 
-API yet to be published
+## Register
+
+<aside class="warning">
+ API not yet live!
+</aside>
+
+This endpoint registers a new user to the Carnot backend. 
+
+```shell
+curl "http://<BASE_URL>/users/register/"
+  -H "Content-Type: application/json" 
+  -H "Apikey: <api_key>" 
+  -X POST 
+  -d '{"email":"abc@xyz.com","password":"xyz","name":"John Doe"}' 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "token": "ecabc338b3d5e9457364dd92f33da9ced55ce7d6", 
+  "id": 23, 
+  "email": "abc@xyz.com"
+}
+
+```
+
+### HTTP Request
+
+`POST http://<BASE_URL>/users/register/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+email | Email address of the registering user. This eventually becomes the unique username required for login 
+password | Password of the registering user
+name | Name of the registering user  
+
+### Response Parameters
+
+Parameter | Description
+----------| -----------
+token | The auth token to be used to authenticate this user in subsequent requests
+id | The id of the user to be included in the URL in subsequent requests where id is required
+email | Confirmation of the email id the user entered. Email id also serves as the user name
+
+
+## Login
+
+<aside class="warning">
+ API not yet live!
+</aside>
+
+This endpoint logs an existing user into the Carnot backend. Successfully logged in users get access to an auth token that should be used in subsequent authenticated requests. 
+
+```shell
+curl "http://<BASE_URL>/users/login/"
+  -H "Content-Type: application/json"
+  -H "Apikey: <api_key>"  
+  -X POST 
+  -d '{"email":"abc@xyz.com","password":"xyz"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status": 200, 
+  "email": "abc@xyz.com", 
+  "message": "Success", 
+  "token": "ecabc338b3d5e9457364dd92f33da9ced55ce7d6", 
+  "id": 23
+}
+```
+
+### HTTP Request
+
+`POST http://<BASE_URL>/users/login/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+email | Email address of the user attempting to login. This should be the email used when registering 
+password | Password of the registering user
+
+### Response Parameters
+
+Parameter | Description
+----------| -----------
+token | The auth token to be used to authenticate this user in subsequent requests
+id | The id of the user to be included in the URL in subsequent requests where id is required
+email | Confirmation of the email id the user entered. Email id also serves as the user name
+status | 200 if successful, otherwise 204
+message | Message indicating login status 
+
 
 # Alerts
 
