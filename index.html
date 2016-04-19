@@ -121,7 +121,7 @@
 
 <p>Welcome to the Carnot API! You can use our API to access Carnot API endpoints, which can get information on various users, cars, devices and trips in our database.</p>
 
-<p>We have language bindings in Shell. You can view code examples in the dark area to the right.</p>
+<p>You can view code examples to access the API in the dark area to the right.</p>
 
 <p>This API documentation page was created with <a href="https://github.com/tripit/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&rsquo;s documentation.</p>
 
@@ -132,28 +132,34 @@
 </blockquote>
 <pre class="highlight shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
 curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
-<p>Make sure to replace <code class="prettyprint">meowmeowmeow</code> with your API key.</p>
+<p>Make sure to replace <code class="prettyprint">&lt;api_key&gt;</code> with your API key and <code class="prettyprint">&lt;auth_token&gt;</code> with your Auth Token</p>
 </blockquote>
 
 <p>Carnot uses API keys to allow access to the API. You can get a new API key by writing to us at prathamesh1729@gmail.com</p>
 
 <p>The API key must be included in all API requests to the server in a header that looks like the following:</p>
 
-<p><code class="prettyprint">Authorization: meowmeowmeow</code></p>
+<p><code class="prettyprint">Apikey: &lt;api_key&gt;</code></p>
+
+<p>Apart from the API key all the endpoints that require user authentication require a Token. The token must be supplied in a header that looks as follows: </p>
+
+<p><code class="prettyprint">Authorization: Token &lt;auth_token&gt;</code></p>
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>&lt;api_key&gt;</code> with your personal API key. You must replace <code>&lt;auth_token&gt;</code> with the user&rsquo;s auth token. 
 </aside>
 
 <h1 id="users">Users</h1>
 
 <h2 id="get-all-users">Get All Users</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -192,7 +198,8 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 
 <h2 id="get-a-specific-user">Get a Specific User</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/2/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -240,7 +247,8 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 
 <h2 id="get-user-39-s-emergency-contact-details">Get User&rsquo;s emergency contact details</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/2/econtacts/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -273,7 +281,8 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 
 <h2 id="get-user-39-s-cars">Get User&rsquo;s cars</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/2/cars/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -306,7 +315,8 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 
 <h2 id="get-user-39-s-trips">Get User&rsquo;s trips</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/2/trips/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -339,7 +349,8 @@ You must replace <code>meowmeowmeow</code> with your personal API key.
 
 <h2 id="get-driver-profile-overview">Get Driver Profile overview</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/2/overview/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -379,7 +390,8 @@ Useful for populating the list of drivers in the Car Garage page in the app. </p
 
 <h2 id="get-driver-profile">Get Driver Profile</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/2/driverprofile/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -418,7 +430,8 @@ Useful when populating the Driver Profile screen on the app. </p>
 
 <h2 id="get-driver-statistics">Get Driver Statistics</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/2/driverstats/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -458,7 +471,8 @@ Useful when populating the Driver Profile screen on the app. </p>
 
 <h2 id="get-driver-points">Get Driver Points</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/2/driverpoints/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -474,7 +488,8 @@ Useful when populating the Driver Profile screen on the app. </p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/2/driverpoints/?graph=True"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -530,7 +545,8 @@ Useful when populating the Driver Profile screen on the app. </p>
 
 <h2 id="get-user-graphs">Get User Graphs</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/2/graphs/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -579,7 +595,8 @@ Returns the list of trips and their timestamps of occuring. </p>
 
 <h2 id="get-all-cars">Get all Cars</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -619,7 +636,8 @@ Returns the list of trips and their timestamps of occuring. </p>
 
 <h2 id="get-a-specific-car">Get a specific Car</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -655,7 +673,8 @@ Returns the list of trips and their timestamps of occuring. </p>
 
 <h2 id="get-all-makes">Get all Makes</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/makes/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -685,7 +704,8 @@ Returns the list of trips and their timestamps of occuring. </p>
 
 <h2 id="get-all-models">Get all Models</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/models/?make=Audi"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -721,7 +741,8 @@ Returns the list of trips and their timestamps of occuring. </p>
 
 <h2 id="get-all-links">Get all Links</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/links/?make=Audi&amp;model=TT"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -759,7 +780,8 @@ Returns the list of trips and their timestamps of occuring. </p>
 
 <h2 id="get-car-overview">Get Car overview</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/2/overview/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -798,7 +820,8 @@ Returns the list of trips and their timestamps of occuring. </p>
 
 <h2 id="get-car-status">Get Car status</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/2/status/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -836,7 +859,8 @@ Useful on all screens of the app where the live location of the car is to be dis
 
 <h2 id="get-car-statistics">Get Car statistics</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/2/statistics/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -873,7 +897,8 @@ Useful on all screens of the app where the live location of the car is to be dis
 
 <h2 id="get-car-39-s-carbon-footprint">Get Car&rsquo;s carbon footprint</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/2/carbonfp/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -906,7 +931,8 @@ Useful on all screens of the app where the live location of the car is to be dis
 
 <h2 id="get-car-39-s-speed-limit">Get Car&rsquo;s speed limit</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/2/speedlimit/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -939,7 +965,8 @@ Useful on all screens of the app where the live location of the car is to be dis
 
 <h2 id="get-all-users-using-a-car">Get all Users using a car</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/2/users/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -972,7 +999,8 @@ Useful on all screens of the app where the live location of the car is to be dis
 
 <h2 id="get-all-trips-made-by-a-car">Get all Trips made by a car</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/2/trips/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -1005,7 +1033,8 @@ Useful on all screens of the app where the live location of the car is to be dis
 
 <h2 id="get-car-graphs">Get Car Graphs</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/2/graphs/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -1053,7 +1082,8 @@ Data points for distance, run time, mileage are provided for each trip completed
 
 <h2 id="get-all-devices">Get all Devices</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/devices/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -1089,7 +1119,8 @@ Data points for distance, run time, mileage are provided for each trip completed
 
 <h2 id="get-a-specific-device">Get a specific Device</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/devices/2/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -1133,7 +1164,8 @@ Data points for distance, run time, mileage are provided for each trip completed
 
 <h2 id="get-device-info">Get Device Info</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/devices/2/info/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -1171,7 +1203,8 @@ Useful for the Device Info screen on the app. </p>
 
 <h2 id="get-all-trips">Get all Trips</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/data/trips/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -1207,7 +1240,8 @@ Useful for the Device Info screen on the app. </p>
 
 <h2 id="get-a-specific-trip">Get a specific Trip</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/data/trips/2/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -1270,7 +1304,8 @@ Useful for the Device Info screen on the app. </p>
 
 <h2 id="get-trip-overview">Get Trip overview</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/data/trips/2/overview/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -1309,7 +1344,8 @@ This is useful for displaying trip cards in the app. </p>
 
 <h2 id="get-trip-details">Get Trip details</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/data/trips/2/details/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -1372,7 +1408,8 @@ This is useful for displaying trip cards in the app. </p>
 
 <h2 id="get-a-trip-39-s-reportcard">Get a Trip&rsquo;s reportcard</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/data/trips/2/reportcard/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -1411,7 +1448,8 @@ Useful for the Trip Detailed view in the app. </p>
 
 <h2 id="get-trip-graphs">Get Trip Graphs</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/data/trips/2/graph/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -1458,7 +1496,8 @@ Useful for the Trip Detailed view in the app. </p>
 
 <h2 id="get-all-obd-data-points">Get all OBD data points</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/data/obd/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -1503,7 +1542,8 @@ Useful for the Trip Detailed view in the app. </p>
 
 <h2 id="get-a-specific-obddata-point">Get a specific OBDData point</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/data/obd/2/"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
 <blockquote>
@@ -1544,7 +1584,156 @@ Useful for the Trip Detailed view in the app. </p>
 
 <h1 id="accounts">Accounts</h1>
 
-<p>API yet to be published</p>
+<h2 id="register">Register</h2>
+
+<aside class="warning">
+ API not yet live!
+</aside>
+
+<p>This endpoint registers a new user to the Carnot backend. </p>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/register/"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -X POST 
+  -d <span class="s1">'{"email":"abc@xyz.com","password":"xyz","name":"John Doe"}'</span> 
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecabc338b3d5e9457364dd92f33da9ced55ce7d6"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc@xyz.com"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://&lt;BASE_URL&gt;/users/register/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>Email address of the registering user. This eventually becomes the unique username required for login</td>
+</tr>
+<tr>
+<td>password</td>
+<td>Password of the registering user</td>
+</tr>
+<tr>
+<td>name</td>
+<td>Name of the registering user</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>The auth token to be used to authenticate this user in subsequent requests</td>
+</tr>
+<tr>
+<td>id</td>
+<td>The id of the user to be included in the URL in subsequent requests where id is required</td>
+</tr>
+<tr>
+<td>email</td>
+<td>Confirmation of the email id the user entered. Email id also serves as the user name</td>
+</tr>
+</tbody></table>
+
+<h2 id="login">Login</h2>
+
+<aside class="warning">
+ API not yet live!
+</aside>
+
+<p>This endpoint logs an existing user into the Carnot backend. Successfully logged in users get access to an auth token that should be used in subsequent authenticated requests. </p>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/login/"</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span>  
+  -X POST 
+  -d <span class="s1">'{"email":"abc@xyz.com","password":"xyz"}'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc@xyz.com"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecabc338b3d5e9457364dd92f33da9ced55ce7d6"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://&lt;BASE_URL&gt;/users/login/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>Email address of the user attempting to login. This should be the email used when registering</td>
+</tr>
+<tr>
+<td>password</td>
+<td>Password of the registering user</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>The auth token to be used to authenticate this user in subsequent requests</td>
+</tr>
+<tr>
+<td>id</td>
+<td>The id of the user to be included in the URL in subsequent requests where id is required</td>
+</tr>
+<tr>
+<td>email</td>
+<td>Confirmation of the email id the user entered. Email id also serves as the user name</td>
+</tr>
+<tr>
+<td>status</td>
+<td>200 if successful, otherwise 204</td>
+</tr>
+<tr>
+<td>message</td>
+<td>Message indicating login status</td>
+</tr>
+</tbody></table>
 
 <h1 id="alerts">Alerts</h1>
 
