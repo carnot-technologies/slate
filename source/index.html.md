@@ -197,7 +197,7 @@ ID | The ID of the user whose data is to be retrieved
 ## Get User's trips
 
 ```shell
-curl "http://<BASE_URL>/users/2/trips/"
+curl "http://<BASE_URL>/users/32/trips/"
   -H "Apikey: <api_key>" 
   -H "Authorization: Token <auth_token>"
 ```
@@ -206,11 +206,49 @@ curl "http://<BASE_URL>/users/2/trips/"
 
 ```json
 {
-  "related_trips": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+  "related_trips": 
+  [
+    {
+      "idling": 20,
+      "elat": 19.423,
+      "clutch": 20,
+      "hardBreak": 20,
+      "slat": 19.124,
+      "mileage": 12,
+      "date": "2016-04-19T07:05:31.786Z",
+      "photo": null,
+      "elon": 72.012,
+      "hardAcc": 20,
+      "id": 91,
+      "driveScore": 85.5,
+      "speeding": 20,
+      "name": "",
+      "maxMileage": 35,
+      "slon": 71.893
+    },
+    {
+      "idling": 20,
+      "elat": 19.423,
+      "clutch": 20,
+      "hardBreak": 20,
+      "slat": 19.124,
+      "mileage": 12,
+      "date": "2016-04-19T07:05:31.928Z",
+      "photo": null,
+      "elon": 72.012,
+      "hardAcc": 20,
+      "id": 92,
+      "driveScore": 85.5,
+      "speeding": 20,
+      "name": "",
+      "maxMileage": 35,
+      "slon": 71.893
+    }
+  ]
 }
 ```
 
-This endpoint retrieves the list of trips belonging to a particular user. 
+This endpoint retrieves the list of trips with info belonging to a particular user. 
 
 ### HTTP Request
 
@@ -251,6 +289,96 @@ Useful for populating the list of drivers in the Car Garage page in the app.
 ### HTTP Request
 
 `GET http://<BASE_URL>/users/<ID>/overview/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the user whose data is to be retrieved 
+
+
+## Get Full Driver Profile 
+
+```shell
+curl "http://<BASE_URL>/users/32/fullprofile/"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "profiles": 
+  [
+    {
+      "driverscore": 85,
+      "nTrips": 10,
+      "tips": [],
+      "distance": 100,
+      "mileage": 20,
+      "hardBreak": 20,
+      "badge": [],
+      "gender": "M",
+      "hardAcc": 20,
+      "photo": null,
+      "speed": 10,
+      "recentBadges": [],
+      "time": 36000,
+      "idlingTime": 20,
+      "isOnTrip": false,
+      "name": "",
+      "age": 20
+    }
+  ]
+}
+```
+
+This endpoint retrieves the full profile of the driver/user. 
+Useful for populating the list of drivers in the Car Garage page in the app. 
+
+### HTTP Request
+
+`GET http://<BASE_URL>/users/<ID>/fullprofile/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the user whose data is to be retrieved 
+
+
+## Get Driver's Garage Info 
+
+```shell
+curl "http://<BASE_URL>/users/32/garage/"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "cars": [
+    {
+      "lat": "19.23",
+      "lon": "71.20",
+      "speed": "20.00",
+      "id": 4,
+      "isOnTrip": true,
+      "name": "C014"
+    }
+  ]
+}
+```
+
+This endpoint retrieves the car garage information of the driver/user. 
+Useful for populating the list of cars in the Car Garage page in the app. 
+
+### HTTP Request
+
+`GET http://<BASE_URL>/users/<ID>/garage/`
 
 ### URL Parameters
 
@@ -498,14 +626,60 @@ curl "http://<BASE_URL>/cars/<ID>/"
 
 ```json
 {
-  "id":4,
-  "device":4,
-  "name":"C013",
-  "numberplate":"MH01AB0013"
+  "lat": "19.23",
+  "nTrees": 200,
+  "cyclefp": 25,
+  "lon": "71.20",
+  "speed": "20.00",
+  "carfp": 2500,
+  "isOnTrip": true,
+  "name": "C014",  
+  "trips": 
+  [
+    {
+      "elat": 19.423,
+      "slat": 19.124,
+      "date": "2016-04-19T07:05:31.786Z",
+      "id": 91,
+      "driveScore": 85.5,
+      "maxMileage": 35,
+      "mileage": 12,
+      "photo": "http://profile-images.com/mypic.png",
+      "elon": 72.012,
+      "name": "PJ",
+      "slon": 71.893
+    },
+    {
+      "elat": 19.423,
+      "slat": 19.124,
+      "date": "2016-04-19T07:05:31.928Z",
+      "id": 92,
+      "driveScore": 85.5,
+      "maxMileage": 35,
+      "mileage": 12,
+      "photo": "http://profile-images.com/mypic.png",
+      "elon": 72.012,
+      "name": "PJ",
+      "slon": 71.893
+    },
+    {
+      "elat": 19.423,
+      "slat": 19.124,
+      "date": "2016-04-19T07:05:32.074Z",
+      "id": 93,
+      "driveScore": 85.5,
+      "maxMileage": 35,
+      "mileage": 12,
+      "photo": "http://profile-images.com/mypic.png",
+      "elon": 72.012,
+      "name": "PJ",
+      "slon": 71.893
+    }
+  ]
 }
 ```
 
-This endpoint retrieves a specific car.
+This endpoint retrieves details of a specific car. This is useful for displaying a car's dashboard. 
 
 ### HTTP Request
 
