@@ -1622,13 +1622,117 @@ status | 200 if successful, otherwise 204
 message | Message indicating login status 
 
 
-# Alerts
+# Alerts / Notifications
 
-API yet to be published
+## Get Notifications for a car
+
+```shell
+curl "http://<BASE_URL>/cars/12345/notifications/"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "type": "Car card",
+    "title": "All your cars are safe and healthy",
+    "message": "",
+    "date_time": "02/21/16 19:03:33"
+  }
+]
+```
+
+This endpoint retrieves the list of notifications recorded for a car on the backend. 
+
+### HTTP Request
+
+`GET http://<BASE_URL>/cars/<ID>/notifications/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the car, the data of which is to be retrieved 
+
 
 # DTC
 
-API yet to be published
+## Get Diagnostic Info for a car
+
+```shell
+curl "http://<BASE_URL>/cars/12345/diagnostics/"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "battery_health": 50,
+  "cabin_temperature": 40,
+  "coolant_temperature": 80,
+  "engine_oil": true,
+  "tyre_pressure_front_left": 0,
+  "tyre_pressure_front_right": 0,
+  "tyre_pressure_bottom_left": 0,
+  "car_errors": 
+  [
+    "P0106",
+    "P0108",
+    "U0111"
+  ]
+}
+```
+
+This endpoint retrieves the diagnostic info for a car.  
+
+### HTTP Request
+
+`GET http://<BASE_URL>/cars/<ID>/diagnostics/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the car, the data of which is to be retrieved 
+
+
+## Get Error Code Info
+
+```shell
+curl "http://<BASE_URL>/cars/12345/errors/P0106/"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "code": "P0106",
+  "title": "Performance problem",
+  "desc": "The problem could be caused due to bad MAP sensor or bad PCM, click here for more",
+  "severity": "Low",
+  "ref_link": "http://www.obd-codes.com/p0106"
+}
+```
+
+This endpoint retrieves the detailed info of a particular error code recorded on a car.  
+
+### HTTP Request
+
+`GET http://<BASE_URL>/cars/<ID>/errors/<EID>/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the car, the data of which is to be retrieved 
+EID | The error code, the info of which is to be retrieved 
 
 # Documents
 
