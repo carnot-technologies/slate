@@ -1114,7 +1114,7 @@ Useful on all screens of the app where the live location of the car is to be dis
 </tbody></table>
 
 <h2 id="get-car-39-s-speed-limit">Get Car&rsquo;s speed limit</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/2/speedlimit/"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/12345/speedlimit/"</span>
   -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
   -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
@@ -1123,11 +1123,35 @@ Useful on all screens of the app where the live location of the car is to be dis
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"speed_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
+  </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">90</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"trips"</span><span class="p">:</span><span class="w"> 
+  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"drive_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">75</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"slat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"slon"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"elon"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.5</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"speeding"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hard_acc"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"trip_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"idling_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"elat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.4</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"date_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20\\/4\\/2016 09:22:03"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"photo_thumb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:\\/\\/4.bp.blogspot.com\\/-7GKsbIB8dZU\\/TkxlNxQXF_I\\/AAAAAAAAANw\\/1CIg1dnXbrs\\/s1600\\/funny-facebook-profile-picture-joke-james-bond.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"mileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hard_break"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"max_mileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"clutch_usage"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alex Luther"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves the carbon footprint number of a particular car. </p>
+<p>This endpoint retrieves the speedlimit of a particular car. 
+And also returns the set of trips made by the car. </p>
 
 <h3 id="http-request">HTTP Request</h3>
 
