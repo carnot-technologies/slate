@@ -617,7 +617,7 @@ None
 ## Get a specific Car 
 
 ```shell
-curl "http://<BASE_URL>/cars/<ID>/"
+curl "http://<BASE_URL>/cars/4/"
   -H "Apikey: <api_key>" 
   -H "Authorization: Token <auth_token>"
 ```
