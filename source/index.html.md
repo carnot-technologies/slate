@@ -923,7 +923,7 @@ ID | The ID of the car, the data of which is to be retrieved
 ## Get Car's speed limit
 
 ```shell
-curl "http://<BASE_URL>/cars/2/speedlimit/"
+curl "http://<BASE_URL>/cars/12345/speedlimit/"
   -H "Apikey: <api_key>" 
   -H "Authorization: Token <auth_token>"
 ```
@@ -932,11 +932,35 @@ curl "http://<BASE_URL>/cars/2/speedlimit/"
 
 ```json
 {
-  "speed_limit": 100
+  "speed": {
+    "limit": 90
+  },
+  "trips": 
+  [
+    {
+      "drive_score": 75,
+      "slat": 19.1,
+      "slon": 72.2,
+      "elon": 72.5,
+      "speeding": false,
+      "hard_acc": 0,
+      "trip_id": 12345,
+      "idling_time": 23,
+      "elat": 19.4,
+      "date_time": "20\\/4\\/2016 09:22:03",
+      "photo_thumb": "http:\\/\\/4.bp.blogspot.com\\/-7GKsbIB8dZU\\/TkxlNxQXF_I\\/AAAAAAAAANw\\/1CIg1dnXbrs\\/s1600\\/funny-facebook-profile-picture-joke-james-bond.jpg",
+      "mileage": 18,
+      "hard_break": 0,
+      "max_mileage": 21,
+      "clutch_usage": 13,
+      "name": "Alex Luther"
+    }
+  ]
 }
 ```
 
-This endpoint retrieves the carbon footprint number of a particular car. 
+This endpoint retrieves the speedlimit of a particular car. 
+And also returns the set of trips made by the car. 
 
 ### HTTP Request
 
