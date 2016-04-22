@@ -1919,13 +1919,136 @@ Useful for the Trip Detailed view in the app. </p>
 </tr>
 </tbody></table>
 
-<h1 id="alerts">Alerts</h1>
+<h1 id="alerts-notifications">Alerts / Notifications</h1>
 
-<p>API yet to be published</p>
+<h2 id="get-notifications-for-a-car">Get Notifications for a car</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/12345/notifications/"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Car card"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"All your cars are safe and healthy"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"date_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02/21/16 19:03:33"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves the list of notifications recorded for a car on the backend. </p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/notifications/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the car, the data of which is to be retrieved</td>
+</tr>
+</tbody></table>
 
 <h1 id="dtc">DTC</h1>
 
-<p>API yet to be published</p>
+<h2 id="get-diagnostic-info-for-a-car">Get Diagnostic Info for a car</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/12345/diagnostics/"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"battery_health"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"cabin_temperature"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"coolant_temperature"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"engine_oil"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tyre_pressure_front_left"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tyre_pressure_front_right"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"tyre_pressure_bottom_left"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"car_errors"</span><span class="p">:</span><span class="w"> 
+  </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"P0106"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"P0108"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"U0111"</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves the diagnostic info for a car.  </p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/diagnostics/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the car, the data of which is to be retrieved</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-error-code-info">Get Error Code Info</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/12345/errors/P0106/"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P0106"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Performance problem"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The problem could be caused due to bad MAP sensor or bad PCM, click here for more"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"severity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Low"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"ref_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.obd-codes.com/p0106"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves the detailed info of a particular error code recorded on a car.  </p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/errors/&lt;EID&gt;/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the car, the data of which is to be retrieved</td>
+</tr>
+<tr>
+<td>EID</td>
+<td>The error code, the info of which is to be retrieved</td>
+</tr>
+</tbody></table>
 
 <h1 id="documents">Documents</h1>
 
