@@ -323,45 +323,49 @@ You must replace <code>&lt;api_key&gt;</code> with your personal API key. You mu
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"related_trips"</span><span class="p">:</span><span class="w"> 
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> 
   </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"isOnTrip"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"elon"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.012</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"slon"</span><span class="p">:</span><span class="w"> </span><span class="mf">71.893</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"mileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hardAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-19T07:05:32.854Z"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"idling"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://qph.is.quoracdn.net/main-qimg-3b0b70b336bbae35853994ce0aa25013"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"driveScore"</span><span class="p">:</span><span class="w"> </span><span class="mf">85.5</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"slat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.124</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hardBreak"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"maxMileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
       </span><span class="nt">"elat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.423</span><span class="p">,</span><span class="w">
       </span><span class="nt">"clutch"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"hardBreak"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"slat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.124</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"mileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-19T07:05:31.786Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"elon"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.012</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"hardAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">91</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"driveScore"</span><span class="p">:</span><span class="w"> </span><span class="mf">85.5</span><span class="p">,</span><span class="w">
       </span><span class="nt">"speeding"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"maxMileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"slon"</span><span class="p">:</span><span class="w"> </span><span class="mf">71.893</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"isOnTrip"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"elon"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.012</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"slon"</span><span class="p">:</span><span class="w"> </span><span class="mf">71.893</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"mileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hardAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-19T07:05:32.989Z"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"idling"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://qph.is.quoracdn.net/main-qimg-3b0b70b336bbae35853994ce0aa25013"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"driveScore"</span><span class="p">:</span><span class="w"> </span><span class="mf">85.5</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"slat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.124</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hardBreak"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"maxMileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
       </span><span class="nt">"elat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.423</span><span class="p">,</span><span class="w">
       </span><span class="nt">"clutch"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"hardBreak"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"slat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.124</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"mileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-19T07:05:31.928Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"elon"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.012</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"hardAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">92</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"driveScore"</span><span class="p">:</span><span class="w"> </span><span class="mf">85.5</span><span class="p">,</span><span class="w">
       </span><span class="nt">"speeding"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"maxMileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"slon"</span><span class="p">:</span><span class="w"> </span><span class="mf">71.893</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -436,28 +440,29 @@ Useful for populating the list of drivers in the Car Garage page in the app. </p
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"profiles"</span><span class="p">:</span><span class="w"> 
-  </span><span class="p">[</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"driverscore"</span><span class="p">:</span><span class="w"> </span><span class="mi">85</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"nTrips"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tips"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-      </span><span class="nt">"distance"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"mileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"hardBreak"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"recentBadges"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nt">"isOnTrip"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
       </span><span class="nt">"badge"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
       </span><span class="nt">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"hardAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"recentBadges"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-      </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">36000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"mileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"nTrips"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"distance"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://qph.is.quoracdn.net/main-qimg-3b0b70b336bbae35853994ce0aa25013"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"idlingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"isOnTrip"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"age"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
+      </span><span class="nt">"tips"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+      </span><span class="nt">"hardAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hardBreak"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"driverscore"</span><span class="p">:</span><span class="w"> </span><span class="mi">85</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"age"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">36000</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -492,16 +497,18 @@ Useful for populating the list of drivers in the Car Garage page in the app. </p
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"cars"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"isOnTrip"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19.23"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
       </span><span class="nt">"lon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"71.20"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.00"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"isOnTrip"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C014"</span><span class="w">
     </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -782,56 +789,59 @@ Returns the list of trips and their timestamps of occuring. </p>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19.23"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"nTrees"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cyclefp"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"lon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"71.20"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.00"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"carfp"</span><span class="p">:</span><span class="w"> </span><span class="mi">2500</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"isOnTrip"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C014"</span><span class="p">,</span><span class="w">  
-  </span><span class="nt">"trips"</span><span class="p">:</span><span class="w"> 
-  </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"elat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.423</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"slat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.124</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-19T07:05:31.786Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">91</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"driveScore"</span><span class="p">:</span><span class="w"> </span><span class="mf">85.5</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"maxMileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"mileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://profile-images.com/mypic.png"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"elon"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.012</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PJ"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"slon"</span><span class="p">:</span><span class="w"> </span><span class="mf">71.893</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"elat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.423</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"slat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.124</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-19T07:05:31.928Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">92</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"driveScore"</span><span class="p">:</span><span class="w"> </span><span class="mf">85.5</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"maxMileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"mileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://profile-images.com/mypic.png"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"elon"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.012</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PJ"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"slon"</span><span class="p">:</span><span class="w"> </span><span class="mf">71.893</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"elat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.423</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"slat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.124</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-19T07:05:32.074Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">93</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"driveScore"</span><span class="p">:</span><span class="w"> </span><span class="mf">85.5</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"maxMileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"mileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://profile-images.com/mypic.png"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"elon"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.012</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PJ"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"slon"</span><span class="p">:</span><span class="w"> </span><span class="mf">71.893</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"isOnTrip"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cyclefp"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19.23"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"nTrees"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"lon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"71.20"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"carfp"</span><span class="p">:</span><span class="w"> </span><span class="mi">2500</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.00"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C014"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"trips"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">91</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"mileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"driveScore"</span><span class="p">:</span><span class="w"> </span><span class="mf">85.5</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"maxMileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"elon"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.012</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"slon"</span><span class="p">:</span><span class="w"> </span><span class="mf">71.893</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-19T07:05:31.786Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://qph.is.quoracdn.net/main-qimg-3b0b70b336bbae35853994ce0aa25013"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"slat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.124</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"elat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.423</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PJ"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">92</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"mileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"driveScore"</span><span class="p">:</span><span class="w"> </span><span class="mf">85.5</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"maxMileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"elon"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.012</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"slon"</span><span class="p">:</span><span class="w"> </span><span class="mf">71.893</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-19T07:05:31.928Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://qph.is.quoracdn.net/main-qimg-3b0b70b336bbae35853994ce0aa25013"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"slat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.124</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"elat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.423</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PJ"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">93</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"mileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"driveScore"</span><span class="p">:</span><span class="w"> </span><span class="mf">85.5</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"maxMileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"elon"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.012</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"slon"</span><span class="p">:</span><span class="w"> </span><span class="mf">71.893</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-19T07:05:32.074Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://qph.is.quoracdn.net/main-qimg-3b0b70b336bbae35853994ce0aa25013"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"slat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.124</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"elat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.423</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PJ"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1123,30 +1133,33 @@ Useful on all screens of the app where the live location of the car is to be dis
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">90</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">75</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"trips"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"trip_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12245</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"elon"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.5</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"drive_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"slon"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.2</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"photo_thumb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://2.bp.blogspot.com/-2lV-8LM_o-s/TkxlMHJYs-I/AAAAAAAAANg/uMeKRyq_2eM/s1600/alternative-facebook-profile-picture-superman-funny-joke.jpg"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"mileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"clutch_usage"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"hard_acc"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"max_mileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"date_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21/4/2015 09:22:03"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"slat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"hard_break"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"elat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.4</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"idling_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"speeding"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S Man"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
   </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"trips"</span><span class="p">:</span><span class="w"> 
-  </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"drive_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">75</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"slat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"slon"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.2</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"elon"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.5</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"speeding"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"hard_acc"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"trip_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12345</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"idling_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"elat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.4</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"date_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20\\/4\\/2016 09:22:03"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"photo_thumb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http:\\/\\/4.bp.blogspot.com\\/-7GKsbIB8dZU\\/TkxlNxQXF_I\\/AAAAAAAAANw\\/1CIg1dnXbrs\\/s1600\\/funny-facebook-profile-picture-joke-james-bond.jpg"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"mileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">18</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"hard_break"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"max_mileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">21</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"clutch_usage"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alex Luther"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1954,14 +1967,18 @@ Useful for the Trip Detailed view in the app. </p>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Car card"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"All your cars are safe and healthy"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"date_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"02/21/16 19:03:33"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Car Alert"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your BMW is getting towed"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"date_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"04/21/16 06:03:33"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Last known location is Link road, Mumbai"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <p>This endpoint retrieves the list of notifications recorded for a car on the backend. </p>
@@ -1996,19 +2013,23 @@ Useful for the Trip Detailed view in the app. </p>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"battery_health"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cabin_temperature"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"coolant_temperature"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"engine_oil"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"tyre_pressure_front_left"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"tyre_pressure_front_right"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"tyre_pressure_bottom_left"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"car_errors"</span><span class="p">:</span><span class="w"> 
-  </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"P0106"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"P0108"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"U0111"</span><span class="w">
-  </span><span class="p">]</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"engine_oil"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"battery_health"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"tyre_pressure_bottom_right"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"car_errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"P0106"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"P0108"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"U0111"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"coolant_temperature"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"tyre_pressure_bottom_left"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"tyre_pressure_front_left"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cabin_temperature"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"tyre_pressure_front_right"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -2042,11 +2063,15 @@ Useful for the Trip Detailed view in the app. </p>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P0106"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Performance problem"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The problem could be caused due to bad MAP sensor or bad PCM, click here for more"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"severity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Low"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"ref_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.obd-codes.com/p0106"</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Performance problem"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P0106"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"severity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Low"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ref_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.obd-codes.com/p0106"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The problem could be caused due to bad MAP sensor or bad PCM, click here for more"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
