@@ -206,45 +206,49 @@ curl "http://<BASE_URL>/users/32/trips/"
 
 ```json
 {
-  "related_trips": 
+  "data": 
   [
     {
+      "isOnTrip": false,
+      "elon": 72.012,
+      "id": 99,
+      "slon": 71.893,
+      "mileage": 12,
+      "hardAcc": 20,
+      "date": "2016-04-19T07:05:32.854Z",
       "idling": 20,
+      "photo": "https://qph.is.quoracdn.net/main-qimg-3b0b70b336bbae35853994ce0aa25013",
+      "driveScore": 85.5,
+      "slat": 19.124,
+      "hardBreak": 20,
+      "maxMileage": 35,
       "elat": 19.423,
       "clutch": 20,
-      "hardBreak": 20,
-      "slat": 19.124,
-      "mileage": 12,
-      "date": "2016-04-19T07:05:31.786Z",
-      "photo": null,
-      "elon": 72.012,
-      "hardAcc": 20,
-      "id": 91,
-      "driveScore": 85.5,
       "speeding": 20,
-      "name": "",
-      "maxMileage": 35,
-      "slon": 71.893
+      "name": "John Doe"
     },
     {
+      "isOnTrip": false,
+      "elon": 72.012,
+      "id": 100,
+      "slon": 71.893,
+      "mileage": 12,
+      "hardAcc": 20,
+      "date": "2016-04-19T07:05:32.989Z",
       "idling": 20,
+      "photo": "https://qph.is.quoracdn.net/main-qimg-3b0b70b336bbae35853994ce0aa25013",
+      "driveScore": 85.5,
+      "slat": 19.124,
+      "hardBreak": 20,
+      "maxMileage": 35,
       "elat": 19.423,
       "clutch": 20,
-      "hardBreak": 20,
-      "slat": 19.124,
-      "mileage": 12,
-      "date": "2016-04-19T07:05:31.928Z",
-      "photo": null,
-      "elon": 72.012,
-      "hardAcc": 20,
-      "id": 92,
-      "driveScore": 85.5,
       "speeding": 20,
-      "name": "",
-      "maxMileage": 35,
-      "slon": 71.893
+      "name": "John Doe"
     }
-  ]
+  ],
+  "status": true,
+  "message": "Success"
 }
 ```
 
@@ -309,28 +313,29 @@ curl "http://<BASE_URL>/users/32/fullprofile/"
 
 ```json
 {
-  "profiles": 
-  [
+  "data": [
     {
-      "driverscore": 85,
-      "nTrips": 10,
-      "tips": [],
-      "distance": 100,
-      "mileage": 20,
-      "hardBreak": 20,
+      "recentBadges": [],
+      "isOnTrip": false,
       "badge": [],
       "gender": "M",
-      "hardAcc": 20,
-      "photo": null,
-      "speed": 10,
-      "recentBadges": [],
-      "time": 36000,
+      "mileage": 20,
+      "nTrips": 10,
+      "distance": 100,
+      "photo": "https://qph.is.quoracdn.net/main-qimg-3b0b70b336bbae35853994ce0aa25013",
       "idlingTime": 20,
-      "isOnTrip": false,
-      "name": "",
-      "age": 20
+      "tips": [],
+      "hardAcc": 20,
+      "speed": 10,
+      "hardBreak": 20,
+      "driverscore": 85,
+      "name": "John Doe",
+      "age": 20,
+      "time": 36000
     }
-  ]
+  ],
+  "status": true,
+  "message": "Success"
 }
 ```
 
@@ -360,16 +365,18 @@ curl "http://<BASE_URL>/users/32/garage/"
 
 ```json
 {
-  "cars": [
+  "data": [
     {
+      "isOnTrip": true,
       "lat": "19.23",
+      "id": 4,
       "lon": "71.20",
       "speed": "20.00",
-      "id": 4,
-      "isOnTrip": true,
       "name": "C014"
     }
-  ]
+  ],
+  "status": true,
+  "message": "Success"
 }
 ```
 
@@ -626,56 +633,59 @@ curl "http://<BASE_URL>/cars/4/"
 
 ```json
 {
-  "lat": "19.23",
-  "nTrees": 200,
-  "cyclefp": 25,
-  "lon": "71.20",
-  "speed": "20.00",
-  "carfp": 2500,
-  "isOnTrip": true,
-  "name": "C014",  
-  "trips": 
-  [
-    {
-      "elat": 19.423,
-      "slat": 19.124,
-      "date": "2016-04-19T07:05:31.786Z",
-      "id": 91,
-      "driveScore": 85.5,
-      "maxMileage": 35,
-      "mileage": 12,
-      "photo": "http://profile-images.com/mypic.png",
-      "elon": 72.012,
-      "name": "PJ",
-      "slon": 71.893
-    },
-    {
-      "elat": 19.423,
-      "slat": 19.124,
-      "date": "2016-04-19T07:05:31.928Z",
-      "id": 92,
-      "driveScore": 85.5,
-      "maxMileage": 35,
-      "mileage": 12,
-      "photo": "http://profile-images.com/mypic.png",
-      "elon": 72.012,
-      "name": "PJ",
-      "slon": 71.893
-    },
-    {
-      "elat": 19.423,
-      "slat": 19.124,
-      "date": "2016-04-19T07:05:32.074Z",
-      "id": 93,
-      "driveScore": 85.5,
-      "maxMileage": 35,
-      "mileage": 12,
-      "photo": "http://profile-images.com/mypic.png",
-      "elon": 72.012,
-      "name": "PJ",
-      "slon": 71.893
-    }
-  ]
+  "status": true,
+  "message": "Success",
+  "data": {
+    "isOnTrip": true,
+    "cyclefp": 25,
+    "lat": "19.23",
+    "nTrees": 200,
+    "lon": "71.20",
+    "carfp": 2500,
+    "speed": "20.00",
+    "name": "C014",
+    "trips": [
+      {
+        "id": 91,
+        "mileage": 12,
+        "driveScore": 85.5,
+        "maxMileage": 35,
+        "elon": 72.012,
+        "slon": 71.893,
+        "date": "2016-04-19T07:05:31.786Z",
+        "photo": "https://qph.is.quoracdn.net/main-qimg-3b0b70b336bbae35853994ce0aa25013",
+        "slat": 19.124,
+        "elat": 19.423,
+        "name": "PJ"
+      },
+      {
+        "id": 92,
+        "mileage": 12,
+        "driveScore": 85.5,
+        "maxMileage": 35,
+        "elon": 72.012,
+        "slon": 71.893,
+        "date": "2016-04-19T07:05:31.928Z",
+        "photo": "https://qph.is.quoracdn.net/main-qimg-3b0b70b336bbae35853994ce0aa25013",
+        "slat": 19.124,
+        "elat": 19.423,
+        "name": "PJ"
+      },
+      {
+        "id": 93,
+        "mileage": 12,
+        "driveScore": 85.5,
+        "maxMileage": 35,
+        "elon": 72.012,
+        "slon": 71.893,
+        "date": "2016-04-19T07:05:32.074Z",
+        "photo": "https://qph.is.quoracdn.net/main-qimg-3b0b70b336bbae35853994ce0aa25013",
+        "slat": 19.124,
+        "elat": 19.423,
+        "name": "PJ"
+      }
+    ]
+  }
 }
 ```
 
@@ -932,30 +942,33 @@ curl "http://<BASE_URL>/cars/12345/speedlimit/"
 
 ```json
 {
-  "speed": {
-    "limit": 90
+  "status": true,
+  "data": {
+    "speed": {
+      "limit": 75
+    },
+    "trips": [
+      {
+        "trip_id": 12245,
+        "elon": 72.5,
+        "drive_score": 65,
+        "slon": 72.2,
+        "photo_thumb": "http://2.bp.blogspot.com/-2lV-8LM_o-s/TkxlMHJYs-I/AAAAAAAAANg/uMeKRyq_2eM/s1600/alternative-facebook-profile-picture-superman-funny-joke.jpg",
+        "mileage": 15,
+        "clutch_usage": 11,
+        "hard_acc": 0,
+        "max_mileage": 19,
+        "date_time": "21/4/2015 09:22:03",
+        "slat": 19.1,
+        "hard_break": 4,
+        "elat": 19.4,
+        "idling_time": 0,
+        "speeding": false,
+        "name": "S Man"
+      }
+    ]
   },
-  "trips": 
-  [
-    {
-      "drive_score": 75,
-      "slat": 19.1,
-      "slon": 72.2,
-      "elon": 72.5,
-      "speeding": false,
-      "hard_acc": 0,
-      "trip_id": 12345,
-      "idling_time": 23,
-      "elat": 19.4,
-      "date_time": "20\\/4\\/2016 09:22:03",
-      "photo_thumb": "http:\\/\\/4.bp.blogspot.com\\/-7GKsbIB8dZU\\/TkxlNxQXF_I\\/AAAAAAAAANw\\/1CIg1dnXbrs\\/s1600\\/funny-facebook-profile-picture-joke-james-bond.jpg",
-      "mileage": 18,
-      "hard_break": 0,
-      "max_mileage": 21,
-      "clutch_usage": 13,
-      "name": "Alex Luther"
-    }
-  ]
+  "message": "Success"
 }
 ```
 
@@ -1659,14 +1672,18 @@ curl "http://<BASE_URL>/cars/12345/notifications/"
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "type": "Car card",
-    "title": "All your cars are safe and healthy",
-    "message": "",
-    "date_time": "02/21/16 19:03:33"
-  }
-]
+{
+  "status": true,
+  "data": [
+    {
+      "type": "Car Alert",
+      "title": "Your BMW is getting towed",
+      "date_time": "04/21/16 06:03:33",
+      "message": "Last known location is Link road, Mumbai"
+    }
+  ],
+  "message": "Success"
+}
 ```
 
 This endpoint retrieves the list of notifications recorded for a car on the backend. 
@@ -1696,19 +1713,23 @@ curl "http://<BASE_URL>/cars/12345/diagnostics/"
 
 ```json
 {
-  "battery_health": 50,
-  "cabin_temperature": 40,
-  "coolant_temperature": 80,
-  "engine_oil": true,
-  "tyre_pressure_front_left": 0,
-  "tyre_pressure_front_right": 0,
-  "tyre_pressure_bottom_left": 0,
-  "car_errors": 
-  [
-    "P0106",
-    "P0108",
-    "U0111"
-  ]
+  "status": true,
+  "data": {
+    "engine_oil": true,
+    "battery_health": 50,
+    "tyre_pressure_bottom_right": 0,
+    "car_errors": [
+      "P0106",
+      "P0108",
+      "U0111"
+    ],
+    "coolant_temperature": 80,
+    "tyre_pressure_bottom_left": 0,
+    "tyre_pressure_front_left": 0,
+    "cabin_temperature": 40,
+    "tyre_pressure_front_right": 0
+  },
+  "message": "Success"
 }
 ```
 
@@ -1737,11 +1758,15 @@ curl "http://<BASE_URL>/cars/12345/errors/P0106/"
 
 ```json
 {
-  "code": "P0106",
-  "title": "Performance problem",
-  "desc": "The problem could be caused due to bad MAP sensor or bad PCM, click here for more",
-  "severity": "Low",
-  "ref_link": "http://www.obd-codes.com/p0106"
+  "status": true,
+  "data": {
+    "title": "Performance problem",
+    "code": "P0106",
+    "severity": "Low",
+    "ref_link": "http://www.obd-codes.com/p0106",
+    "desc": "The problem could be caused due to bad MAP sensor or bad PCM, click here for more"
+  },
+  "message": "Success"
 }
 ```
 
