@@ -1253,7 +1253,7 @@ And also returns the set of trips made by the car. </p>
 </tbody></table>
 
 <h2 id="get-car-graphs">Get Car Graphs</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/2/graphs/"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/4/graphs/"</span>
   -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
   -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
@@ -1262,18 +1262,31 @@ And also returns the set of trips made by the car. </p>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"graph"</span><span class="p">:</span><span class="w"> 
-  </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="nt">"d"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="nt">"m"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
-    </span><span class="p">{</span><span class="nt">"d"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="nt">"m"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
-    </span><span class="p">{</span><span class="nt">"d"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="nt">"m"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
-    </span><span class="p">{</span><span class="nt">"d"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="nt">"m"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
-    </span><span class="p">{</span><span class="nt">"d"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="nt">"m"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
-    </span><span class="p">{</span><span class="nt">"d"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="nt">"m"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
-    </span><span class="p">{</span><span class="nt">"d"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="nt">"m"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
-    </span><span class="p">{</span><span class="nt">"d"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="nt">"m"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
-    </span><span class="p">{</span><span class="nt">"d"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="nt">"m"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
-    </span><span class="p">{</span><span class="nt">"d"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span><span class="w"> </span><span class="nt">"m"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">}</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"d"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">91</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"m"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-19T07:05:31.786Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">3600</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"d"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">92</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"m"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-19T07:05:31.928Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">3600</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"d"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">93</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"m"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-19T07:05:32.074Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">3600</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -1283,7 +1296,7 @@ Data points for distance, run time, mileage are provided for each trip completed
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/graphs/&lt;ID&gt;/</code></p>
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/graphs/</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -1296,6 +1309,36 @@ Data points for distance, run time, mileage are provided for each trip completed
 <tr>
 <td>ID</td>
 <td>The ID of the car, the data of which is to be retrieved</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>The id of the trip for which data is to be seen</td>
+</tr>
+<tr>
+<td>d</td>
+<td>Distance covered in this trip</td>
+</tr>
+<tr>
+<td>m</td>
+<td>Average mileage in this trip</td>
+</tr>
+<tr>
+<td>t</td>
+<td>Trip time duration</td>
+</tr>
+<tr>
+<td>sts</td>
+<td>Trip start timestamp</td>
 </tr>
 </tbody></table>
 
