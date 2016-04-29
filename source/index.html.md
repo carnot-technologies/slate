@@ -1047,7 +1047,7 @@ ID | The ID of the car, the data of which is to be retrieved
 ## Get Car Graphs 
 
 ```shell
-curl "http://<BASE_URL>/cars/2/graphs/"
+curl "http://<BASE_URL>/cars/4/graphs/"
   -H "Apikey: <api_key>" 
   -H "Authorization: Token <auth_token>"
 ```
@@ -1056,18 +1056,31 @@ curl "http://<BASE_URL>/cars/2/graphs/"
 
 ```json
 {
-  "graph": 
-  [
-    {"d": 20.0, "t": 120, "m": 12.0, "id": 2, "sts": "2016-03-27T13:43:30.601Z"}, 
-    {"d": 20.0, "t": 120, "m": 12.0, "id": 3, "sts": "2016-03-27T13:43:30.601Z"}, 
-    {"d": 20.0, "t": 120, "m": 12.0, "id": 4, "sts": "2016-03-27T13:43:30.601Z"}, 
-    {"d": 20.0, "t": 120, "m": 12.0, "id": 5, "sts": "2016-03-27T13:43:30.601Z"}, 
-    {"d": 20.0, "t": 120, "m": 12.0, "id": 6, "sts": "2016-03-27T13:43:30.601Z"}, 
-    {"d": 20.0, "t": 120, "m": 12.0, "id": 7, "sts": "2016-03-27T13:43:30.601Z"}, 
-    {"d": 20.0, "t": 120, "m": 12.0, "id": 8, "sts": "2016-03-27T13:43:30.601Z"}, 
-    {"d": 20.0, "t": 120, "m": 12.0, "id": 9, "sts": "2016-03-27T13:43:30.601Z"}, 
-    {"d": 20.0, "t": 120, "m": 12.0, "id": 10, "sts": "2016-03-27T13:43:30.601Z"}, 
-    {"d": 20.0, "t": 120, "m": 12.0, "id": 11, "sts": "2016-03-27T13:43:30.601Z"}
+  "status": true,
+  "message": "Success",
+  "data": [
+    {
+      "d": 10,
+      "id": 91,
+      "m": 12,
+      "sts": "2016-04-19T07:05:31.786Z",
+      "t": 3600
+    },
+    {
+      "d": 10,
+      "id": 92,
+      "m": 12,
+      "sts": "2016-04-19T07:05:31.928Z",
+      "t": 3600
+    },
+    {
+      "d": 10,
+      "id": 93,
+      "m": 12,
+      "sts": "2016-04-19T07:05:32.074Z",
+      "t": 3600
+    },
+    ...
   ]
 }
 ```
@@ -1077,7 +1090,7 @@ Data points for distance, run time, mileage are provided for each trip completed
 
 ### HTTP Request
 
-`GET http://<BASE_URL>/graphs/<ID>/`
+`GET http://<BASE_URL>/cars/<ID>/graphs/`
 
 ### URL Parameters
 
@@ -1085,6 +1098,15 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the car, the data of which is to be retrieved 
 
+### Response Parameters
+
+Parameter | Description
+--------- | -----------
+id | The id of the trip for which data is to be seen
+d | Distance covered in this trip
+m | Average mileage in this trip
+t | Trip time duration 
+sts | Trip start timestamp  
 
 # Devices
 
