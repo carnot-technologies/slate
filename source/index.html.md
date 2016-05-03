@@ -465,73 +465,6 @@ Parameter | Description
 ID | The ID of the user whose data is to be retrieved 
 
 
-## Get Driver Points
-
-```shell
-curl "http://<BASE_URL>/users/2/driverpoints/"
-  -H "Apikey: <api_key>" 
-  -H "Authorization: Token <auth_token>"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "mil_score": 20.0, 
-  "idl_score": 20.0, 
-  "spd_score": 20.0, 
-  "cmp_score": 20.0, 
-  "hbr_score": 20.0, 
-  "hac_score": 20.0
-}
-```
-
-```shell
-curl "http://<BASE_URL>/users/2/driverpoints/?graph=True"
-  -H "Apikey: <api_key>" 
-  -H "Authorization: Token <auth_token>"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "mil_score": 20.0, 
-  "idl_score": 20.0, 
-  "spd_score": 20.0, 
-  "graph": 
-  [
-    {"scr": 89.0, "id": 2, "sts": "2016-03-27T13:43:30.601Z"}, 
-    {"scr": 89.0, "id": 3, "sts": "2016-03-27T13:43:30.601Z"}, 
-    {"scr": 89.0, "id": 4, "sts": "2016-03-27T13:43:30.601Z"}, 
-    {"scr": 89.0, "id": 5, "sts": "2016-03-27T13:43:30.601Z"}, 
-    {"scr": 89.0, "id": 6, "sts": "2016-03-27T13:43:30.601Z"}, 
-    {"scr": 89.0, "id": 7, "sts": "2016-03-27T13:43:30.601Z"}, 
-    {"scr": 89.0, "id": 8, "sts": "2016-03-27T13:43:30.601Z"}, 
-    {"scr": 89.0, "id": 9, "sts": "2016-03-27T13:43:30.601Z"}, 
-    {"scr": 89.0, "id": 10, "sts": "2016-03-27T13:43:30.601Z"}, 
-    {"scr": 89.0, "id": 11, "sts": "2016-03-27T13:43:30.601Z"}
-  ], 
-  "cmp_score": 20.0, 
-  "hbr_score": 20.0, 
-  "hac_score": 20.0
-}
-```
-
-This endpoint retrieves the scoring / points break up for a driver. 
-Useful when populating the Driver Profile screen on the app. 
-
-### HTTP Request
-
-`GET http://<BASE_URL>/users/<ID>/driverpoints/?graph=<BOOL>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the user whose data is to be retrieved 
-BOOL | True or False indicating if the method should return driver points for graphing
-
 ## Get User Graphs
 
 ```shell
@@ -901,35 +834,6 @@ Parameter | Description
 ID | The ID of the car, the data of which is to be retrieved 
 
 
-## Get Car's carbon footprint
-
-```shell
-curl "http://<BASE_URL>/cars/2/carbonfp/"
-  -H "Apikey: <api_key>" 
-  -H "Authorization: Token <auth_token>"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "carbon_fp": 1600.0
-}
-```
-
-This endpoint retrieves the carbon footprint number of a particular car. 
-
-### HTTP Request
-
-`GET http://<BASE_URL>/cars/<ID>/carbonfp/`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the car, the data of which is to be retrieved 
-
-
 ## Get Car's speed limit
 
 ```shell
@@ -978,35 +882,6 @@ And also returns the set of trips made by the car.
 ### HTTP Request
 
 `GET http://<BASE_URL>/cars/<ID>/speedlimit/`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the car, the data of which is to be retrieved 
-
-
-## Get all Users using a car
-
-```shell
-curl "http://<BASE_URL>/cars/2/users/"
-  -H "Apikey: <api_key>" 
-  -H "Authorization: Token <auth_token>"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "related_users": [2]
-}
-```
-
-This endpoint retrieves the list of users (drivers) using this car. 
-
-### HTTP Request
-
-`GET http://<BASE_URL>/cars/<ID>/users/`
 
 ### URL Parameters
 
