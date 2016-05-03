@@ -614,80 +614,6 @@ Useful when populating the Driver Profile screen on the app. </p>
 </tr>
 </tbody></table>
 
-<h2 id="get-driver-points">Get Driver Points</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/2/driverpoints/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
-  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"mil_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"idl_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"spd_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"cmp_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"hbr_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"hac_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/2/driverpoints/?graph=True"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
-  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"mil_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"idl_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"spd_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"graph"</span><span class="p">:</span><span class="w"> 
-  </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="nt">"scr"</span><span class="p">:</span><span class="w"> </span><span class="mf">89.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
-    </span><span class="p">{</span><span class="nt">"scr"</span><span class="p">:</span><span class="w"> </span><span class="mf">89.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
-    </span><span class="p">{</span><span class="nt">"scr"</span><span class="p">:</span><span class="w"> </span><span class="mf">89.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
-    </span><span class="p">{</span><span class="nt">"scr"</span><span class="p">:</span><span class="w"> </span><span class="mf">89.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
-    </span><span class="p">{</span><span class="nt">"scr"</span><span class="p">:</span><span class="w"> </span><span class="mf">89.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
-    </span><span class="p">{</span><span class="nt">"scr"</span><span class="p">:</span><span class="w"> </span><span class="mf">89.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
-    </span><span class="p">{</span><span class="nt">"scr"</span><span class="p">:</span><span class="w"> </span><span class="mf">89.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
-    </span><span class="p">{</span><span class="nt">"scr"</span><span class="p">:</span><span class="w"> </span><span class="mf">89.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
-    </span><span class="p">{</span><span class="nt">"scr"</span><span class="p">:</span><span class="w"> </span><span class="mf">89.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
-    </span><span class="p">{</span><span class="nt">"scr"</span><span class="p">:</span><span class="w"> </span><span class="mf">89.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w"> 
-  </span><span class="nt">"cmp_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"hbr_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"hac_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">20.0</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves the scoring / points break up for a driver. 
-Useful when populating the Driver Profile screen on the app. </p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/users/&lt;ID&gt;/driverpoints/?graph=&lt;BOOL&gt;</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the user whose data is to be retrieved</td>
-</tr>
-<tr>
-<td>BOOL</td>
-<td>True or False indicating if the method should return driver points for graphing</td>
-</tr>
-</tbody></table>
-
 <h2 id="get-user-graphs">Get User Graphs</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/2/graphs/"</span>
   -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
@@ -1089,40 +1015,6 @@ Useful on all screens of the app where the live location of the car is to be dis
 </tr>
 </tbody></table>
 
-<h2 id="get-car-39-s-carbon-footprint">Get Car&rsquo;s carbon footprint</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/2/carbonfp/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
-  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"carbon_fp"</span><span class="p">:</span><span class="w"> </span><span class="mf">1600.0</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves the carbon footprint number of a particular car. </p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/carbonfp/</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the car, the data of which is to be retrieved</td>
-</tr>
-</tbody></table>
-
 <h2 id="get-car-39-s-speed-limit">Get Car&rsquo;s speed limit</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/12345/speedlimit/"</span>
   -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
@@ -1169,40 +1061,6 @@ And also returns the set of trips made by the car. </p>
 <h3 id="http-request">HTTP Request</h3>
 
 <p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/speedlimit/</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the car, the data of which is to be retrieved</td>
-</tr>
-</tbody></table>
-
-<h2 id="get-all-users-using-a-car">Get all Users using a car</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/2/users/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
-  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"related_users"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves the list of users (drivers) using this car. </p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/users/</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
