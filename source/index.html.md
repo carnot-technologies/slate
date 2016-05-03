@@ -1478,9 +1478,14 @@ curl "http://<BASE_URL>/users/register/"
 
 ```json
 {
-  "token": "ecabc338b3d5e9457364dd92f33da9ced55ce7d6", 
-  "id": 23, 
-  "email": "abc@xyz.com"
+    "status": true, 
+    "message": "success", 
+    "data": 
+    {
+        "token": "ae4e00bf6a08cf9cd56a37b99d0162e69db4fd74", 
+        "id": 43, 
+        "email": "abc@xyz.com"
+    }
 }
 
 ```
@@ -1501,6 +1506,8 @@ name | Name of the registering user
 
 Parameter | Description
 ----------| -----------
+status| true if successful, false otherwise
+message| Message indicating registration status
 token | The auth token to be used to authenticate this user in subsequent requests
 id | The id of the user to be included in the URL in subsequent requests where id is required
 email | Confirmation of the email id the user entered. Email id also serves as the user name
@@ -1526,12 +1533,17 @@ curl "http://<BASE_URL>/users/login/"
 
 ```json
 {
-  "status": 200, 
-  "email": "abc@xyz.com", 
+  "status": true, 
   "message": "Success", 
-  "token": "ecabc338b3d5e9457364dd92f33da9ced55ce7d6", 
-  "id": 23
+  "data": 
+      {
+        "token": "ae4e00bf6a08cf9cd56a37b99d0162e69db4fd74", 
+        "id": 43, 
+        "email": "abc@xyz.com"
+      }
 }
+
+
 ```
 
 ### HTTP Request
@@ -1547,13 +1559,60 @@ password | Password of the registering user
 
 ### Response Parameters
 
-Parameter | Description
+Parameter| Description
 ----------| -----------
-token | The auth token to be used to authenticate this user in subsequent requests
+token |The auth token to be used to authenticate this user in subsequent requests
 id | The id of the user to be included in the URL in subsequent requests where id is required
 email | Confirmation of the email id the user entered. Email id also serves as the user name
-status | 200 if successful, otherwise 204
-message | Message indicating login status 
+status |true if successful, false otherwise
+message |Message indicating login status 
+
+
+## Logout
+
+<aside class="warning">
+ API not yet live!
+</aside>
+
+This endpoint logs out the user from Carnot backend. 
+
+```shell
+curl "http://<BASE_URL>/users/logout/"
+  -H "Content-Type: application/json" 
+  -H "Apikey: <api_key>" 
+  -X POST 
+  -d '{"email":"abc@xyz.com"}' 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "status": true, 
+    "message": "Success"
+}
+```
+
+### HTTP Request
+
+`POST http://<BASE_URL>/users/logout/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+email | Email address of the user logging out of system.
+
+### Response Parameters
+
+Parameter | Description
+----------| -----------
+status| true if successful, false otherwise
+message| Message indicating logout status
+
+<aside class="notice">
+ On successful logout, user token is deleted. Upon re-login new token gets created.
+</aside>
 
 
 # Alerts / Notifications
