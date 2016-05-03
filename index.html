@@ -1724,9 +1724,14 @@ Useful for the Trip Detailed view in the app. </p>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecabc338b3d5e9457364dd92f33da9ced55ce7d6"</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc@xyz.com"</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> 
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ae4e00bf6a08cf9cd56a37b99d0162e69db4fd74"</span><span class="p">,</span><span class="w"> 
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43</span><span class="p">,</span><span class="w"> 
+        </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc@xyz.com"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
@@ -1766,6 +1771,14 @@ Useful for the Trip Detailed view in the app. </p>
 </tr>
 </thead><tbody>
 <tr>
+<td>status</td>
+<td>true if successful, false otherwise</td>
+</tr>
+<tr>
+<td>message</td>
+<td>Message indicating registration status</td>
+</tr>
+<tr>
 <td>token</td>
 <td>The auth token to be used to authenticate this user in subsequent requests</td>
 </tr>
@@ -1797,12 +1810,17 @@ Useful for the Trip Detailed view in the app. </p>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc@xyz.com"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
   </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecabc338b3d5e9457364dd92f33da9ced55ce7d6"</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> 
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ae4e00bf6a08cf9cd56a37b99d0162e69db4fd74"</span><span class="p">,</span><span class="w"> 
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43</span><span class="p">,</span><span class="w"> 
+        </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc@xyz.com"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
+
+
 </span></code></pre>
 
 <h3 id="http-request">HTTP Request</h3>
@@ -1849,13 +1867,76 @@ Useful for the Trip Detailed view in the app. </p>
 </tr>
 <tr>
 <td>status</td>
-<td>200 if successful, otherwise 204</td>
+<td>true if successful, false otherwise</td>
 </tr>
 <tr>
 <td>message</td>
 <td>Message indicating login status</td>
 </tr>
 </tbody></table>
+
+<h2 id="logout">Logout</h2>
+
+<aside class="warning">
+ API not yet live!
+</aside>
+
+<p>This endpoint logs out the user from Carnot backend. </p>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/logout/"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -X POST 
+  -d <span class="s1">'{"email":"abc@xyz.com"}'</span> 
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://&lt;BASE_URL&gt;/users/logout/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>Email address of the user logging out of system.</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>true if successful, false otherwise</td>
+</tr>
+<tr>
+<td>message</td>
+<td>Message indicating logout status</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+ On successful logout, user token is deleted. Upon re-login new token gets created.
+</aside>
 
 <h1 id="alerts-notifications">Alerts / Notifications</h1>
 
