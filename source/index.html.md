@@ -1900,7 +1900,7 @@ This endpoint sets and retrieves speed limit for a car.
 
 ### HTTP Request (Set Speed Limit)
 
-`SET http://<BASE_URL>/cars/<ID>/speedlimit/`
+`POST http://<BASE_URL>/cars/<ID>/speedlimit/`
 
 
 ### URL Parameters
