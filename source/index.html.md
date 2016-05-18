@@ -553,6 +553,111 @@ This endpoint retrieves all the cars.
 
 None
 
+## Car Passport
+
+
+```shell
+Car Document Upload
+
+curl "http://<BASE_URL>/cars/<car_id>/upload/"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
+  -X POST
+  -d '{"data": {"dtype": "<document type>", "dinfo":"<document info>", 
+     "content_type": "image/<extension>", "file": "<base64 encoded image byte string>",
+     "meta": "<optional placeholder for meta info of document>"}}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status": true, 
+  "message": "success"
+}
+```
+
+
+```shell
+Car Document Download
+
+curl "http://<BASE_URL>/cars/<car_id>/download/<dtype>"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
+  -X GET
+```
+
+> The above command returns JSON structured like this 
+
+> 1. Car Profile Download
+> 2. Car Document (PUC/DL/Insurance/Service) Download
+
+```json
+
+{
+  "status": true,
+  "message": "Success",
+  "data": {
+    "np": "MH01CD007",
+    "nm": "My Celerio",
+    "img": "http://carnotimgs.s3.amazonaws.com/pictures/img_20_profile.jpg?Signature=Llyb%2BY9ASg4JJXqKGx%2FDAxGZsag%3D&Expires=1494583772&AWSAccessKeyId=AKIAJCDK5W4ISB6FL7RA"
+  }
+}
+
+
+{
+  "status": true,
+  "message": "Success",
+  "data": {
+    "info": "car registration details",
+    "meta": {
+      "date": "2015-03-23"
+    },
+    "img": "http://carnotimgs.s3.amazonaws.com/pictures/img_20_registration.jpg?Signature=R86aQe0sGnpBpV44Utcsixih6gg%3D&Expires=1494587758&AWSAccessKeyId=AKIAJCDK5W4ISB6FL7RA",
+    "type": "registration"
+  }
+}
+
+```
+
+This endpoint sets and retrieves document details of a specific car. This is useful for displaying a car's passport view. 
+
+The Document type here:
+
+Parameter|Description
+---------|-------------
+profile| Car Profile
+reg| Registration Document
+puc| Car PUC Document
+ins| Insurance Document
+dl| Driver's License
+ser| Car Service Document
+
+### HTTP Request (Upload Documents)
+
+`POST http://<BASE_URL>/cars/<ID>/upload/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the car, the data of which is to be retrieved 
+
+### HTTP Request (Download Documents)
+
+`GET http://<BASE_URL>/cars/<ID>/download/<doc type>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the car, the data of which is to be retrieved
+doc type | Document type 
+
+For more info on base64 encoded image byte strings, see:
+<br/><br/>[1] Encode image: https://www.base64-image.de/ 
+<br/>[2] Decode image: http://codebeautify.org/base64-to-image-converter
+
 
 ## Get a specific Car 
 
@@ -1068,8 +1173,8 @@ ID | The ID of the device, the data of which is to be retrieved
 ## Get Device Info
 
 ```shell
-curl "http://<BASE_URL>/devices/2/info/"
-  -H "Apikey: <api_key>" 
+curl "http://<BASE_URL>/devices/300/info/"
+  -H "Apikey: <api_key>"
   -H "Authorization: Token <auth_token>"
 ```
 
@@ -1077,9 +1182,12 @@ curl "http://<BASE_URL>/devices/2/info/"
 
 ```json
 {
-  "stmid":0,
-  "nrfid":0,
-  "hwid":0
+  "status": true,
+  "message": "Success",
+  "data": {
+    "fwID": "309-33-44",
+    "devID": "23456123"
+  }
 }
 ```
 
@@ -1617,7 +1725,7 @@ message| Message indicating logout status
 
 # Alerts / Notifications
 
-## Get Notifications for a car
+## Get Notifications for a Car
 
 ```shell
 curl "http://<BASE_URL>/cars/12345/notifications/"
@@ -1630,15 +1738,42 @@ curl "http://<BASE_URL>/cars/12345/notifications/"
 ```json
 {
   "status": true,
-  "data": [
-    {
-      "type": "Car Alert",
-      "title": "Your BMW is getting towed",
-      "date_time": "04/21/16 06:03:33",
-      "message": "Last known location is Link road, Mumbai"
-    }
-  ],
-  "message": "Success"
+  "message": "success",
+  "data": {
+    "cards": [
+      {
+        "date_time": "2016-05-11T07:51:50.088Z",
+        "type": "Car Card",
+        "desc": "Your car is safe and healthy"
+      },
+      {
+        "date_time": "2016-05-11T07:53:00.941Z",
+        "type": "Car Card",
+        "desc": "Turn off your engine to save fuel"
+      },
+      {
+        "date_time": "2016-05-18T10:47:20.251Z",
+        "type": "Car Card",
+        "desc": "Your Celerio is getting towed"
+      }
+    ],
+    "errors": [
+      {
+        "l": "http://www.obd-data.com/p0108.html",
+        "c": 1,
+        "e": "P0108",
+        "t": "Barometric Pressure Circuit High Input",
+        "d": "The problem could be caused by bad MAP sensor or worn engine causing low vacuum"
+      },
+      {
+        "l": "http://www.obd-data.com/u0111.html",
+        "c": 2,
+        "e": "U0111",
+        "t": "Lost Communication With Battery module",
+        "d": "The problem could be caused due to Lost Communication With Energy Control Module"
+      }
+    ]
+  }
 }
 ```
 
@@ -1653,6 +1788,127 @@ This endpoint retrieves the list of notifications recorded for a car on the back
 Parameter | Description
 --------- | -----------
 ID | The ID of the car, the data of which is to be retrieved 
+
+## Get Notifications for a User
+
+```shell
+curl "http://<BASE_URL>/users/100/notifications/"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status": true,
+  "message": "Success",
+  "data": [
+    {
+      "date_time": "2016-05-11T07:51:50.088Z",
+      "type": "Car Card",
+      "desc": "Your car is safe and healthy"
+    },
+    {
+      "date_time": "2016-05-11T07:53:00.941Z",
+      "type": "Car Card",
+      "desc": "Turn off your engine to save fuel"
+    },
+    {
+      "date_time": "2016-05-18T10:47:20.251Z",
+      "type": "Car Card",
+      "desc": "Your Celerio is getting towed"
+    },
+    {
+      "link": "http://www.obd-data.com/p0108.html",
+      "desc": "The problem could be caused by bad MAP sensor or worn engine causing low vacuum",
+      "title": "Barometric Pressure Circuit High Input",
+      "type": 1,
+      "error": "P0108"
+    },
+    {
+      "link": "http://www.obd-data.com/u0111.html",
+      "desc": "The problem could be caused due to Lost Communication With Energy Control Module",
+      "title": "Lost Communication With Battery module",
+      "type": 2,
+      "error": "U0111"
+    }
+  ]
+}
+```
+
+This endpoint retrieves the list of notifications recorded for a user. 
+
+### HTTP Request
+
+`GET http://<BASE_URL>/users/<ID>/notifications/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the user, the data of which is to be retrieved 
+
+## Rash Driving
+
+```shell
+Set Speed Limit
+
+curl "http://<BASE_URL>/cars/<ID>/speedlimit/"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
+  -X POST
+  -d '{"data":{"sl":<limit>}}'
+```
+
+> THe above command returns JSON structured like this:
+
+```json
+{
+  "status": true,
+  "message": "success"
+}
+
+```
+
+```shell
+Get Speed Limit
+
+curl "http://<BASE_URL>/cars/<ID>/speedlimit/"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
+  -X GET
+```
+
+> The above command returns JSON structured like this 
+
+```json
+{
+  "status": true,
+  "message": "success",
+  "data": {
+    "speed_limit": 40
+  }
+}
+```
+This endpoint sets and retrieves speed limit for a car.  
+
+### HTTP Request (Get Speed Limit)
+
+`GET http://<BASE_URL>/cars/<ID>/speedlimit/`
+
+
+### HTTP Request (Set Speed Limit)
+
+`SET http://<BASE_URL>/cars/<ID>/speedlimit/`
+
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the car, the data of which is to be set/retrieved 
+
 
 
 # DTC
