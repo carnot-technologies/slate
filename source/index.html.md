@@ -1173,7 +1173,7 @@ ID | The ID of the device, the data of which is to be retrieved
 ## Get Device Info
 
 ```shell
-curl "http://<BASE_URL>/devices/300/info/"
+curl "http://<BASE_URL>/devices/<ID>/info/"
   -H "Apikey: <api_key>"
   -H "Authorization: Token <auth_token>"
 ```
