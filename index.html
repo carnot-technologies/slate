@@ -156,8 +156,11 @@ You must replace <code>&lt;api_key&gt;</code> with your personal API key. You mu
 
 <h1 id="users">Users</h1>
 
-<h2 id="get-all-users">Get All Users</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/"</span>
+<h2 id="emergency-contact-details">Emergency contact details</h2>
+<pre class="highlight shell"><code>
+Get emergency contacts
+
+curl <span class="s2">"http://&lt;BASE_URL&gt;/users/&lt;ID&gt;/econtacts/"</span>
   -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
   -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
@@ -165,105 +168,55 @@ You must replace <code>&lt;api_key&gt;</code> with your personal API key. You mu
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"user"</span><span class="p">:{</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="nt">"username"</span><span class="p">:</span><span class="s2">"U001"</span><span class="p">,</span><span class="nt">"email"</span><span class="p">:</span><span class="s2">"U001@carnotmail.com"</span><span class="p">},</span><span class="w">
-    </span><span class="nt">"gender"</span><span class="p">:</span><span class="s2">"M"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"age"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"dob"</span><span class="p">:</span><span class="s2">"1996-03-28"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cars"</span><span class="p">:[{</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">"device"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"C001"</span><span class="p">,</span><span class="nt">"numberplate"</span><span class="p">:</span><span class="s2">"MH01AB0001"</span><span class="p">}],</span><span class="w">
-    </span><span class="nt">"emergencycontacts"</span><span class="p">:</span><span class="s2">"[{phone: 9820204040, email: help@carnot.com}]"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"driverscore"</span><span class="p">:</span><span class="mf">89.0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"totalnumtrips"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"totaldistance"</span><span class="p">:</span><span class="mf">200.0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"totaltime"</span><span class="p">:</span><span class="mi">18000</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"averagespeed"</span><span class="p">:</span><span class="mf">40.0</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="nt">"contacts"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"em"</span><span class="p">:</span><span class="s2">"hello1@openxcell.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"ph"</span><span class="p">:</span><span class="mi">8899773322</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"nm"</span><span class="p">:</span><span class="s2">"John"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"em"</span><span class="p">:</span><span class="s2">"hello2@openxcell.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"ph"</span><span class="p">:</span><span class="mi">9933224455</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"nm"</span><span class="p">:</span><span class="s2">"Bruce"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"n"</span><span class="p">:</span><span class="mi">2</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
+<pre class="highlight shell"><code>
+Set emergency contacts
 
-<p>This endpoint retrieves all the users.</p>
-
-<aside class="warning">
- Deprecated API method
-</aside>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/users/</code></p>
-
-<h3 id="query-parameters">Query Parameters</h3>
-
-<p>None</p>
-
-<h2 id="get-a-specific-user">Get a Specific User</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/2/"</span>
+curl <span class="s2">"http://&lt;BASE_URL&gt;/users/&lt;ID&gt;/econtacts/"</span>
   -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
   -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+  -X POST
+  -d <span class="s1">'{"contacts":[{"em": "hello4@openxcell.com", "ph": 8899773321, "nm": "Johny"},
+              {"em": "hello5@openxcell.com", "ph": 8899773323, "nm": "Johnathan"}]}'</span>
 </code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"user"</span><span class="p">:{</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="nt">"username"</span><span class="p">:</span><span class="s2">"U011"</span><span class="p">,</span><span class="nt">"email"</span><span class="p">:</span><span class="s2">"U011@carnotmail.com"</span><span class="p">},</span><span class="w">
-  </span><span class="nt">"gender"</span><span class="p">:</span><span class="s2">"M"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"age"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"dob"</span><span class="p">:</span><span class="s2">"1996-03-28"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"cars"</span><span class="p">:[{</span><span class="nt">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="nt">"device"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"C011"</span><span class="p">,</span><span class="nt">"numberplate"</span><span class="p">:</span><span class="s2">"MH01AB0011"</span><span class="p">}],</span><span class="w">
-  </span><span class="nt">"emergencycontacts"</span><span class="p">:</span><span class="s2">"[{phone: 9820204040, email: help@carnot.com}]"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"driverscore"</span><span class="p">:</span><span class="mf">89.0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"totalnumtrips"</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"totaldistance"</span><span class="p">:</span><span class="mf">200.0</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"totaltime"</span><span class="p">:</span><span class="mi">18000</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"averagespeed"</span><span class="p">:</span><span class="mf">40.0</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves a specific user.</p>
+<p>This endpoint sets and retrieves a user&rsquo;s emergency contact details.</p>
 
-<aside class="warning">
-  Deprecated API method  
-</aside>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/users/&lt;ID&gt;</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the user to retrieve</td>
-</tr>
-</tbody></table>
-
-<h2 id="get-user-39-s-emergency-contact-details">Get User&rsquo;s emergency contact details</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/2/econtacts/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
-  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"econtacts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[{phone: 9820204040, email: help@carnot.com}]"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves a user&rsquo;s emergency contact details.</p>
-
-<h3 id="http-request">HTTP Request</h3>
+<h3 id="http-request-get-contacts">HTTP Request (Get contacts)</h3>
 
 <p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/users/&lt;ID&gt;/econtacts/</code></p>
+
+<h3 id="http-request-set-contacts">HTTP Request (Set contacts)</h3>
+
+<p><code class="prettyprint">POST http://&lt;BASE_URL&gt;/users/&lt;ID&gt;/econtacts/</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -279,9 +232,9 @@ You must replace <code>&lt;api_key&gt;</code> with your personal API key. You mu
 </tr>
 </tbody></table>
 
-<h2 id="get-user-39-s-cars">Get User&rsquo;s cars</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/2/cars/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+<h2 id="get-user-related-cars">Get user related cars</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/&lt;ID&gt;/cars/"</span>
+  -H <span class="s2">"ApiKey: &lt;api_key&gt;"</span>
   -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
@@ -289,11 +242,17 @@ You must replace <code>&lt;api_key&gt;</code> with your personal API key. You mu
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"related_cars"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="nt">"related_cars"</span><span class="p">:[</span><span class="w">
+       </span><span class="mi">20</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves the list of cars a user has access to. </p>
+<p>This method is used to retrive all the cars related to a particular user.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -309,401 +268,74 @@ You must replace <code>&lt;api_key&gt;</code> with your personal API key. You mu
 </thead><tbody>
 <tr>
 <td>ID</td>
-<td>The ID of the user whose data is to be retrieved</td>
-</tr>
-</tbody></table>
-
-<h2 id="get-user-39-s-trips">Get User&rsquo;s trips</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/32/trips/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
-  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> 
-  </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"isOnTrip"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"elon"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.012</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">99</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"slon"</span><span class="p">:</span><span class="w"> </span><span class="mf">71.893</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"mileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"hardAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-19T07:05:32.854Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"idling"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://qph.is.quoracdn.net/main-qimg-3b0b70b336bbae35853994ce0aa25013"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"driveScore"</span><span class="p">:</span><span class="w"> </span><span class="mf">85.5</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"slat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.124</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"hardBreak"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"maxMileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"elat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.423</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"clutch"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"speeding"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"isOnTrip"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"elon"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.012</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"slon"</span><span class="p">:</span><span class="w"> </span><span class="mf">71.893</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"mileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"hardAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-19T07:05:32.989Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"idling"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://qph.is.quoracdn.net/main-qimg-3b0b70b336bbae35853994ce0aa25013"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"driveScore"</span><span class="p">:</span><span class="w"> </span><span class="mf">85.5</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"slat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.124</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"hardBreak"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"maxMileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"elat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.423</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"clutch"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"speeding"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves the list of trips with info belonging to a particular user. </p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/users/&lt;ID&gt;/trips/</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the user whose data is to be retrieved</td>
-</tr>
-</tbody></table>
-
-<h2 id="get-driver-profile-overview">Get Driver Profile overview</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/2/overview/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
-  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"age"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"lname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Donald"</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">89.0</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"fname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alan"</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/assets/res/img/layout/profile/default-large.jpg"</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"ntrips"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves the profile overview of the driver. 
-Useful for populating the list of drivers in the Car Garage page in the app. </p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/users/&lt;ID&gt;/overview/</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the user whose data is to be retrieved</td>
-</tr>
-</tbody></table>
-
-<h2 id="get-full-driver-profile">Get Full Driver Profile</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/32/fullprofile/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
-  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"recentBadges"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-      </span><span class="nt">"isOnTrip"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"badge"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-      </span><span class="nt">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"mileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"nTrips"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"distance"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://qph.is.quoracdn.net/main-qimg-3b0b70b336bbae35853994ce0aa25013"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"idlingTime"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"tips"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
-      </span><span class="nt">"hardAcc"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"hardBreak"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"driverscore"</span><span class="p">:</span><span class="w"> </span><span class="mi">85</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"age"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="mi">36000</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves the full profile of the driver/user. 
-Useful for populating the list of drivers in the Car Garage page in the app. </p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/users/&lt;ID&gt;/fullprofile/</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the user whose data is to be retrieved</td>
-</tr>
-</tbody></table>
-
-<h2 id="get-driver-39-s-garage-info">Get Driver&rsquo;s Garage Info</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/32/garage/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
-  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"isOnTrip"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19.23"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"lon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"71.20"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.00"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C014"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves the car garage information of the driver/user. 
-Useful for populating the list of cars in the Car Garage page in the app. </p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/users/&lt;ID&gt;/garage/</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the user whose data is to be retrieved</td>
-</tr>
-</tbody></table>
-
-<h2 id="get-driver-profile">Get Driver Profile</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/2/driverprofile/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
-  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"dob"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1996-03-28"</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.com/assets/res/img/layout/profile/default-large.jpg"</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"lname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Donald"</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"econtacts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[{phone: 9820204040, email: help@carnot.com}]"</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"fname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alan"</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"M"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves the profile of the driver. 
-Useful when populating the Driver Profile screen on the app. </p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/users/&lt;ID&gt;/driverprofile/</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the user whose data is to be retrieved</td>
-</tr>
-</tbody></table>
-
-<h2 id="get-driver-statistics">Get Driver Statistics</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/2/driverstats/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
-  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"total_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">18000</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"lname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Donald"</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"fname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alan"</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"avg_speed"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.0</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"driver_score"</span><span class="p">:</span><span class="w"> </span><span class="mf">89.0</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"ntrips"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"total_dist"</span><span class="p">:</span><span class="w"> </span><span class="mf">200.0</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves the driving statistics of the driver. 
-Useful when populating the Driver Profile screen on the app. </p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/users/&lt;ID&gt;/driverstats/</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the user whose data is to be retrieved</td>
-</tr>
-</tbody></table>
-
-<h2 id="get-user-graphs">Get User Graphs</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/2/graphs/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
-  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"graph"</span><span class="p">:</span><span class="w"> 
-  </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
-    </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
-    </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
-    </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
-    </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
-    </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
-    </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
-    </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
-    </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">},</span><span class="w"> 
-    </span><span class="p">{</span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T13:43:30.601Z"</span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves the data points for the past trips graph for a driver. 
-Useful when populating the Driver Profile screen on the app. 
-Returns the list of trips and their timestamps of occuring. </p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/users/&lt;ID&gt;/graphs/</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the user whose data is to be retrieved</td>
+<td>User ID for which cars are to be retrieved</td>
 </tr>
 </tbody></table>
 
 <h1 id="cars">Cars</h1>
 
-<h2 id="get-all-cars">Get all Cars</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/"</span>
+<h2 id="speed-limit-settings">Speed Limit Settings</h2>
+<pre class="highlight shell"><code>Set Speed Limit
+
+curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/speedlimit/"</span>
   -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
   -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+  -X POST
+  -d <span class="s1">'{"sl":&lt;limit&gt;}'</span>
 </code></pre>
 
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>THe above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"device"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"C001"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"numberplate"</span><span class="p">:</span><span class="s2">"MH01AB0001"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"device"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"C011"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"numberplate"</span><span class="p">:</span><span class="s2">"MH01AB0011"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"device"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"C012"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"numberplate"</span><span class="p">:</span><span class="s2">"MH01AB0012"</span><span class="w">
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<pre class="highlight shell"><code>Get Speed Limit
+
+curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/speedlimit/"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+  -X GET
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this </p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"speed_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves all the cars.</p>
+<p>This endpoint sets and retrieves speed limit for a car.  </p>
 
-<h3 id="http-request">HTTP Request</h3>
+<h3 id="http-request-get-speed-limit">HTTP Request (Get Speed Limit)</h3>
 
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/</code></p>
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/speedlimit/</code></p>
+
+<h3 id="http-request-set-speed-limit">HTTP Request (Set Speed Limit)</h3>
+
+<p><code class="prettyprint">POST http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/speedlimit/</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
-<p>None</p>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the car, the data of which is to be set/retrieved</td>
+</tr>
+</tbody></table>
 
 <h2 id="car-passport">Car Passport</h2>
 <pre class="highlight shell"><code>Car Document Upload
@@ -848,9 +480,9 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;car_id&gt;/download/&lt;
 <br/><br/>[1] Encode image: https://www.base64-image.de/ 
 <br/>[2] Decode image: http://codebeautify.org/base64-to-image-converter</p>
 
-<h2 id="get-a-specific-car">Get a specific Car</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/4/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+<h2 id="get-all-errrors">Get all errrors</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http::/&lt;BASE_URL&gt;/cars/&lt;ID&gt;/errors/"</span>
+  -H <span class="s2">"ApiKey: &lt;api_key&gt;"</span>
   -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
@@ -858,67 +490,22 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;car_id&gt;/download/&lt;
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"isOnTrip"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cyclefp"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"lat"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19.23"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"nTrees"</span><span class="p">:</span><span class="w"> </span><span class="mi">200</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"lon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"71.20"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"carfp"</span><span class="p">:</span><span class="w"> </span><span class="mi">2500</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20.00"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C014"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"trips"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">91</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"mileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"driveScore"</span><span class="p">:</span><span class="w"> </span><span class="mf">85.5</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"maxMileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"elon"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.012</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"slon"</span><span class="p">:</span><span class="w"> </span><span class="mf">71.893</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-19T07:05:31.786Z"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://qph.is.quoracdn.net/main-qimg-3b0b70b336bbae35853994ce0aa25013"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"slat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.124</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"elat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.423</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PJ"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">92</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"mileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"driveScore"</span><span class="p">:</span><span class="w"> </span><span class="mf">85.5</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"maxMileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"elon"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.012</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"slon"</span><span class="p">:</span><span class="w"> </span><span class="mf">71.893</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-19T07:05:31.928Z"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://qph.is.quoracdn.net/main-qimg-3b0b70b336bbae35853994ce0aa25013"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"slat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.124</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"elat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.423</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PJ"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">93</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"mileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"driveScore"</span><span class="p">:</span><span class="w"> </span><span class="mf">85.5</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"maxMileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"elon"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.012</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"slon"</span><span class="p">:</span><span class="w"> </span><span class="mf">71.893</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-19T07:05:32.074Z"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://qph.is.quoracdn.net/main-qimg-3b0b70b336bbae35853994ce0aa25013"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"slat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.124</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"elat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.423</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PJ"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:[</span><span class="w">
+        </span><span class="s2">"P0106"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"P0108"</span><span class="w">
+      </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves details of a specific car. This is useful for displaying a car&rsquo;s dashboard. </p>
+<p>This endpoint retrieves all the errors occured for a car. This is useful for car diagnostics.</p>
 
-<h3 id="http-request">HTTP Request</h3>
+<h3 id="http-request-upload-documents">HTTP Request (Upload Documents)</h3>
 
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/</code></p>
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/errors/</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -934,9 +521,9 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;car_id&gt;/download/&lt;
 </tr>
 </tbody></table>
 
-<h2 id="get-all-makes">Get all Makes</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/makes/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+<h2 id="get-specific-error">Get specific error</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http::/&lt;BASE_URL&gt;/cars/&lt;ID&gt;/errors/&lt;error code&gt;/"</span>
+  -H <span class="s2">"ApiKey: &lt;api_key&gt;"</span>
   -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
@@ -944,167 +531,23 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;car_id&gt;/download/&lt;
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"makes"</span><span class="p">:</span><span class="w"> 
-  </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"Aston Martin"</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"Audi"</span><span class="p">,</span><span class="w"> 
-    </span><span class="s2">"Bentley"</span><span class="p">,</span><span class="w">
-    </span><span class="err">...</span><span class="w">
-    </span><span class="s2">"Volvo"</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves all available car makes (manufacturers). </p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/makes/</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<p>None</p>
-
-<h2 id="get-all-models">Get all Models</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/models/?make=Audi"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
-  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"models"</span><span class="p">:</span><span class="w"> 
-  </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"A3"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Q3"</span><span class="p">,</span><span class="w"> </span><span class="s2">"A4"</span><span class="p">,</span><span class="w"> </span><span class="s2">"A3 cabriolet"</span><span class="p">,</span><span class="w"> </span><span class="s2">"A6"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Q5"</span><span class="p">,</span><span class="w"> </span><span class="s2">"TT"</span><span class="p">,</span><span class="w"> </span><span class="s2">"S5"</span><span class="p">,</span><span class="w"> </span><span class="s2">"Q7"</span><span class="p">,</span><span class="w"> </span><span class="s2">"S6"</span><span class="p">,</span><span class="w"> </span><span class="s2">"RS5"</span><span class="p">,</span><span class="w"> </span><span class="s2">"A8"</span><span class="p">,</span><span class="w"> </span><span class="s2">"RS6 Avant"</span><span class="p">,</span><span class="w"> </span><span class="s2">"RS7"</span><span class="p">,</span><span class="w"> </span><span class="s2">"R8"</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves all available car models for a given car make (manufacturer). </p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/models/?make=&lt;MAKE&gt;</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>MAKE</td>
-<td>The Make of the car whose list of Models is to be retrieved</td>
-</tr>
-</tbody></table>
-
-<h2 id="get-all-links">Get all Links</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/links/?make=Audi&amp;model=TT"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
-  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"image_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"video_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves the installation image and video URLs for a car with given Make and Model. Useful for the device installation screen on the app. </p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/links/?make=&lt;MAKE&gt;&amp;model=&lt;MODEL&gt;</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>MAKE</td>
-<td>The Make of the car, the links of which have to be retrieved</td>
-</tr>
-<tr>
-<td>MODEL</td>
-<td>The Model of the car, the links of which have to be retrieved</td>
-</tr>
-</tbody></table>
-
-<h2 id="get-car-overview">Get Car overview</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/2/overview/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
-  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"C011"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"model"</span><span class="p">:</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"car_manufact"</span><span class="p">:</span><span class="s2">"Volkswagen"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"car_model"</span><span class="p">:</span><span class="s2">"Beetle"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"pin_url"</span><span class="p">:</span><span class="kc">null</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="nt">"c"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"l"</span><span class="p">:</span><span class="s2">"http://www.obd-data.com/p0106.html"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"d"</span><span class="p">:</span><span class="s2">"The problem could be caused by bad MAP sensor or bad PCM, click here for more"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"e"</span><span class="p">:</span><span class="s2">"P0106"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"t"</span><span class="p">:</span><span class="s2">"Performance problem"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves the installation image and video URLs for a car with given Make and Model. Useful for the device installation screen on the app. </p>
+<p>This endpoint retrieves error info for a error occured for a car. </p>
 
-<h3 id="http-request">HTTP Request</h3>
+<h3 id="http-request-upload-documents">HTTP Request (Upload Documents)</h3>
 
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/overview/</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the car, the data of which is to be retrieved</td>
-</tr>
-</tbody></table>
-
-<h2 id="get-car-status">Get Car status</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/2/status/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
-  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.124</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"ontrip"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"status_update_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-03-27T11:16:34Z"</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="mf">40.0</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">71.893</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves the latest status of a particular car and the time when it was last updated. 
-Useful on all screens of the app where the live location of the car is to be displayed.  </p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/status/</code></p>
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/errors/&lt;error code&gt;/</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -1118,109 +561,14 @@ Useful on all screens of the app where the live location of the car is to be dis
 <td>ID</td>
 <td>The ID of the car, the data of which is to be retrieved</td>
 </tr>
-</tbody></table>
-
-<h2 id="get-car-statistics">Get Car statistics</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/2/statistics/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
-  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"total_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">18000</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"total_trips"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"avg_mileage"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.0</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"total_distance"</span><span class="p">:</span><span class="w"> </span><span class="mf">200.0</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"carbon_fp"</span><span class="p">:</span><span class="w"> </span><span class="mf">1600.0</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves the overall statistics of the car. </p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/statistics/</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
 <tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the car, the data of which is to be retrieved</td>
-</tr>
-</tbody></table>
-
-<h2 id="get-car-39-s-speed-limit">Get Car&rsquo;s speed limit</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/12345/speedlimit/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
-  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"speed"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">75</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nt">"trips"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"trip_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12245</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"elon"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.5</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"drive_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">65</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"slon"</span><span class="p">:</span><span class="w"> </span><span class="mf">72.2</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"photo_thumb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://2.bp.blogspot.com/-2lV-8LM_o-s/TkxlMHJYs-I/AAAAAAAAANg/uMeKRyq_2eM/s1600/alternative-facebook-profile-picture-superman-funny-joke.jpg"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"mileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"clutch_usage"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"hard_acc"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"max_mileage"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"date_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21/4/2015 09:22:03"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"slat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.1</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"hard_break"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"elat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.4</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"idling_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"speeding"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"S Man"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves the speedlimit of a particular car. 
-And also returns the set of trips made by the car. </p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/speedlimit/</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the car, the data of which is to be retrieved</td>
+<td>error code</td>
+<td>The code returned from <all errors> API</td>
 </tr>
 </tbody></table>
 
 <h2 id="get-all-trips-made-by-a-car">Get all Trips made by a car</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/2/trips/"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/trips/"</span>
   -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
   -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
@@ -1229,7 +577,15 @@ And also returns the set of trips made by the car. </p>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"related_trips"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">]</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="nt">"trips"</span><span class="p">:[</span><span class="w">
+      </span><span class="mi">400</span><span class="p">,</span><span class="w">
+      </span><span class="mi">401</span><span class="p">,</span><span class="w">
+      </span><span class="mi">402</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1253,9 +609,9 @@ And also returns the set of trips made by the car. </p>
 </tr>
 </tbody></table>
 
-<h2 id="get-car-graphs">Get Car Graphs</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/4/graphs/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+<h2 id="get-specific-trip-info">Get specific trip info</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/trips/&lt;TripID&gt;/"</span>
+  -H <span class="s2">"ApiKey: &lt;api_key&gt;"</span>
   -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
@@ -1263,41 +619,122 @@ And also returns the set of trips made by the car. </p>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
+      </span><span class="nt">"td"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"start_server_log_time_stamp"</span><span class="p">:</span><span class="s2">"2016-05-11T06:03:01Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"trip_current_distance"</span><span class="p">:</span><span class="mi">219</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"hard_break_count"</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"is_trip_complete"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"run_time"</span><span class="p">:</span><span class="mi">400</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"avg_mileage"</span><span class="p">:</span><span class="mi">18</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"trip_start_distance"</span><span class="p">:</span><span class="mi">165</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"device_id"</span><span class="p">:</span><span class="mi">300</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"end_server_log_time_stamp"</span><span class="p">:</span><span class="s2">"2016-05-11T08:03:01Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"total_CO2_emitted"</span><span class="p">:</span><span class="mi">100</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">131</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"ignition"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"avg_speed"</span><span class="p">:</span><span class="mi">35</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"message_id"</span><span class="p">:</span><span class="mi">20</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"obd"</span><span class="p">:[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"lts"</span><span class="p">:</span><span class="s2">"2016-05-11T08:02:01Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"tid"</span><span class="p">:</span><span class="mi">131</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"mil"</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sts"</span><span class="p">:</span><span class="s2">"2016-05-11T08:02:47Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"lat"</span><span class="p">:</span><span class="mf">23.344</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"p0D"</span><span class="p">:</span><span class="mi">30</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"lon"</span><span class="p">:</span><span class="mf">20.401</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"mid"</span><span class="p">:</span><span class="mi">1</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"lts"</span><span class="p">:</span><span class="s2">"2016-05-11T08:02:31Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"tid"</span><span class="p">:</span><span class="mi">131</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"mil"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sts"</span><span class="p">:</span><span class="s2">"2016-05-11T08:15:38Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"lat"</span><span class="p">:</span><span class="mf">23.432</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"p0D"</span><span class="p">:</span><span class="mi">35</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"lon"</span><span class="p">:</span><span class="mf">40.223</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"mid"</span><span class="p">:</span><span class="mi">2</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves specific trip info made by the car.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/trips/&lt;TripID&gt;</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the car, the data of which is to be retrieved</td>
+</tr>
+<tr>
+<td>TripID</td>
+<td>The trip ID from the all trips call</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-car-notifications">Get car notifications</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/notifications/"</span>
+  -H <span class="s2">"ApiKey: &lt;api_key&gt;"</span>
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:[</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"d"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">91</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"m"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-19T07:05:31.786Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">3600</span><span class="w">
+      </span><span class="nt">"l"</span><span class="p">:</span><span class="s2">"http://www.obd-data.com/p0108.html"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"c"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"e"</span><span class="p">:</span><span class="s2">"P0108"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"t"</span><span class="p">:</span><span class="s2">"Barometric Pressure Circuit High Input"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"d"</span><span class="p">:</span><span class="s2">"The problem could be caused by bad MAP sensor or worn engine causing low vacuum"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"d"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">92</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"m"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-19T07:05:31.928Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">3600</span><span class="w">
+      </span><span class="nt">"l"</span><span class="p">:</span><span class="s2">"http://www.obd-data.com/u0111.html"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"c"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"e"</span><span class="p">:</span><span class="s2">"U0111"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"t"</span><span class="p">:</span><span class="s2">"Lost Communication With Battery module"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"d"</span><span class="p">:</span><span class="s2">"The problem could be caused due to Lost Communication With Energy Control Module"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"d"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">93</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"m"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"sts"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-04-19T07:05:32.074Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="mi">3600</span><span class="w">
+      </span><span class="nt">"date_time"</span><span class="p">:</span><span class="s2">"2016-05-11T07:51:50.088Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"Car Card"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"desc"</span><span class="p">:</span><span class="s2">"Your car is safe and healthy"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"date_time"</span><span class="p">:</span><span class="s2">"2016-05-11T07:53:00.941Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"Car Card"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"desc"</span><span class="p">:</span><span class="s2">"Turn off your engine to save fuel"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="err">...</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves the list of points to plot time series based graphs for distance, running time and mileage graphs.
-Data points for distance, run time, mileage are provided for each trip completed by the car. </p>
+<p>This endpoint retrieves all notifications (errors and cards) for the car.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/graphs/</code></p>
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/notifications/</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -1313,7 +750,35 @@ Data points for distance, run time, mileage are provided for each trip completed
 </tr>
 </tbody></table>
 
-<h3 id="response-parameters">Response Parameters</h3>
+<h2 id="latest-status">Latest status</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/status/"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">23.456</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ontrip"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"status_update_time"</span><span class="p">:</span><span class="s2">"2016-05-26T19:14:11.071"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"speed"</span><span class="p">:</span><span class="mi">55</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">40.569</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves current car status including speed, location and on trip flag.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_UR&gt;/cars/&lt;ID&gt;/status/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
 
 <table><thead>
 <tr>
@@ -1322,30 +787,249 @@ Data points for distance, run time, mileage are provided for each trip completed
 </tr>
 </thead><tbody>
 <tr>
-<td>id</td>
-<td>The id of the trip for which data is to be seen</td>
+<td>ID</td>
+<td>The ID of the car for which status is to be retrieved</td>
+</tr>
+</tbody></table>
+
+<h2 id="authenticate-with-device">Authenticate with Device</h2>
+
+<aside class="notice">
+  API method to be updated  
+</aside>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/pluggedin/&lt;LabelID&gt;/"</span>
+  -H <span class="s2">"ApiKey: &lt;api_key&gt;"</span>
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="nt">"key"</span><span class="p">:</span><span class="s2">"654321"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"devid"</span><span class="p">:</span><span class="mi">43</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint is used to authenticate device during setup process. </p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/pluggedin/&lt;LabelID&gt;/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>Car ID with which the device is to be connected</td>
 </tr>
 <tr>
-<td>d</td>
-<td>Distance covered in this trip</td>
+<td>LabelID</td>
+<td>User input: Label ID printed on the device</td>
 </tr>
+</tbody></table>
+
+<h2 id="get-car-brands">Get car brands</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/brands"</span>
+  -H <span class="s2">"ApiKey: &lt;api_key&gt;"</span>
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="nt">"brands"</span><span class="p">:[</span><span class="w">
+      </span><span class="s2">"Aston Martin"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Audi"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Bentley"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Caterham"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Chevrolet"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Conquest"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Datsun"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"DC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"BMW"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Bugatti"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Ferrari"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Fiat"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Force"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Ford"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Honda"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Hyundai"</span><span class="p">,</span><span class="w">
+      </span><span class="err">...</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>The endpoint is used during car setup to get list of car brands.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/brands/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<p>None</p>
+
+<h2 id="get-car-models">Get car models</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;brand&gt;/models/"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span>
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="nt">"models"</span><span class="p">:[</span><span class="w">
+      </span><span class="s2">"1 Series"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"3 Series"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"X1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"5 Series"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"X3"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"X5"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Z4"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"7 Series"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"6 Series"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"X6"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"M Series"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"i8"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>The endpoint retrives car models when a brand name is provided. This is useful during car setup.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;brand&gt;/models/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
 <tr>
-<td>m</td>
-<td>Average mileage in this trip</td>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
+</thead><tbody>
 <tr>
-<td>t</td>
-<td>Trip time duration</td>
+<td>brand</td>
+<td>Brand name for which models are to be retrieved</td>
 </tr>
+</tbody></table>
+
+<h2 id="save-car-info">Save car info</h2>
+
+<aside class="notice">
+ The API method is to be updated
+</aside>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;userID&gt;/save/"</span>
+  -H <span class="s2">"ApiKey: &lt;api_key&gt;"</span>
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+  -X POST
+  -d <span class="s1">'{"brand":"&lt;brand&gt;", "model":"&lt;model&gt;", 
+    "name": "&lt;car nickname&gt;", "ln":"&lt;license number&gt;"}'</span>
+</code></pre>
+
+<blockquote>
+<p>The above method returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="nt">"carId"</span><span class="p">:</span><span class="mi">21</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"imageUrl"</span><span class="p">:</span><span class="s2">"&lt;image_link&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"videoUrl"</span><span class="p">:</span><span class="s2">"&lt;video_link&gt;"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This method is used to save car info when car setup is complete.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://&lt;BASE_URL&gt;/cars/&lt;userID&gt;/save/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
 <tr>
-<td>sts</td>
-<td>Trip start timestamp</td>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>userID</td>
+<td>The user ID for which the car info is to be saved</td>
 </tr>
 </tbody></table>
 
 <h1 id="devices">Devices</h1>
 
+<h2 id="get-device-info">Get Device Info</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/devices/&lt;ID&gt;/info/"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span>
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"fwID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"309-33-44"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"devID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23456123"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves the info of a particular device.
+Useful for the Device Info screen on the app. </p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/devices/&lt;ID&gt;/info/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the device, the info of which is to be retrieved</td>
+</tr>
+</tbody></table>
+
 <h2 id="get-all-devices">Get all Devices</h2>
+
+<aside class="warning">
+  Deprecated API method
+</aside>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/devices/"</span>
   -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
   -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
@@ -1383,6 +1067,10 @@ Data points for distance, run time, mileage are provided for each trip completed
 <p>None</p>
 
 <h2 id="get-a-specific-device">Get a specific Device</h2>
+
+<aside class="warning">
+  Deprecated API method
+</aside>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/devices/2/"</span>
   -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
   -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
@@ -1427,9 +1115,233 @@ Data points for distance, run time, mileage are provided for each trip completed
 </tr>
 </tbody></table>
 
-<h2 id="get-device-info">Get Device Info</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/devices/&lt;ID&gt;/info/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span>
+<h1 id="accounts">Accounts</h1>
+
+<h2 id="register">Register</h2>
+
+<p>This endpoint registers a new user to the Carnot backend. </p>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/register/"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -X POST 
+  -d <span class="s1">'{"email":"abc@xyz.com","password":"xyz","name":"John Doe"}'</span> 
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> 
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ae4e00bf6a08cf9cd56a37b99d0162e69db4fd74"</span><span class="p">,</span><span class="w"> 
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43</span><span class="p">,</span><span class="w"> 
+        </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc@xyz.com"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://&lt;BASE_URL&gt;/users/register/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>Email address of the registering user. This eventually becomes the unique username required for login</td>
+</tr>
+<tr>
+<td>password</td>
+<td>Password of the registering user</td>
+</tr>
+<tr>
+<td>name</td>
+<td>Name of the registering user</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>true if successful, false otherwise</td>
+</tr>
+<tr>
+<td>message</td>
+<td>Message indicating registration status</td>
+</tr>
+<tr>
+<td>token</td>
+<td>The auth token to be used to authenticate this user in subsequent requests</td>
+</tr>
+<tr>
+<td>id</td>
+<td>The id of the user to be included in the URL in subsequent requests where id is required</td>
+</tr>
+<tr>
+<td>email</td>
+<td>Confirmation of the email id the user entered. Email id also serves as the user name</td>
+</tr>
+</tbody></table>
+
+<h2 id="login">Login</h2>
+
+<p>This endpoint logs an existing user into the Carnot backend. Successfully logged in users get access to an auth token that should be used in subsequent authenticated requests. </p>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/login/"</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span>  
+  -X POST 
+  -d <span class="s1">'{"email":"abc@xyz.com","password":"xyz"}'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> 
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ae4e00bf6a08cf9cd56a37b99d0162e69db4fd74"</span><span class="p">,</span><span class="w"> 
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43</span><span class="p">,</span><span class="w"> 
+        </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc@xyz.com"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://&lt;BASE_URL&gt;/users/login/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>Email address of the user attempting to login. This should be the email used when registering</td>
+</tr>
+<tr>
+<td>password</td>
+<td>Password of the registering user</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>The auth token to be used to authenticate this user in subsequent requests</td>
+</tr>
+<tr>
+<td>id</td>
+<td>The id of the user to be included in the URL in subsequent requests where id is required</td>
+</tr>
+<tr>
+<td>email</td>
+<td>Confirmation of the email id the user entered. Email id also serves as the user name</td>
+</tr>
+<tr>
+<td>status</td>
+<td>true if successful, false otherwise</td>
+</tr>
+<tr>
+<td>message</td>
+<td>Message indicating login status</td>
+</tr>
+</tbody></table>
+
+<h2 id="logout">Logout</h2>
+
+<p>This endpoint logs out the user from Carnot backend. </p>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/logout/"</span>
+  -H <span class="s2">"Content-Type: application/json"</span> 
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -X POST 
+  -d <span class="s1">'{"email":"abc@xyz.com"}'</span> 
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://&lt;BASE_URL&gt;/users/logout/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>Email address of the user logging out of system.</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>true if successful, false otherwise</td>
+</tr>
+<tr>
+<td>message</td>
+<td>Message indicating logout status</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+ On successful logout, user token is deleted. Upon re-login new token gets created.
+</aside>
+
+<h1 id="alerts-notifications">Alerts / Notifications</h1>
+
+<h2 id="get-notifications-for-a-car">Get Notifications for a Car</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/12345/notifications/"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
   -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
@@ -1438,20 +1350,50 @@ Data points for distance, run time, mileage are provided for each trip completed
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"fwID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"309-33-44"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"devID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"23456123"</span><span class="w">
+    </span><span class="nt">"cards"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"date_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T07:51:50.088Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Car Card"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your car is safe and healthy"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"date_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T07:53:00.941Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Car Card"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Turn off your engine to save fuel"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"date_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-18T10:47:20.251Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Car Card"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your Celerio is getting towed"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"l"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.obd-data.com/p0108.html"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"c"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"e"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P0108"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Barometric Pressure Circuit High Input"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"d"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The problem could be caused by bad MAP sensor or worn engine causing low vacuum"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"l"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.obd-data.com/u0111.html"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"c"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"e"</span><span class="p">:</span><span class="w"> </span><span class="s2">"U0111"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lost Communication With Battery module"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"d"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The problem could be caused due to Lost Communication With Energy Control Module"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint retrieves the info of a particular device.
-Useful for the Device Info screen on the app. </p>
+<p>This endpoint retrieves the list of notifications recorded for a car on the backend. </p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/devices/&lt;ID&gt;/info/</code></p>
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/notifications/</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -1463,7 +1405,234 @@ Useful for the Device Info screen on the app. </p>
 </thead><tbody>
 <tr>
 <td>ID</td>
-<td>The ID of the device, the info of which is to be retrieved</td>
+<td>The ID of the car, the data of which is to be retrieved</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-notifications-for-a-user">Get Notifications for a User</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/100/notifications/"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"date_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T07:51:50.088Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Car Card"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your car is safe and healthy"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"date_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T07:53:00.941Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Car Card"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Turn off your engine to save fuel"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"date_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-18T10:47:20.251Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Car Card"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your Celerio is getting towed"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.obd-data.com/p0108.html"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The problem could be caused by bad MAP sensor or worn engine causing low vacuum"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Barometric Pressure Circuit High Input"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P0108"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.obd-data.com/u0111.html"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The problem could be caused due to Lost Communication With Energy Control Module"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lost Communication With Battery module"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"U0111"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves the list of notifications recorded for a user. </p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/users/&lt;ID&gt;/notifications/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the user, the data of which is to be retrieved</td>
+</tr>
+</tbody></table>
+
+<h2 id="rash-driving">Rash Driving</h2>
+<pre class="highlight shell"><code>Set Speed Limit
+
+curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/speedlimit/"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+  -X POST
+  -d <span class="s1">'{"sl":&lt;limit&gt;}'</span>
+</code></pre>
+
+<blockquote>
+<p>THe above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<pre class="highlight shell"><code>Get Speed Limit
+
+curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/speedlimit/"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+  -X GET
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this </p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"speed_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint sets and retrieves speed limit for a car.  </p>
+
+<h3 id="http-request-get-speed-limit">HTTP Request (Get Speed Limit)</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/speedlimit/</code></p>
+
+<h3 id="http-request-set-speed-limit">HTTP Request (Set Speed Limit)</h3>
+
+<p><code class="prettyprint">POST http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/speedlimit/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the car, the data of which is to be set/retrieved</td>
+</tr>
+</tbody></table>
+
+<h1 id="dtc">DTC</h1>
+
+<h2 id="get-diagnostic-info-for-a-car">Get Diagnostic Info for a car</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/12345/diagnostics/"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"engine_oil"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"battery_health"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"tyre_pressure_bottom_right"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"car_errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"P0106"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"P0108"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"U0111"</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"coolant_temperature"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"tyre_pressure_bottom_left"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"tyre_pressure_front_left"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"cabin_temperature"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"tyre_pressure_front_right"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves the diagnostic info for a car.  </p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/diagnostics/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the car, the data of which is to be retrieved</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-error-code-info">Get Error Code Info</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/12345/errors/P0106/"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Performance problem"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P0106"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"severity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Low"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ref_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.obd-codes.com/p0106"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The problem could be caused due to bad MAP sensor or bad PCM, click here for more"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This endpoint retrieves the detailed info of a particular error code recorded on a car.  </p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/errors/&lt;EID&gt;/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the car, the data of which is to be retrieved</td>
+</tr>
+<tr>
+<td>EID</td>
+<td>The error code, the info of which is to be retrieved</td>
 </tr>
 </tbody></table>
 
@@ -1847,539 +2016,6 @@ Useful for the Trip Detailed view in the app. </p>
 <tr>
 <td>ID</td>
 <td>The ID of the OBD data point which is to be retrieved</td>
-</tr>
-</tbody></table>
-
-<h1 id="accounts">Accounts</h1>
-
-<h2 id="register">Register</h2>
-
-<aside class="warning">
- API not yet live!
-</aside>
-
-<p>This endpoint registers a new user to the Carnot backend. </p>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/register/"</span>
-  -H <span class="s2">"Content-Type: application/json"</span> 
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
-  -X POST 
-  -d <span class="s1">'{"email":"abc@xyz.com","password":"xyz","name":"John Doe"}'</span> 
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> 
-    </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ae4e00bf6a08cf9cd56a37b99d0162e69db4fd74"</span><span class="p">,</span><span class="w"> 
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43</span><span class="p">,</span><span class="w"> 
-        </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc@xyz.com"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">POST http://&lt;BASE_URL&gt;/users/register/</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>email</td>
-<td>Email address of the registering user. This eventually becomes the unique username required for login</td>
-</tr>
-<tr>
-<td>password</td>
-<td>Password of the registering user</td>
-</tr>
-<tr>
-<td>name</td>
-<td>Name of the registering user</td>
-</tr>
-</tbody></table>
-
-<h3 id="response-parameters">Response Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>true if successful, false otherwise</td>
-</tr>
-<tr>
-<td>message</td>
-<td>Message indicating registration status</td>
-</tr>
-<tr>
-<td>token</td>
-<td>The auth token to be used to authenticate this user in subsequent requests</td>
-</tr>
-<tr>
-<td>id</td>
-<td>The id of the user to be included in the URL in subsequent requests where id is required</td>
-</tr>
-<tr>
-<td>email</td>
-<td>Confirmation of the email id the user entered. Email id also serves as the user name</td>
-</tr>
-</tbody></table>
-
-<h2 id="login">Login</h2>
-
-<aside class="warning">
- API not yet live!
-</aside>
-
-<p>This endpoint logs an existing user into the Carnot backend. Successfully logged in users get access to an auth token that should be used in subsequent authenticated requests. </p>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/login/"</span>
-  -H <span class="s2">"Content-Type: application/json"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span>  
-  -X POST 
-  -d <span class="s1">'{"email":"abc@xyz.com","password":"xyz"}'</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> 
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ae4e00bf6a08cf9cd56a37b99d0162e69db4fd74"</span><span class="p">,</span><span class="w"> 
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43</span><span class="p">,</span><span class="w"> 
-        </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc@xyz.com"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-
-</span></code></pre>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">POST http://&lt;BASE_URL&gt;/users/login/</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>email</td>
-<td>Email address of the user attempting to login. This should be the email used when registering</td>
-</tr>
-<tr>
-<td>password</td>
-<td>Password of the registering user</td>
-</tr>
-</tbody></table>
-
-<h3 id="response-parameters">Response Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>token</td>
-<td>The auth token to be used to authenticate this user in subsequent requests</td>
-</tr>
-<tr>
-<td>id</td>
-<td>The id of the user to be included in the URL in subsequent requests where id is required</td>
-</tr>
-<tr>
-<td>email</td>
-<td>Confirmation of the email id the user entered. Email id also serves as the user name</td>
-</tr>
-<tr>
-<td>status</td>
-<td>true if successful, false otherwise</td>
-</tr>
-<tr>
-<td>message</td>
-<td>Message indicating login status</td>
-</tr>
-</tbody></table>
-
-<h2 id="logout">Logout</h2>
-
-<aside class="warning">
- API not yet live!
-</aside>
-
-<p>This endpoint logs out the user from Carnot backend. </p>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/logout/"</span>
-  -H <span class="s2">"Content-Type: application/json"</span> 
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
-  -X POST 
-  -d <span class="s1">'{"email":"abc@xyz.com"}'</span> 
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">POST http://&lt;BASE_URL&gt;/users/logout/</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>email</td>
-<td>Email address of the user logging out of system.</td>
-</tr>
-</tbody></table>
-
-<h3 id="response-parameters">Response Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>true if successful, false otherwise</td>
-</tr>
-<tr>
-<td>message</td>
-<td>Message indicating logout status</td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
- On successful logout, user token is deleted. Upon re-login new token gets created.
-</aside>
-
-<h1 id="alerts-notifications">Alerts / Notifications</h1>
-
-<h2 id="get-notifications-for-a-car">Get Notifications for a Car</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/12345/notifications/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
-  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"cards"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"date_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T07:51:50.088Z"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Car Card"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your car is safe and healthy"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"date_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T07:53:00.941Z"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Car Card"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Turn off your engine to save fuel"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"date_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-18T10:47:20.251Z"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Car Card"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your Celerio is getting towed"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"l"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.obd-data.com/p0108.html"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"c"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"e"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P0108"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Barometric Pressure Circuit High Input"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"d"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The problem could be caused by bad MAP sensor or worn engine causing low vacuum"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"l"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.obd-data.com/u0111.html"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"c"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"e"</span><span class="p">:</span><span class="w"> </span><span class="s2">"U0111"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"t"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lost Communication With Battery module"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"d"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The problem could be caused due to Lost Communication With Energy Control Module"</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves the list of notifications recorded for a car on the backend. </p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/notifications/</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the car, the data of which is to be retrieved</td>
-</tr>
-</tbody></table>
-
-<h2 id="get-notifications-for-a-user">Get Notifications for a User</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/100/notifications/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
-  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"date_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T07:51:50.088Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Car Card"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your car is safe and healthy"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"date_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-11T07:53:00.941Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Car Card"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Turn off your engine to save fuel"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"date_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-05-18T10:47:20.251Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Car Card"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your Celerio is getting towed"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.obd-data.com/p0108.html"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The problem could be caused by bad MAP sensor or worn engine causing low vacuum"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Barometric Pressure Circuit High Input"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P0108"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.obd-data.com/u0111.html"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The problem could be caused due to Lost Communication With Energy Control Module"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Lost Communication With Battery module"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"U0111"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves the list of notifications recorded for a user. </p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/users/&lt;ID&gt;/notifications/</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the user, the data of which is to be retrieved</td>
-</tr>
-</tbody></table>
-
-<h2 id="rash-driving">Rash Driving</h2>
-<pre class="highlight shell"><code>Set Speed Limit
-
-curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/speedlimit/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
-  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
-  -X POST
-  -d <span class="s1">'{"data":{"sl":&lt;limit&gt;}}'</span>
-</code></pre>
-
-<blockquote>
-<p>THe above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-<pre class="highlight shell"><code>Get Speed Limit
-
-curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/speedlimit/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
-  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
-  -X GET
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this </p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"speed_limit"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint sets and retrieves speed limit for a car.  </p>
-
-<h3 id="http-request-get-speed-limit">HTTP Request (Get Speed Limit)</h3>
-
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/speedlimit/</code></p>
-
-<h3 id="http-request-set-speed-limit">HTTP Request (Set Speed Limit)</h3>
-
-<p><code class="prettyprint">POST http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/speedlimit/</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the car, the data of which is to be set/retrieved</td>
-</tr>
-</tbody></table>
-
-<h1 id="dtc">DTC</h1>
-
-<h2 id="get-diagnostic-info-for-a-car">Get Diagnostic Info for a car</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/12345/diagnostics/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
-  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"engine_oil"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"battery_health"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"tyre_pressure_bottom_right"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"car_errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"P0106"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"P0108"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"U0111"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"coolant_temperature"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"tyre_pressure_bottom_left"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"tyre_pressure_front_left"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cabin_temperature"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"tyre_pressure_front_right"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves the diagnostic info for a car.  </p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/diagnostics/</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the car, the data of which is to be retrieved</td>
-</tr>
-</tbody></table>
-
-<h2 id="get-error-code-info">Get Error Code Info</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/12345/errors/P0106/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
-  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Performance problem"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P0106"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"severity"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Low"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"ref_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://www.obd-codes.com/p0106"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"desc"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The problem could be caused due to bad MAP sensor or bad PCM, click here for more"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint retrieves the detailed info of a particular error code recorded on a car.  </p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/errors/&lt;EID&gt;/</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the car, the data of which is to be retrieved</td>
-</tr>
-<tr>
-<td>EID</td>
-<td>The error code, the info of which is to be retrieved</td>
 </tr>
 </tbody></table>
 
