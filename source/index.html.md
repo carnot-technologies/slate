@@ -51,10 +51,13 @@ You must replace <code>&lt;api_key&gt;</code> with your personal API key. You mu
 
 # Users
 
-## Get All Users
+## Emergency contact details
 
 ```shell
-curl "http://<BASE_URL>/users/"
+
+Get emergency contacts
+
+curl "http://<BASE_URL>/users/<ID>/econtacts/"
   -H "Apikey: <api_key>" 
   -H "Authorization: Token <auth_token>"
 ```
@@ -62,102 +65,57 @@ curl "http://<BASE_URL>/users/"
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {"id":1,
-    "user":{"id":2,"username":"U001","email":"U001@carnotmail.com"},
-    "gender":"M",
-    "age":20,
-    "dob":"1996-03-28",
-    "cars":[{"id":1,"device":1,"name":"C001","numberplate":"MH01AB0001"}],
-    "emergencycontacts":"[{phone: 9820204040, email: help@carnot.com}]",
-    "driverscore":89.0,
-    "totalnumtrips":10,
-    "totaldistance":200.0,
-    "totaltime":18000,
-    "averagespeed":40.0
+{
+  "status":true,
+  "message":"Success",
+  "data":{
+    "contacts":[
+      {
+      "em":"hello1@openxcell.com",
+      "ph":8899773322,
+      "nm":"John"
+      },
+      {
+      "em":"hello2@openxcell.com",
+      "ph":9933224455,
+      "nm":"Bruce"
+      }
+    ],
+    "n":2
   }
-]
+}
 ```
 
-This endpoint retrieves all the users.
-
-<aside class="warning">
- Deprecated API method
-</aside>
-
-### HTTP Request
-
-`GET http://<BASE_URL>/users/`
-
-### Query Parameters
-
-None
-
-## Get a Specific User
-
 ```shell
-curl "http://<BASE_URL>/users/2/"
+
+Set emergency contacts
+
+curl "http://<BASE_URL>/users/<ID>/econtacts/"
   -H "Apikey: <api_key>" 
   -H "Authorization: Token <auth_token>"
+  -X POST
+  -d '{"contacts":[{"em": "hello4@openxcell.com", "ph": 8899773321, "nm": "Johny"},
+              {"em": "hello5@openxcell.com", "ph": 8899773323, "nm": "Johnathan"}]}'
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "id":2,
-  "user":{"id":3,"username":"U011","email":"U011@carnotmail.com"},
-  "gender":"M",
-  "age":20,
-  "dob":"1996-03-28",
-  "cars":[{"id":2,"device":2,"name":"C011","numberplate":"MH01AB0011"}],
-  "emergencycontacts":"[{phone: 9820204040, email: help@carnot.com}]",
-  "driverscore":89.0,
-  "totalnumtrips":10,
-  "totaldistance":200.0,
-  "totaltime":18000,
-  "averagespeed":40.0
+  "status": true, 
+  "message": "Success"
 }
 ```
 
-This endpoint retrieves a specific user.
+This endpoint sets and retrieves a user's emergency contact details.
 
-<aside class="warning">
-  Deprecated API method  
-</aside>
-
-### HTTP Request
-
-`GET http://<BASE_URL>/users/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the user to retrieve
-
-
-## Get User's emergency contact details
-
-```shell
-curl "http://<BASE_URL>/users/2/econtacts/"
-  -H "Apikey: <api_key>" 
-  -H "Authorization: Token <auth_token>"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "econtacts": "[{phone: 9820204040, email: help@carnot.com}]"
-}
-```
-
-This endpoint retrieves a user's emergency contact details.
-
-### HTTP Request
+### HTTP Request (Get contacts)
 
 `GET http://<BASE_URL>/users/<ID>/econtacts/`
+
+### HTTP Request (Set contacts)
+
+`POST http://<BASE_URL>/users/<ID>/econtacts/`
 
 ### URL Parameters
 
@@ -165,12 +123,11 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the user whose data is to be retrieved 
 
-
-## Get User's cars
+## Get user related cars
 
 ```shell
-curl "http://<BASE_URL>/users/2/cars/"
-  -H "Apikey: <api_key>" 
+curl "http://<BASE_URL>/users/<ID>/cars/"
+  -H "ApiKey: <api_key>"
   -H "Authorization: Token <auth_token>"
 ```
 
@@ -178,11 +135,17 @@ curl "http://<BASE_URL>/users/2/cars/"
 
 ```json
 {
-  "related_cars": [2]
+  "status":true,
+  "message":"Success",
+  "data":{
+    "related_cars":[
+       20
+    ]
+  }
 }
 ```
 
-This endpoint retrieves the list of cars a user has access to. 
+This method is used to retrive all the cars related to a particular user.
 
 ### HTTP Request
 
@@ -190,368 +153,72 @@ This endpoint retrieves the list of cars a user has access to.
 
 ### URL Parameters
 
-Parameter | Description
---------- | -----------
-ID | The ID of the user whose data is to be retrieved 
-
-## Get User's trips
-
-```shell
-curl "http://<BASE_URL>/users/32/trips/"
-  -H "Apikey: <api_key>" 
-  -H "Authorization: Token <auth_token>"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "data": 
-  [
-    {
-      "isOnTrip": false,
-      "elon": 72.012,
-      "id": 99,
-      "slon": 71.893,
-      "mileage": 12,
-      "hardAcc": 20,
-      "date": "2016-04-19T07:05:32.854Z",
-      "idling": 20,
-      "photo": "https://qph.is.quoracdn.net/main-qimg-3b0b70b336bbae35853994ce0aa25013",
-      "driveScore": 85.5,
-      "slat": 19.124,
-      "hardBreak": 20,
-      "maxMileage": 35,
-      "elat": 19.423,
-      "clutch": 20,
-      "speeding": 20,
-      "name": "John Doe"
-    },
-    {
-      "isOnTrip": false,
-      "elon": 72.012,
-      "id": 100,
-      "slon": 71.893,
-      "mileage": 12,
-      "hardAcc": 20,
-      "date": "2016-04-19T07:05:32.989Z",
-      "idling": 20,
-      "photo": "https://qph.is.quoracdn.net/main-qimg-3b0b70b336bbae35853994ce0aa25013",
-      "driveScore": 85.5,
-      "slat": 19.124,
-      "hardBreak": 20,
-      "maxMileage": 35,
-      "elat": 19.423,
-      "clutch": 20,
-      "speeding": 20,
-      "name": "John Doe"
-    }
-  ],
-  "status": true,
-  "message": "Success"
-}
-```
-
-This endpoint retrieves the list of trips with info belonging to a particular user. 
-
-### HTTP Request
-
-`GET http://<BASE_URL>/users/<ID>/trips/`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the user whose data is to be retrieved 
-
-
-## Get Driver Profile overview
-
-```shell
-curl "http://<BASE_URL>/users/2/overview/"
-  -H "Apikey: <api_key>" 
-  -H "Authorization: Token <auth_token>"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "gender": "M", 
-  "age": 20, 
-  "lname": "Donald", 
-  "score": 89.0, 
-  "fname": "Alan", 
-  "photo": "https://example.com/assets/res/img/layout/profile/default-large.jpg", 
-  "ntrips": 10
-}
-```
-
-This endpoint retrieves the profile overview of the driver. 
-Useful for populating the list of drivers in the Car Garage page in the app. 
-
-### HTTP Request
-
-`GET http://<BASE_URL>/users/<ID>/overview/`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the user whose data is to be retrieved 
-
-
-## Get Full Driver Profile 
-
-```shell
-curl "http://<BASE_URL>/users/32/fullprofile/"
-  -H "Apikey: <api_key>" 
-  -H "Authorization: Token <auth_token>"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "data": [
-    {
-      "recentBadges": [],
-      "isOnTrip": false,
-      "badge": [],
-      "gender": "M",
-      "mileage": 20,
-      "nTrips": 10,
-      "distance": 100,
-      "photo": "https://qph.is.quoracdn.net/main-qimg-3b0b70b336bbae35853994ce0aa25013",
-      "idlingTime": 20,
-      "tips": [],
-      "hardAcc": 20,
-      "speed": 10,
-      "hardBreak": 20,
-      "driverscore": 85,
-      "name": "John Doe",
-      "age": 20,
-      "time": 36000
-    }
-  ],
-  "status": true,
-  "message": "Success"
-}
-```
-
-This endpoint retrieves the full profile of the driver/user. 
-Useful for populating the list of drivers in the Car Garage page in the app. 
-
-### HTTP Request
-
-`GET http://<BASE_URL>/users/<ID>/fullprofile/`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the user whose data is to be retrieved 
-
-
-## Get Driver's Garage Info 
-
-```shell
-curl "http://<BASE_URL>/users/32/garage/"
-  -H "Apikey: <api_key>" 
-  -H "Authorization: Token <auth_token>"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "data": [
-    {
-      "isOnTrip": true,
-      "lat": "19.23",
-      "id": 4,
-      "lon": "71.20",
-      "speed": "20.00",
-      "name": "C014"
-    }
-  ],
-  "status": true,
-  "message": "Success"
-}
-```
-
-This endpoint retrieves the car garage information of the driver/user. 
-Useful for populating the list of cars in the Car Garage page in the app. 
-
-### HTTP Request
-
-`GET http://<BASE_URL>/users/<ID>/garage/`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the user whose data is to be retrieved 
-
-
-## Get Driver Profile 
-
-```shell
-curl "http://<BASE_URL>/users/2/driverprofile/"
-  -H "Apikey: <api_key>" 
-  -H "Authorization: Token <auth_token>"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "dob": "1996-03-28", 
-  "photo": "https://example.com/assets/res/img/layout/profile/default-large.jpg", 
-  "lname": "Donald", 
-  "econtacts": "[{phone: 9820204040, email: help@carnot.com}]", 
-  "fname": "Alan", 
-  "gender": "M"
-}
-```
-
-This endpoint retrieves the profile of the driver. 
-Useful when populating the Driver Profile screen on the app. 
-
-### HTTP Request
-
-`GET http://<BASE_URL>/users/<ID>/driverprofile/`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the user whose data is to be retrieved 
-
-
-## Get Driver Statistics
-
-```shell
-curl "http://<BASE_URL>/users/2/driverstats/"
-  -H "Apikey: <api_key>" 
-  -H "Authorization: Token <auth_token>"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "total_time": 18000, 
-  "lname": "Donald", 
-  "fname": "Alan", 
-  "avg_speed": 40.0, 
-  "driver_score": 89.0, 
-  "ntrips": 10, 
-  "total_dist": 200.0
-}
-```
-
-This endpoint retrieves the driving statistics of the driver. 
-Useful when populating the Driver Profile screen on the app. 
-
-### HTTP Request
-
-`GET http://<BASE_URL>/users/<ID>/driverstats/`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the user whose data is to be retrieved 
-
-
-## Get User Graphs
-
-```shell
-curl "http://<BASE_URL>/users/2/graphs/"
-  -H "Apikey: <api_key>" 
-  -H "Authorization: Token <auth_token>"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "graph": 
-  [
-    {"id": 2, "sts": "2016-03-27T13:43:30.601Z"}, 
-    {"id": 3, "sts": "2016-03-27T13:43:30.601Z"}, 
-    {"id": 4, "sts": "2016-03-27T13:43:30.601Z"}, 
-    {"id": 5, "sts": "2016-03-27T13:43:30.601Z"}, 
-    {"id": 6, "sts": "2016-03-27T13:43:30.601Z"}, 
-    {"id": 7, "sts": "2016-03-27T13:43:30.601Z"}, 
-    {"id": 8, "sts": "2016-03-27T13:43:30.601Z"}, 
-    {"id": 9, "sts": "2016-03-27T13:43:30.601Z"}, 
-    {"id": 10, "sts": "2016-03-27T13:43:30.601Z"}, 
-    {"id": 11, "sts": "2016-03-27T13:43:30.601Z"}
-  ]
-}
-```
-
-This endpoint retrieves the data points for the past trips graph for a driver. 
-Useful when populating the Driver Profile screen on the app. 
-Returns the list of trips and their timestamps of occuring. 
-
-### HTTP Request
-
-`GET http://<BASE_URL>/users/<ID>/graphs/`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the user whose data is to be retrieved 
-
+Parameter|Description
+---------|-----------
+ID| User ID for which cars are to be retrieved
 
 # Cars
 
-## Get all Cars
+## Speed Limit Settings
 
 ```shell
-curl "http://<BASE_URL>/cars/"
+Set Speed Limit
+
+curl "http://<BASE_URL>/cars/<ID>/speedlimit/"
   -H "Apikey: <api_key>" 
   -H "Authorization: Token <auth_token>"
+  -X POST
+  -d '{"sl":<limit>}'
 ```
 
-> The above command returns JSON structured like this:
+> THe above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id":1,
-    "device":1,
-    "name":"C001",
-    "numberplate":"MH01AB0001"
-  },
-  {
-    "id":2,
-    "device":2,
-    "name":"C011",
-    "numberplate":"MH01AB0011"
-  },
-  {
-    "id":3,
-    "device":3,
-    "name":"C012",
-    "numberplate":"MH01AB0012"
-  }
-]
+{
+  "status": true,
+  "message": "success"
+}
+
 ```
 
-This endpoint retrieves all the cars.
+```shell
+Get Speed Limit
 
-### HTTP Request
+curl "http://<BASE_URL>/cars/<ID>/speedlimit/"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
+  -X GET
+```
 
-`GET http://<BASE_URL>/cars/`
+> The above command returns JSON structured like this 
+
+```json
+{
+  "status": true,
+  "message": "success",
+  "data": {
+    "speed_limit": 40
+  }
+}
+```
+This endpoint sets and retrieves speed limit for a car.  
+
+### HTTP Request (Get Speed Limit)
+
+`GET http://<BASE_URL>/cars/<ID>/speedlimit/`
+
+
+### HTTP Request (Set Speed Limit)
+
+`POST http://<BASE_URL>/cars/<ID>/speedlimit/`
+
 
 ### URL Parameters
 
-None
+Parameter | Description
+--------- | -----------
+ID | The ID of the car, the data of which is to be set/retrieved 
+
 
 ## Car Passport
 
@@ -658,80 +325,34 @@ For more info on base64 encoded image byte strings, see:
 <br/><br/>[1] Encode image: https://www.base64-image.de/ 
 <br/>[2] Decode image: http://codebeautify.org/base64-to-image-converter
 
-
-## Get a specific Car 
+## Get all errrors
 
 ```shell
-curl "http://<BASE_URL>/cars/4/"
-  -H "Apikey: <api_key>" 
+curl "http::/<BASE_URL>/cars/<ID>/errors/"
+  -H "ApiKey: <api_key>"
   -H "Authorization: Token <auth_token>"
-```
+````
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "status": true,
-  "message": "Success",
-  "data": {
-    "isOnTrip": true,
-    "cyclefp": 25,
-    "lat": "19.23",
-    "nTrees": 200,
-    "lon": "71.20",
-    "carfp": 2500,
-    "speed": "20.00",
-    "name": "C014",
-    "trips": [
-      {
-        "id": 91,
-        "mileage": 12,
-        "driveScore": 85.5,
-        "maxMileage": 35,
-        "elon": 72.012,
-        "slon": 71.893,
-        "date": "2016-04-19T07:05:31.786Z",
-        "photo": "https://qph.is.quoracdn.net/main-qimg-3b0b70b336bbae35853994ce0aa25013",
-        "slat": 19.124,
-        "elat": 19.423,
-        "name": "PJ"
-      },
-      {
-        "id": 92,
-        "mileage": 12,
-        "driveScore": 85.5,
-        "maxMileage": 35,
-        "elon": 72.012,
-        "slon": 71.893,
-        "date": "2016-04-19T07:05:31.928Z",
-        "photo": "https://qph.is.quoracdn.net/main-qimg-3b0b70b336bbae35853994ce0aa25013",
-        "slat": 19.124,
-        "elat": 19.423,
-        "name": "PJ"
-      },
-      {
-        "id": 93,
-        "mileage": 12,
-        "driveScore": 85.5,
-        "maxMileage": 35,
-        "elon": 72.012,
-        "slon": 71.893,
-        "date": "2016-04-19T07:05:32.074Z",
-        "photo": "https://qph.is.quoracdn.net/main-qimg-3b0b70b336bbae35853994ce0aa25013",
-        "slat": 19.124,
-        "elat": 19.423,
-        "name": "PJ"
-      }
-    ]
+  "status":true,
+  "message":"success",
+  "data":{
+    "errors":[
+        "P0106",
+        "P0108"
+      ]
   }
 }
 ```
+This endpoint retrieves all the errors occured for a car. This is useful for car diagnostics.
 
-This endpoint retrieves details of a specific car. This is useful for displaying a car's dashboard. 
 
-### HTTP Request
+### HTTP Request (Upload Documents)
 
-`GET http://<BASE_URL>/cars/<ID>/`
+`GET http://<BASE_URL>/cars/<ID>/errors/`
 
 ### URL Parameters
 
@@ -739,12 +360,11 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the car, the data of which is to be retrieved 
 
-
-## Get all Makes
+## Get specific error
 
 ```shell
-curl "http://<BASE_URL>/cars/makes/"
-  -H "Apikey: <api_key>" 
+curl "http::/<BASE_URL>/cars/<ID>/errors/<error code>/"
+  -H "ApiKey: <api_key>"
   -H "Authorization: Token <auth_token>"
 ```
 
@@ -752,253 +372,35 @@ curl "http://<BASE_URL>/cars/makes/"
 
 ```json
 {
-  "makes": 
-  [
-    "Aston Martin", 
-    "Audi", 
-    "Bentley",
-    ...
-    "Volvo"
-  ]
-}
-```
-
-This endpoint retrieves all available car makes (manufacturers). 
-
-### HTTP Request
-
-`GET http://<BASE_URL>/cars/makes/`
-
-### URL Parameters
-
-None
-
-
-## Get all Models
-
-```shell
-curl "http://<BASE_URL>/cars/models/?make=Audi"
-  -H "Apikey: <api_key>" 
-  -H "Authorization: Token <auth_token>"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "models": 
-  [
-    "A3", "Q3", "A4", "A3 cabriolet", "A6", "Q5", "TT", "S5", "Q7", "S6", "RS5", "A8", "RS6 Avant", "RS7", "R8"
-  ]
-}
-```
-
-This endpoint retrieves all available car models for a given car make (manufacturer). 
-
-### HTTP Request
-
-`GET http://<BASE_URL>/cars/models/?make=<MAKE>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-MAKE | The Make of the car whose list of Models is to be retrieved
-
-
-## Get all Links
-
-```shell
-curl "http://<BASE_URL>/cars/links/?make=Audi&model=TT"
-  -H "Apikey: <api_key>" 
-  -H "Authorization: Token <auth_token>"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "image_url": null, 
-  "video_url": null
-}
-```
-
-This endpoint retrieves the installation image and video URLs for a car with given Make and Model. Useful for the device installation screen on the app. 
-
-### HTTP Request
-
-`GET http://<BASE_URL>/cars/links/?make=<MAKE>&model=<MODEL>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-MAKE | The Make of the car, the links of which have to be retrieved  
-MODEL | The Model of the car, the links of which have to be retrieved 
-
-
-## Get Car overview
-
-```shell
-curl "http://<BASE_URL>/cars/2/overview/"
-  -H "Apikey: <api_key>" 
-  -H "Authorization: Token <auth_token>"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "name":"C011",
-  "model":
-  {
-    "car_manufact":"Volkswagen",
-    "car_model":"Beetle",
-    "pin_url":null
+  "status":true,
+  "message":"Success",
+  "data":{
+    "c":1,
+    "l":"http://www.obd-data.com/p0106.html",
+    "d":"The problem could be caused by bad MAP sensor or bad PCM, click here for more",
+    "e":"P0106",
+    "t":"Performance problem"
   }
 }
 ```
-
-This endpoint retrieves the installation image and video URLs for a car with given Make and Model. Useful for the device installation screen on the app. 
-
-### HTTP Request
-
-`GET http://<BASE_URL>/cars/<ID>/overview/`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the car, the data of which is to be retrieved 
+This endpoint retrieves error info for a error occured for a car. 
 
 
-## Get Car status
+### HTTP Request (Upload Documents)
 
-```shell
-curl "http://<BASE_URL>/cars/2/status/"
-  -H "Apikey: <api_key>" 
-  -H "Authorization: Token <auth_token>"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "latitude": 19.124, 
-  "ontrip": false, 
-  "status_update_time": "2016-03-27T11:16:34Z", 
-  "speed": 40.0, 
-  "longitude": 71.893
-}
-```
-
-This endpoint retrieves the latest status of a particular car and the time when it was last updated. 
-Useful on all screens of the app where the live location of the car is to be displayed.  
-
-### HTTP Request
-
-`GET http://<BASE_URL>/cars/<ID>/status/`
+`GET http://<BASE_URL>/cars/<ID>/errors/<error code>/`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the car, the data of which is to be retrieved 
-
-
-## Get Car statistics 
-
-```shell
-curl "http://<BASE_URL>/cars/2/statistics/"
-  -H "Apikey: <api_key>" 
-  -H "Authorization: Token <auth_token>"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "total_time": 18000, 
-  "total_trips": 10, 
-  "avg_mileage": 12.0, 
-  "total_distance": 200.0, 
-  "carbon_fp": 1600.0
-}
-```
-
-This endpoint retrieves the overall statistics of the car. 
-
-### HTTP Request
-
-`GET http://<BASE_URL>/cars/<ID>/statistics/`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the car, the data of which is to be retrieved 
-
-
-## Get Car's speed limit
-
-```shell
-curl "http://<BASE_URL>/cars/12345/speedlimit/"
-  -H "Apikey: <api_key>" 
-  -H "Authorization: Token <auth_token>"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "status": true,
-  "data": {
-    "speed": {
-      "limit": 75
-    },
-    "trips": [
-      {
-        "trip_id": 12245,
-        "elon": 72.5,
-        "drive_score": 65,
-        "slon": 72.2,
-        "photo_thumb": "http://2.bp.blogspot.com/-2lV-8LM_o-s/TkxlMHJYs-I/AAAAAAAAANg/uMeKRyq_2eM/s1600/alternative-facebook-profile-picture-superman-funny-joke.jpg",
-        "mileage": 15,
-        "clutch_usage": 11,
-        "hard_acc": 0,
-        "max_mileage": 19,
-        "date_time": "21/4/2015 09:22:03",
-        "slat": 19.1,
-        "hard_break": 4,
-        "elat": 19.4,
-        "idling_time": 0,
-        "speeding": false,
-        "name": "S Man"
-      }
-    ]
-  },
-  "message": "Success"
-}
-```
-
-This endpoint retrieves the speedlimit of a particular car. 
-And also returns the set of trips made by the car. 
-
-### HTTP Request
-
-`GET http://<BASE_URL>/cars/<ID>/speedlimit/`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the car, the data of which is to be retrieved 
-
+ID | The ID of the car, the data of which is to be retrieved
+error code| The code returned from <all errors> API
 
 ## Get all Trips made by a car
 
 ```shell
-curl "http://<BASE_URL>/cars/2/trips/"
+curl "http://<BASE_URL>/cars/<ID>/trips/"
   -H "Apikey: <api_key>" 
   -H "Authorization: Token <auth_token>"
 ```
@@ -1007,7 +409,15 @@ curl "http://<BASE_URL>/cars/2/trips/"
 
 ```json
 {
-  "related_trips": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+  "status":true,
+  "message":"success",
+  "data":{
+    "trips":[
+      400,
+      401,
+      402
+    ]
+  }
 }
 ```
 
@@ -1023,12 +433,347 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the car, the data of which is to be retrieved 
 
-
-## Get Car Graphs 
+## Get specific trip info
 
 ```shell
-curl "http://<BASE_URL>/cars/4/graphs/"
+curl "http://<BASE_URL>/cars/<ID>/trips/<TripID>/"
+  -H "ApiKey: <api_key>"
+  -H "Authorization: Token <auth_token>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status":true,
+  "message":"success",
+    "data":{
+      "td":{
+        "start_server_log_time_stamp":"2016-05-11T06:03:01Z",
+        "trip_current_distance":219,
+        "hard_break_count":3,
+        "is_trip_complete":0,
+        "run_time":400,
+        "avg_mileage":18,
+        "trip_start_distance":165,
+        "device_id":300,
+        "end_server_log_time_stamp":"2016-05-11T08:03:01Z",
+        "total_CO2_emitted":100,
+        "id":131,
+        "ignition":1,
+        "avg_speed":35,
+        "message_id":20
+      },
+    "obd":[
+      {
+        "lts":"2016-05-11T08:02:01Z",
+        "tid":131,
+        "mil":19,
+        "sts":"2016-05-11T08:02:47Z",
+        "lat":23.344,
+        "p0D":30,
+        "lon":20.401,
+        "mid":1
+      },
+      {
+        "lts":"2016-05-11T08:02:31Z",
+        "tid":131,
+        "mil":20,
+        "sts":"2016-05-11T08:15:38Z",
+        "lat":23.432,
+        "p0D":35,
+        "lon":40.223,
+        "mid":2
+      }
+    ]
+  }
+}
+```
+
+This endpoint retrieves specific trip info made by the car.
+
+### HTTP Request
+
+`GET http://<BASE_URL>/cars/<ID>/trips/<TripID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the car, the data of which is to be retrieved 
+TripID | The trip ID from the all trips call
+
+
+## Get car notifications
+
+```shell
+curl "http://<BASE_URL>/cars/<ID>/notifications/"
+  -H "ApiKey: <api_key>"
+  -H "Authorization: Token <auth_token>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status":true,
+  "message":"success",
+  "data":[
+    {
+      "l":"http://www.obd-data.com/p0108.html",
+      "c":1,
+      "e":"P0108",
+      "t":"Barometric Pressure Circuit High Input",
+      "d":"The problem could be caused by bad MAP sensor or worn engine causing low vacuum"
+    },
+    {
+      "l":"http://www.obd-data.com/u0111.html",
+      "c":2,
+      "e":"U0111",
+      "t":"Lost Communication With Battery module",
+      "d":"The problem could be caused due to Lost Communication With Energy Control Module"
+    },
+    {
+      "date_time":"2016-05-11T07:51:50.088Z",
+      "type":"Car Card",
+      "desc":"Your car is safe and healthy"
+    },
+    {
+      "date_time":"2016-05-11T07:53:00.941Z",
+      "type":"Car Card",
+      "desc":"Turn off your engine to save fuel"
+    },
+    ...
+  ]
+}
+```
+This endpoint retrieves all notifications (errors and cards) for the car.
+
+### HTTP Request
+
+`GET http://<BASE_URL>/cars/<ID>/notifications/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the car, the data of which is to be retrieved
+
+## Latest status
+
+```shell
+curl "http://<BASE_URL>/cars/<ID>/status/"
   -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status":true,
+  "message":"Success",
+  "data":{
+    "latitude":23.456,
+    "ontrip":true,
+    "status_update_time":"2016-05-26T19:14:11.071",
+    "speed":55,
+    "longitude":40.569
+  }
+}
+```
+
+This endpoint retrieves current car status including speed, location and on trip flag.
+
+### HTTP Request
+
+`GET http://<BASE_UR>/cars/<ID>/status/`
+
+### URL Parameters
+
+Parameter|Description
+---------|-----------
+ID | The ID of the car for which status is to be retrieved
+
+## Authenticate with Device
+
+<aside class="notice">
+  API method to be updated  
+</aside>
+
+
+```shell
+curl "http://<BASE_URL>/cars/<ID>/pluggedin/<LabelID>/"
+  -H "ApiKey: <api_key>"
+  -H "Authorization: Token <auth_token>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status":true,
+  "message":"success",
+  "data":{
+    "key":"654321",
+    "devid":43
+  }
+}
+```
+
+This endpoint is used to authenticate device during setup process. 
+
+### HTTP Request
+
+`GET http://<BASE_URL>/cars/<ID>/pluggedin/<LabelID>/`
+
+### URL Parameters
+
+Parameter|Description
+---------|-----------
+ID | Car ID with which the device is to be connected
+LabelID | User input: Label ID printed on the device
+
+## Get car brands
+
+```shell
+curl "http://<BASE_URL>/cars/brands"
+  -H "ApiKey: <api_key>"
+  -H "Authorization: Token <auth_token>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status":true,
+  "message":"Success",
+  "data":{
+    "brands":[
+      "Aston Martin",
+      "Audi",
+      "Bentley",
+      "Caterham",
+      "Chevrolet",
+      "Conquest",
+      "Datsun",
+      "DC",
+      "BMW",
+      "Bugatti",
+      "Ferrari",
+      "Fiat",
+      "Force",
+      "Ford",
+      "Honda",
+      "Hyundai",
+      ...
+    ]
+  }
+}
+```
+The endpoint is used during car setup to get list of car brands.
+
+### HTTP Request
+
+`GET http://<BASE_URL>/cars/brands/`
+
+### URL Parameters
+
+None
+
+## Get car models
+
+```shell
+curl "http://<BASE_URL>/cars/<brand>/models/"
+  -H "Apikey: <api_key>"
+  -H "Authorization: Token <auth_token>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status":true,
+  "message":"success",
+  "data":{
+    "models":[
+      "1 Series",
+      "3 Series",
+      "X1",
+      "5 Series",
+      "X3",
+      "X5",
+      "Z4",
+      "7 Series",
+      "6 Series",
+      "X6",
+      "M Series",
+      "i8"
+    ]
+  }
+}
+```
+The endpoint retrives car models when a brand name is provided. This is useful during car setup.
+
+### HTTP Request
+
+`GET http://<BASE_URL>/cars/<brand>/models/`
+
+### URL Parameters
+
+Parameter|Description
+--------|------------
+brand| Brand name for which models are to be retrieved
+
+## Save car info
+
+<aside class="notice">
+ The API method is to be updated
+</aside>
+
+```shell
+curl "http://<BASE_URL>/cars/<userID>/save/"
+  -H "ApiKey: <api_key>"
+  -H "Authorization: Token <auth_token>"
+  -X POST
+  -d '{"brand":"<brand>", "model":"<model>", 
+    "name": "<car nickname>", "ln":"<license number>"}'
+```
+
+> The above method returns JSON structured like this:
+
+```json
+{
+  "status":true,
+  "message":"Success",
+  "data":{
+    "carId":21,
+    "imageUrl":"<image_link>",
+    "videoUrl":"<video_link>"
+  }
+}
+```
+
+This method is used to save car info when car setup is complete.
+
+### HTTP Request
+
+`POST http://<BASE_URL>/cars/<userID>/save/`
+
+### URL Parameters
+
+Parameter|Description
+---------|-----------
+userID | The user ID for which the car info is to be saved
+
+
+# Devices
+
+
+## Get Device Info
+
+```shell
+curl "http://<BASE_URL>/devices/<ID>/info/"
+  -H "Apikey: <api_key>"
   -H "Authorization: Token <auth_token>"
 ```
 
@@ -1038,59 +783,33 @@ curl "http://<BASE_URL>/cars/4/graphs/"
 {
   "status": true,
   "message": "Success",
-  "data": [
-    {
-      "d": 10,
-      "id": 91,
-      "m": 12,
-      "sts": "2016-04-19T07:05:31.786Z",
-      "t": 3600
-    },
-    {
-      "d": 10,
-      "id": 92,
-      "m": 12,
-      "sts": "2016-04-19T07:05:31.928Z",
-      "t": 3600
-    },
-    {
-      "d": 10,
-      "id": 93,
-      "m": 12,
-      "sts": "2016-04-19T07:05:32.074Z",
-      "t": 3600
-    },
-    ...
-  ]
+  "data": {
+    "fwID": "309-33-44",
+    "devID": "23456123"
+  }
 }
 ```
 
-This endpoint retrieves the list of points to plot time series based graphs for distance, running time and mileage graphs.
-Data points for distance, run time, mileage are provided for each trip completed by the car. 
+This endpoint retrieves the info of a particular device.
+Useful for the Device Info screen on the app. 
 
 ### HTTP Request
 
-`GET http://<BASE_URL>/cars/<ID>/graphs/`
+`GET http://<BASE_URL>/devices/<ID>/info/`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the car, the data of which is to be retrieved 
+ID | The ID of the device, the info of which is to be retrieved 
 
-### Response Parameters
-
-Parameter | Description
---------- | -----------
-id | The id of the trip for which data is to be seen
-d | Distance covered in this trip
-m | Average mileage in this trip
-t | Trip time duration 
-sts | Trip start timestamp  
-
-# Devices
 
 ## Get all Devices
+
+<aside class="warning">
+  Deprecated API method
+</aside>
+
 
 ```shell
 curl "http://<BASE_URL>/devices/"
@@ -1132,6 +851,11 @@ None
 
 ## Get a specific Device
 
+<aside class="warning">
+  Deprecated API method
+</aside>
+
+
 ```shell
 curl "http://<BASE_URL>/devices/2/"
   -H "Apikey: <api_key>" 
@@ -1169,12 +893,224 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the device, the data of which is to be retrieved 
 
+# Accounts
 
-## Get Device Info
+## Register
+
+This endpoint registers a new user to the Carnot backend. 
 
 ```shell
-curl "http://<BASE_URL>/devices/<ID>/info/"
-  -H "Apikey: <api_key>"
+curl "http://<BASE_URL>/users/register/"
+  -H "Content-Type: application/json" 
+  -H "Apikey: <api_key>" 
+  -X POST 
+  -d '{"email":"abc@xyz.com","password":"xyz","name":"John Doe"}' 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "status": true, 
+    "message": "success", 
+    "data": 
+    {
+        "token": "ae4e00bf6a08cf9cd56a37b99d0162e69db4fd74", 
+        "id": 43, 
+        "email": "abc@xyz.com"
+    }
+}
+
+```
+
+### HTTP Request
+
+`POST http://<BASE_URL>/users/register/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+email | Email address of the registering user. This eventually becomes the unique username required for login 
+password | Password of the registering user
+name | Name of the registering user  
+
+### Response Parameters
+
+Parameter | Description
+----------| -----------
+status| true if successful, false otherwise
+message| Message indicating registration status
+token | The auth token to be used to authenticate this user in subsequent requests
+id | The id of the user to be included in the URL in subsequent requests where id is required
+email | Confirmation of the email id the user entered. Email id also serves as the user name
+
+
+## Login
+
+This endpoint logs an existing user into the Carnot backend. Successfully logged in users get access to an auth token that should be used in subsequent authenticated requests. 
+
+```shell
+curl "http://<BASE_URL>/users/login/"
+  -H "Content-Type: application/json"
+  -H "Apikey: <api_key>"  
+  -X POST 
+  -d '{"email":"abc@xyz.com","password":"xyz"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status": true, 
+  "message": "Success", 
+  "data": 
+      {
+        "token": "ae4e00bf6a08cf9cd56a37b99d0162e69db4fd74", 
+        "id": 43, 
+        "email": "abc@xyz.com"
+      }
+}
+
+
+```
+
+### HTTP Request
+
+`POST http://<BASE_URL>/users/login/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+email | Email address of the user attempting to login. This should be the email used when registering 
+password | Password of the registering user
+
+### Response Parameters
+
+Parameter| Description
+----------| -----------
+token |The auth token to be used to authenticate this user in subsequent requests
+id | The id of the user to be included in the URL in subsequent requests where id is required
+email | Confirmation of the email id the user entered. Email id also serves as the user name
+status |true if successful, false otherwise
+message |Message indicating login status 
+
+
+## Logout
+
+This endpoint logs out the user from Carnot backend. 
+
+```shell
+curl "http://<BASE_URL>/users/logout/"
+  -H "Content-Type: application/json" 
+  -H "Apikey: <api_key>" 
+  -X POST 
+  -d '{"email":"abc@xyz.com"}' 
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+    "status": true, 
+    "message": "Success"
+}
+```
+
+### HTTP Request
+
+`POST http://<BASE_URL>/users/logout/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+email | Email address of the user logging out of system.
+
+### Response Parameters
+
+Parameter | Description
+----------| -----------
+status| true if successful, false otherwise
+message| Message indicating logout status
+
+<aside class="notice">
+ On successful logout, user token is deleted. Upon re-login new token gets created.
+</aside>
+
+
+# Alerts / Notifications
+
+## Get Notifications for a Car
+
+```shell
+curl "http://<BASE_URL>/cars/12345/notifications/"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status": true,
+  "message": "success",
+  "data": {
+    "cards": [
+      {
+        "date_time": "2016-05-11T07:51:50.088Z",
+        "type": "Car Card",
+        "desc": "Your car is safe and healthy"
+      },
+      {
+        "date_time": "2016-05-11T07:53:00.941Z",
+        "type": "Car Card",
+        "desc": "Turn off your engine to save fuel"
+      },
+      {
+        "date_time": "2016-05-18T10:47:20.251Z",
+        "type": "Car Card",
+        "desc": "Your Celerio is getting towed"
+      }
+    ],
+    "errors": [
+      {
+        "l": "http://www.obd-data.com/p0108.html",
+        "c": 1,
+        "e": "P0108",
+        "t": "Barometric Pressure Circuit High Input",
+        "d": "The problem could be caused by bad MAP sensor or worn engine causing low vacuum"
+      },
+      {
+        "l": "http://www.obd-data.com/u0111.html",
+        "c": 2,
+        "e": "U0111",
+        "t": "Lost Communication With Battery module",
+        "d": "The problem could be caused due to Lost Communication With Energy Control Module"
+      }
+    ]
+  }
+}
+```
+
+This endpoint retrieves the list of notifications recorded for a car on the backend. 
+
+### HTTP Request
+
+`GET http://<BASE_URL>/cars/<ID>/notifications/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the car, the data of which is to be retrieved 
+
+## Get Notifications for a User
+
+```shell
+curl "http://<BASE_URL>/users/100/notifications/"
+  -H "Apikey: <api_key>" 
   -H "Authorization: Token <auth_token>"
 ```
 
@@ -1184,25 +1120,197 @@ curl "http://<BASE_URL>/devices/<ID>/info/"
 {
   "status": true,
   "message": "Success",
-  "data": {
-    "fwID": "309-33-44",
-    "devID": "23456123"
-  }
+  "data": [
+    {
+      "date_time": "2016-05-11T07:51:50.088Z",
+      "type": "Car Card",
+      "desc": "Your car is safe and healthy"
+    },
+    {
+      "date_time": "2016-05-11T07:53:00.941Z",
+      "type": "Car Card",
+      "desc": "Turn off your engine to save fuel"
+    },
+    {
+      "date_time": "2016-05-18T10:47:20.251Z",
+      "type": "Car Card",
+      "desc": "Your Celerio is getting towed"
+    },
+    {
+      "link": "http://www.obd-data.com/p0108.html",
+      "desc": "The problem could be caused by bad MAP sensor or worn engine causing low vacuum",
+      "title": "Barometric Pressure Circuit High Input",
+      "type": 1,
+      "error": "P0108"
+    },
+    {
+      "link": "http://www.obd-data.com/u0111.html",
+      "desc": "The problem could be caused due to Lost Communication With Energy Control Module",
+      "title": "Lost Communication With Battery module",
+      "type": 2,
+      "error": "U0111"
+    }
+  ]
 }
 ```
 
-This endpoint retrieves the info of a particular device.
-Useful for the Device Info screen on the app. 
+This endpoint retrieves the list of notifications recorded for a user. 
 
 ### HTTP Request
 
-`GET http://<BASE_URL>/devices/<ID>/info/`
+`GET http://<BASE_URL>/users/<ID>/notifications/`
 
 ### URL Parameters
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the device, the info of which is to be retrieved 
+ID | The ID of the user, the data of which is to be retrieved 
+
+## Rash Driving
+
+```shell
+Set Speed Limit
+
+curl "http://<BASE_URL>/cars/<ID>/speedlimit/"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
+  -X POST
+  -d '{"sl":<limit>}'
+```
+
+> THe above command returns JSON structured like this:
+
+```json
+{
+  "status": true,
+  "message": "success"
+}
+
+```
+
+```shell
+Get Speed Limit
+
+curl "http://<BASE_URL>/cars/<ID>/speedlimit/"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
+  -X GET
+```
+
+> The above command returns JSON structured like this 
+
+```json
+{
+  "status": true,
+  "message": "success",
+  "data": {
+    "speed_limit": 40
+  }
+}
+```
+This endpoint sets and retrieves speed limit for a car.  
+
+### HTTP Request (Get Speed Limit)
+
+`GET http://<BASE_URL>/cars/<ID>/speedlimit/`
+
+
+### HTTP Request (Set Speed Limit)
+
+`POST http://<BASE_URL>/cars/<ID>/speedlimit/`
+
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the car, the data of which is to be set/retrieved 
+
+
+
+# DTC
+
+## Get Diagnostic Info for a car
+
+```shell
+curl "http://<BASE_URL>/cars/12345/diagnostics/"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status": true,
+  "data": {
+    "engine_oil": true,
+    "battery_health": 50,
+    "tyre_pressure_bottom_right": 0,
+    "car_errors": [
+      "P0106",
+      "P0108",
+      "U0111"
+    ],
+    "coolant_temperature": 80,
+    "tyre_pressure_bottom_left": 0,
+    "tyre_pressure_front_left": 0,
+    "cabin_temperature": 40,
+    "tyre_pressure_front_right": 0
+  },
+  "message": "Success"
+}
+```
+
+This endpoint retrieves the diagnostic info for a car.  
+
+### HTTP Request
+
+`GET http://<BASE_URL>/cars/<ID>/diagnostics/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the car, the data of which is to be retrieved 
+
+
+## Get Error Code Info
+
+```shell
+curl "http://<BASE_URL>/cars/12345/errors/P0106/"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status": true,
+  "data": {
+    "title": "Performance problem",
+    "code": "P0106",
+    "severity": "Low",
+    "ref_link": "http://www.obd-codes.com/p0106",
+    "desc": "The problem could be caused due to bad MAP sensor or bad PCM, click here for more"
+  },
+  "message": "Success"
+}
+```
+
+This endpoint retrieves the detailed info of a particular error code recorded on a car.  
+
+### HTTP Request
+
+`GET http://<BASE_URL>/cars/<ID>/errors/<EID>/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the car, the data of which is to be retrieved 
+EID | The error code, the info of which is to be retrieved 
 
 
 # Trip 
@@ -1563,437 +1671,6 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the OBD data point which is to be retrieved  
 
-
-# Accounts
-
-## Register
-
-<aside class="warning">
- API not yet live!
-</aside>
-
-This endpoint registers a new user to the Carnot backend. 
-
-```shell
-curl "http://<BASE_URL>/users/register/"
-  -H "Content-Type: application/json" 
-  -H "Apikey: <api_key>" 
-  -X POST 
-  -d '{"email":"abc@xyz.com","password":"xyz","name":"John Doe"}' 
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-    "status": true, 
-    "message": "success", 
-    "data": 
-    {
-        "token": "ae4e00bf6a08cf9cd56a37b99d0162e69db4fd74", 
-        "id": 43, 
-        "email": "abc@xyz.com"
-    }
-}
-
-```
-
-### HTTP Request
-
-`POST http://<BASE_URL>/users/register/`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-email | Email address of the registering user. This eventually becomes the unique username required for login 
-password | Password of the registering user
-name | Name of the registering user  
-
-### Response Parameters
-
-Parameter | Description
-----------| -----------
-status| true if successful, false otherwise
-message| Message indicating registration status
-token | The auth token to be used to authenticate this user in subsequent requests
-id | The id of the user to be included in the URL in subsequent requests where id is required
-email | Confirmation of the email id the user entered. Email id also serves as the user name
-
-
-## Login
-
-<aside class="warning">
- API not yet live!
-</aside>
-
-This endpoint logs an existing user into the Carnot backend. Successfully logged in users get access to an auth token that should be used in subsequent authenticated requests. 
-
-```shell
-curl "http://<BASE_URL>/users/login/"
-  -H "Content-Type: application/json"
-  -H "Apikey: <api_key>"  
-  -X POST 
-  -d '{"email":"abc@xyz.com","password":"xyz"}'
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "status": true, 
-  "message": "Success", 
-  "data": 
-      {
-        "token": "ae4e00bf6a08cf9cd56a37b99d0162e69db4fd74", 
-        "id": 43, 
-        "email": "abc@xyz.com"
-      }
-}
-
-
-```
-
-### HTTP Request
-
-`POST http://<BASE_URL>/users/login/`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-email | Email address of the user attempting to login. This should be the email used when registering 
-password | Password of the registering user
-
-### Response Parameters
-
-Parameter| Description
-----------| -----------
-token |The auth token to be used to authenticate this user in subsequent requests
-id | The id of the user to be included in the URL in subsequent requests where id is required
-email | Confirmation of the email id the user entered. Email id also serves as the user name
-status |true if successful, false otherwise
-message |Message indicating login status 
-
-
-## Logout
-
-<aside class="warning">
- API not yet live!
-</aside>
-
-This endpoint logs out the user from Carnot backend. 
-
-```shell
-curl "http://<BASE_URL>/users/logout/"
-  -H "Content-Type: application/json" 
-  -H "Apikey: <api_key>" 
-  -X POST 
-  -d '{"email":"abc@xyz.com"}' 
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-    "status": true, 
-    "message": "Success"
-}
-```
-
-### HTTP Request
-
-`POST http://<BASE_URL>/users/logout/`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-email | Email address of the user logging out of system.
-
-### Response Parameters
-
-Parameter | Description
-----------| -----------
-status| true if successful, false otherwise
-message| Message indicating logout status
-
-<aside class="notice">
- On successful logout, user token is deleted. Upon re-login new token gets created.
-</aside>
-
-
-# Alerts / Notifications
-
-## Get Notifications for a Car
-
-```shell
-curl "http://<BASE_URL>/cars/12345/notifications/"
-  -H "Apikey: <api_key>" 
-  -H "Authorization: Token <auth_token>"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "status": true,
-  "message": "success",
-  "data": {
-    "cards": [
-      {
-        "date_time": "2016-05-11T07:51:50.088Z",
-        "type": "Car Card",
-        "desc": "Your car is safe and healthy"
-      },
-      {
-        "date_time": "2016-05-11T07:53:00.941Z",
-        "type": "Car Card",
-        "desc": "Turn off your engine to save fuel"
-      },
-      {
-        "date_time": "2016-05-18T10:47:20.251Z",
-        "type": "Car Card",
-        "desc": "Your Celerio is getting towed"
-      }
-    ],
-    "errors": [
-      {
-        "l": "http://www.obd-data.com/p0108.html",
-        "c": 1,
-        "e": "P0108",
-        "t": "Barometric Pressure Circuit High Input",
-        "d": "The problem could be caused by bad MAP sensor or worn engine causing low vacuum"
-      },
-      {
-        "l": "http://www.obd-data.com/u0111.html",
-        "c": 2,
-        "e": "U0111",
-        "t": "Lost Communication With Battery module",
-        "d": "The problem could be caused due to Lost Communication With Energy Control Module"
-      }
-    ]
-  }
-}
-```
-
-This endpoint retrieves the list of notifications recorded for a car on the backend. 
-
-### HTTP Request
-
-`GET http://<BASE_URL>/cars/<ID>/notifications/`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the car, the data of which is to be retrieved 
-
-## Get Notifications for a User
-
-```shell
-curl "http://<BASE_URL>/users/100/notifications/"
-  -H "Apikey: <api_key>" 
-  -H "Authorization: Token <auth_token>"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "status": true,
-  "message": "Success",
-  "data": [
-    {
-      "date_time": "2016-05-11T07:51:50.088Z",
-      "type": "Car Card",
-      "desc": "Your car is safe and healthy"
-    },
-    {
-      "date_time": "2016-05-11T07:53:00.941Z",
-      "type": "Car Card",
-      "desc": "Turn off your engine to save fuel"
-    },
-    {
-      "date_time": "2016-05-18T10:47:20.251Z",
-      "type": "Car Card",
-      "desc": "Your Celerio is getting towed"
-    },
-    {
-      "link": "http://www.obd-data.com/p0108.html",
-      "desc": "The problem could be caused by bad MAP sensor or worn engine causing low vacuum",
-      "title": "Barometric Pressure Circuit High Input",
-      "type": 1,
-      "error": "P0108"
-    },
-    {
-      "link": "http://www.obd-data.com/u0111.html",
-      "desc": "The problem could be caused due to Lost Communication With Energy Control Module",
-      "title": "Lost Communication With Battery module",
-      "type": 2,
-      "error": "U0111"
-    }
-  ]
-}
-```
-
-This endpoint retrieves the list of notifications recorded for a user. 
-
-### HTTP Request
-
-`GET http://<BASE_URL>/users/<ID>/notifications/`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the user, the data of which is to be retrieved 
-
-## Rash Driving
-
-```shell
-Set Speed Limit
-
-curl "http://<BASE_URL>/cars/<ID>/speedlimit/"
-  -H "Apikey: <api_key>" 
-  -H "Authorization: Token <auth_token>"
-  -X POST
-  -d '{"data":{"sl":<limit>}}'
-```
-
-> THe above command returns JSON structured like this:
-
-```json
-{
-  "status": true,
-  "message": "success"
-}
-
-```
-
-```shell
-Get Speed Limit
-
-curl "http://<BASE_URL>/cars/<ID>/speedlimit/"
-  -H "Apikey: <api_key>" 
-  -H "Authorization: Token <auth_token>"
-  -X GET
-```
-
-> The above command returns JSON structured like this 
-
-```json
-{
-  "status": true,
-  "message": "success",
-  "data": {
-    "speed_limit": 40
-  }
-}
-```
-This endpoint sets and retrieves speed limit for a car.  
-
-### HTTP Request (Get Speed Limit)
-
-`GET http://<BASE_URL>/cars/<ID>/speedlimit/`
-
-
-### HTTP Request (Set Speed Limit)
-
-`POST http://<BASE_URL>/cars/<ID>/speedlimit/`
-
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the car, the data of which is to be set/retrieved 
-
-
-
-# DTC
-
-## Get Diagnostic Info for a car
-
-```shell
-curl "http://<BASE_URL>/cars/12345/diagnostics/"
-  -H "Apikey: <api_key>" 
-  -H "Authorization: Token <auth_token>"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "status": true,
-  "data": {
-    "engine_oil": true,
-    "battery_health": 50,
-    "tyre_pressure_bottom_right": 0,
-    "car_errors": [
-      "P0106",
-      "P0108",
-      "U0111"
-    ],
-    "coolant_temperature": 80,
-    "tyre_pressure_bottom_left": 0,
-    "tyre_pressure_front_left": 0,
-    "cabin_temperature": 40,
-    "tyre_pressure_front_right": 0
-  },
-  "message": "Success"
-}
-```
-
-This endpoint retrieves the diagnostic info for a car.  
-
-### HTTP Request
-
-`GET http://<BASE_URL>/cars/<ID>/diagnostics/`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the car, the data of which is to be retrieved 
-
-
-## Get Error Code Info
-
-```shell
-curl "http://<BASE_URL>/cars/12345/errors/P0106/"
-  -H "Apikey: <api_key>" 
-  -H "Authorization: Token <auth_token>"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "status": true,
-  "data": {
-    "title": "Performance problem",
-    "code": "P0106",
-    "severity": "Low",
-    "ref_link": "http://www.obd-codes.com/p0106",
-    "desc": "The problem could be caused due to bad MAP sensor or bad PCM, click here for more"
-  },
-  "message": "Success"
-}
-```
-
-This endpoint retrieves the detailed info of a particular error code recorded on a car.  
-
-### HTTP Request
-
-`GET http://<BASE_URL>/cars/<ID>/errors/<EID>/`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the car, the data of which is to be retrieved 
-EID | The error code, the info of which is to be retrieved 
 
 # Documents
 
