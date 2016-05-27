@@ -274,6 +274,137 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/users/&lt;ID&gt;/econtacts/"</spa
 
 <h1 id="cars">Cars</h1>
 
+<h2 id="get-car-brands">Get car brands</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/brands"</span>
+  -H <span class="s2">"ApiKey: &lt;api_key&gt;"</span>
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="nt">"brands"</span><span class="p">:[</span><span class="w">
+      </span><span class="s2">"Aston Martin"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Audi"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Bentley"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Caterham"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Chevrolet"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Conquest"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Datsun"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"DC"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"BMW"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Bugatti"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Ferrari"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Fiat"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Force"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Ford"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Honda"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Hyundai"</span><span class="p">,</span><span class="w">
+      </span><span class="err">...</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>The endpoint is used during car setup to get list of car brands.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/brands/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<p>None</p>
+
+<h2 id="get-car-models">Get car models</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;brand&gt;/models/"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span>
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="nt">"models"</span><span class="p">:[</span><span class="w">
+      </span><span class="s2">"1 Series"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"3 Series"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"X1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"5 Series"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"X3"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"X5"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"Z4"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"7 Series"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"6 Series"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"X6"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"M Series"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"i8"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>The endpoint retrives car models when a brand name is provided. This is useful during car setup.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;brand&gt;/models/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>brand</td>
+<td>Brand name for which models are to be retrieved</td>
+</tr>
+</tbody></table>
+
+<h2 id="save-car-info">Save car info</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/save/"</span>
+  -H <span class="s2">"ApiKey: &lt;api_key&gt;"</span>
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+  -X POST
+  -d <span class="s1">'{"brand":"&lt;brand&gt;", "model":"&lt;model&gt;", 
+    "name": "&lt;car nickname&gt;", "ln":"&lt;license number&gt;", 
+    "userid":&lt;user_id&gt;}'</span>
+</code></pre>
+
+<blockquote>
+<p>The above method returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="nt">"carId"</span><span class="p">:</span><span class="mi">21</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"imageUrl"</span><span class="p">:</span><span class="s2">"&lt;image_link&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"videoUrl"</span><span class="p">:</span><span class="s2">"&lt;video_link&gt;"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This method is used to save car info when car setup is complete.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://&lt;BASE_URL&gt;/cars/save/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<p>None</p>
+
 <h2 id="speed-limit-settings">Speed Limit Settings</h2>
 <pre class="highlight shell"><code>Set Speed Limit
 
@@ -836,150 +967,6 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;car_id&gt;/download/&lt;
 <tr>
 <td>LabelID</td>
 <td>User input: Label ID printed on the device</td>
-</tr>
-</tbody></table>
-
-<h2 id="get-car-brands">Get car brands</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/brands"</span>
-  -H <span class="s2">"ApiKey: &lt;api_key&gt;"</span>
-  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
-    </span><span class="nt">"brands"</span><span class="p">:[</span><span class="w">
-      </span><span class="s2">"Aston Martin"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"Audi"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"Bentley"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"Caterham"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"Chevrolet"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"Conquest"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"Datsun"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"DC"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"BMW"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"Bugatti"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"Ferrari"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"Fiat"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"Force"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"Ford"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"Honda"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"Hyundai"</span><span class="p">,</span><span class="w">
-      </span><span class="err">...</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>The endpoint is used during car setup to get list of car brands.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/brands/</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<p>None</p>
-
-<h2 id="get-car-models">Get car models</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;brand&gt;/models/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span>
-  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
-    </span><span class="nt">"models"</span><span class="p">:[</span><span class="w">
-      </span><span class="s2">"1 Series"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"3 Series"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"X1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"5 Series"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"X3"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"X5"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"Z4"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"7 Series"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"6 Series"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"X6"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"M Series"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"i8"</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>The endpoint retrives car models when a brand name is provided. This is useful during car setup.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;brand&gt;/models/</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>brand</td>
-<td>Brand name for which models are to be retrieved</td>
-</tr>
-</tbody></table>
-
-<h2 id="save-car-info">Save car info</h2>
-
-<aside class="notice">
- The API method is to be updated
-</aside>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;userID&gt;/save/"</span>
-  -H <span class="s2">"ApiKey: &lt;api_key&gt;"</span>
-  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
-  -X POST
-  -d <span class="s1">'{"brand":"&lt;brand&gt;", "model":"&lt;model&gt;", 
-    "name": "&lt;car nickname&gt;", "ln":"&lt;license number&gt;"}'</span>
-</code></pre>
-
-<blockquote>
-<p>The above method returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
-    </span><span class="nt">"carId"</span><span class="p">:</span><span class="mi">21</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"imageUrl"</span><span class="p">:</span><span class="s2">"&lt;image_link&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"videoUrl"</span><span class="p">:</span><span class="s2">"&lt;video_link&gt;"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This method is used to save car info when car setup is complete.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">POST http://&lt;BASE_URL&gt;/cars/&lt;userID&gt;/save/</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>userID</td>
-<td>The user ID for which the car info is to be saved</td>
 </tr>
 </tbody></table>
 
