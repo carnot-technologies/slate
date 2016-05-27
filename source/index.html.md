@@ -159,6 +159,134 @@ ID| User ID for which cars are to be retrieved
 
 # Cars
 
+## Get car brands
+
+```shell
+curl "http://<BASE_URL>/cars/brands"
+  -H "ApiKey: <api_key>"
+  -H "Authorization: Token <auth_token>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status":true,
+  "message":"Success",
+  "data":{
+    "brands":[
+      "Aston Martin",
+      "Audi",
+      "Bentley",
+      "Caterham",
+      "Chevrolet",
+      "Conquest",
+      "Datsun",
+      "DC",
+      "BMW",
+      "Bugatti",
+      "Ferrari",
+      "Fiat",
+      "Force",
+      "Ford",
+      "Honda",
+      "Hyundai",
+      ...
+    ]
+  }
+}
+```
+The endpoint is used during car setup to get list of car brands.
+
+### HTTP Request
+
+`GET http://<BASE_URL>/cars/brands/`
+
+### URL Parameters
+
+None
+
+## Get car models
+
+```shell
+curl "http://<BASE_URL>/cars/<brand>/models/"
+  -H "Apikey: <api_key>"
+  -H "Authorization: Token <auth_token>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status":true,
+  "message":"success",
+  "data":{
+    "models":[
+      "1 Series",
+      "3 Series",
+      "X1",
+      "5 Series",
+      "X3",
+      "X5",
+      "Z4",
+      "7 Series",
+      "6 Series",
+      "X6",
+      "M Series",
+      "i8"
+    ]
+  }
+}
+```
+The endpoint retrives car models when a brand name is provided. This is useful during car setup.
+
+### HTTP Request
+
+`GET http://<BASE_URL>/cars/<brand>/models/`
+
+### URL Parameters
+
+Parameter|Description
+--------|------------
+brand| Brand name for which models are to be retrieved
+
+## Save car info
+
+```shell
+curl "http://<BASE_URL>/cars/save/"
+  -H "ApiKey: <api_key>"
+  -H "Authorization: Token <auth_token>"
+  -X POST
+  -d '{"brand":"<brand>", "model":"<model>", 
+    "name": "<car nickname>", "ln":"<license number>", 
+    "userid":<user_id>}'
+```
+
+> The above method returns JSON structured like this:
+
+```json
+{
+  "status":true,
+  "message":"Success",
+  "data":{
+    "carId":21,
+    "imageUrl":"<image_link>",
+    "videoUrl":"<video_link>"
+  }
+}
+```
+
+This method is used to save car info when car setup is complete.
+
+### HTTP Request
+
+`POST http://<BASE_URL>/cars/save/`
+
+### URL Parameters
+
+None
+
+
 ## Speed Limit Settings
 
 ```shell
@@ -632,138 +760,6 @@ Parameter|Description
 ---------|-----------
 ID | Car ID with which the device is to be connected
 LabelID | User input: Label ID printed on the device
-
-## Get car brands
-
-```shell
-curl "http://<BASE_URL>/cars/brands"
-  -H "ApiKey: <api_key>"
-  -H "Authorization: Token <auth_token>"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "status":true,
-  "message":"Success",
-  "data":{
-    "brands":[
-      "Aston Martin",
-      "Audi",
-      "Bentley",
-      "Caterham",
-      "Chevrolet",
-      "Conquest",
-      "Datsun",
-      "DC",
-      "BMW",
-      "Bugatti",
-      "Ferrari",
-      "Fiat",
-      "Force",
-      "Ford",
-      "Honda",
-      "Hyundai",
-      ...
-    ]
-  }
-}
-```
-The endpoint is used during car setup to get list of car brands.
-
-### HTTP Request
-
-`GET http://<BASE_URL>/cars/brands/`
-
-### URL Parameters
-
-None
-
-## Get car models
-
-```shell
-curl "http://<BASE_URL>/cars/<brand>/models/"
-  -H "Apikey: <api_key>"
-  -H "Authorization: Token <auth_token>"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "status":true,
-  "message":"success",
-  "data":{
-    "models":[
-      "1 Series",
-      "3 Series",
-      "X1",
-      "5 Series",
-      "X3",
-      "X5",
-      "Z4",
-      "7 Series",
-      "6 Series",
-      "X6",
-      "M Series",
-      "i8"
-    ]
-  }
-}
-```
-The endpoint retrives car models when a brand name is provided. This is useful during car setup.
-
-### HTTP Request
-
-`GET http://<BASE_URL>/cars/<brand>/models/`
-
-### URL Parameters
-
-Parameter|Description
---------|------------
-brand| Brand name for which models are to be retrieved
-
-## Save car info
-
-<aside class="notice">
- The API method is to be updated
-</aside>
-
-```shell
-curl "http://<BASE_URL>/cars/<userID>/save/"
-  -H "ApiKey: <api_key>"
-  -H "Authorization: Token <auth_token>"
-  -X POST
-  -d '{"brand":"<brand>", "model":"<model>", 
-    "name": "<car nickname>", "ln":"<license number>"}'
-```
-
-> The above method returns JSON structured like this:
-
-```json
-{
-  "status":true,
-  "message":"Success",
-  "data":{
-    "carId":21,
-    "imageUrl":"<image_link>",
-    "videoUrl":"<video_link>"
-  }
-}
-```
-
-This method is used to save car info when car setup is complete.
-
-### HTTP Request
-
-`POST http://<BASE_URL>/cars/<userID>/save/`
-
-### URL Parameters
-
-Parameter|Description
----------|-----------
-userID | The user ID for which the car info is to be saved
 
 
 # Devices
