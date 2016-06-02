@@ -1111,7 +1111,7 @@ Useful for the Device Info screen on the app. </p>
   -H <span class="s2">"Content-Type: application/json"</span> 
   -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
   -X POST 
-  -d <span class="s1">'{"email":"abc@xyz.com","password":"xyz","name":"John Doe"}'</span> 
+  -d <span class="s1">'{"email":"abc@xyz.com","password":"xyz","name":"John Doe", "phone": 9988776655}'</span> 
 </code></pre>
 
 <blockquote>
@@ -1124,7 +1124,8 @@ Useful for the Device Info screen on the app. </p>
     </span><span class="p">{</span><span class="w">
         </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ae4e00bf6a08cf9cd56a37b99d0162e69db4fd74"</span><span class="p">,</span><span class="w"> 
         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43</span><span class="p">,</span><span class="w"> 
-        </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc@xyz.com"</span><span class="w">
+        </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc@xyz.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="mi">9988776655</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -1153,6 +1154,10 @@ Useful for the Device Info screen on the app. </p>
 <tr>
 <td>name</td>
 <td>Name of the registering user</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>10-digit phone number</td>
 </tr>
 </tbody></table>
 
@@ -1184,16 +1189,22 @@ Useful for the Device Info screen on the app. </p>
 <td>email</td>
 <td>Confirmation of the email id the user entered. Email id also serves as the user name</td>
 </tr>
+<tr>
+<td>phone</td>
+<td>mandatory field during registration, it could also be used with login instead of email</td>
+</tr>
 </tbody></table>
 
 <h2 id="login">Login</h2>
 
 <p>This endpoint logs an existing user into the Carnot backend. Successfully logged in users get access to an auth token that should be used in subsequent authenticated requests. </p>
+
+<p>The login can be done using email or phone.</p>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/login/"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"Apikey: &lt;api_key&gt;"</span>  
   -X POST 
-  -d <span class="s1">'{"email":"abc@xyz.com","password":"xyz"}'</span>
+  -d <span class="s1">'{"email":"&lt;email/phone&gt;","password":"xyz"}'</span>
 </code></pre>
 
 <blockquote>
@@ -1206,7 +1217,8 @@ Useful for the Device Info screen on the app. </p>
       </span><span class="p">{</span><span class="w">
         </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ae4e00bf6a08cf9cd56a37b99d0162e69db4fd74"</span><span class="p">,</span><span class="w"> 
         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43</span><span class="p">,</span><span class="w"> 
-        </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc@xyz.com"</span><span class="w">
+        </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc@xyz.com"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="mi">9988776655</span><span class="w">
       </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -1227,7 +1239,7 @@ Useful for the Device Info screen on the app. </p>
 </thead><tbody>
 <tr>
 <td>email</td>
-<td>Email address of the user attempting to login. This should be the email used when registering</td>
+<td>Email address (or phone number) of the user attempting to login. This should be the email or phone used when registering</td>
 </tr>
 <tr>
 <td>password</td>
@@ -1256,6 +1268,10 @@ Useful for the Device Info screen on the app. </p>
 <td>Confirmation of the email id the user entered. Email id also serves as the user name</td>
 </tr>
 <tr>
+<td>phone</td>
+<td>Phone number of current user</td>
+</tr>
+<tr>
 <td>status</td>
 <td>true if successful, false otherwise</td>
 </tr>
@@ -1272,7 +1288,7 @@ Useful for the Device Info screen on the app. </p>
   -H <span class="s2">"Content-Type: application/json"</span> 
   -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
   -X POST 
-  -d <span class="s1">'{"email":"abc@xyz.com"}'</span> 
+  -d <span class="s1">'{"email":"&lt;email/phone&gt;"}'</span>
 </code></pre>
 
 <blockquote>
@@ -1299,6 +1315,10 @@ Useful for the Device Info screen on the app. </p>
 <tr>
 <td>email</td>
 <td>Email address of the user logging out of system.</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>Phone number used during registration</td>
 </tr>
 </tbody></table>
 
