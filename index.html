@@ -924,33 +924,34 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;car_id&gt;/download/&lt;
 </tbody></table>
 
 <h2 id="authenticate-with-device">Authenticate with Device</h2>
-
-<aside class="notice">
-  API method to be updated  
-</aside>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/pluggedin/&lt;LabelID&gt;/"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/getkey/"</span>
   -H <span class="s2">"ApiKey: &lt;api_key&gt;"</span>
   -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+  -X POST
+  -d <span class="s1">'{"printedPasscode":"&lt;16-digit passcode&gt;"}'</span>
 </code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
-    </span><span class="nt">"key"</span><span class="p">:</span><span class="s2">"654321"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"devid"</span><span class="p">:</span><span class="mi">43</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> 
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"nrfid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w"> 
+      </span><span class="nt">"stmid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C0001"</span><span class="p">,</span><span class="w"> 
+      </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5634"</span><span class="p">,</span><span class="w"> 
+      </span><span class="nt">"device_pk"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
+    </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This endpoint is used to authenticate device during setup process. </p>
+<p>This endpoint is used to authenticate device during setup process. The response data can then be used to show device info.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/pluggedin/&lt;LabelID&gt;/</code></p>
+<p><code class="prettyprint">POST http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/getkey/</code></p>
 
 <h3 id="url-parameters">URL Parameters</h3>
 
@@ -965,8 +966,34 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;car_id&gt;/download/&lt;
 <td>Car ID with which the device is to be connected</td>
 </tr>
 <tr>
-<td>LabelID</td>
-<td>User input: Label ID printed on the device</td>
+<td>printedPasscode</td>
+<td>16-digit passcode printed on device</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>nfrid</td>
+<td>NFR ID of the device</td>
+</tr>
+<tr>
+<td>stmid</td>
+<td>STM ID of the device</td>
+</tr>
+<tr>
+<td>key</td>
+<td>The key to be sent be to device over Bluetooth for authentication</td>
+</tr>
+<tr>
+<td>device_pk</td>
+<td>Device ID to be used for any subsequent device specific API&rsquo;s</td>
 </tr>
 </tbody></table>
 
