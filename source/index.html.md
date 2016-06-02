@@ -901,7 +901,7 @@ curl "http://<BASE_URL>/users/register/"
   -H "Content-Type: application/json" 
   -H "Apikey: <api_key>" 
   -X POST 
-  -d '{"email":"abc@xyz.com","password":"xyz","name":"John Doe"}' 
+  -d '{"email":"abc@xyz.com","password":"xyz","name":"John Doe", "phone": 9988776655}' 
 ```
 
 > The above command returns JSON structured like this:
@@ -914,7 +914,8 @@ curl "http://<BASE_URL>/users/register/"
     {
         "token": "ae4e00bf6a08cf9cd56a37b99d0162e69db4fd74", 
         "id": 43, 
-        "email": "abc@xyz.com"
+        "email": "abc@xyz.com",
+        "phone": 9988776655
     }
 }
 
@@ -930,7 +931,8 @@ Parameter | Description
 --------- | -----------
 email | Email address of the registering user. This eventually becomes the unique username required for login 
 password | Password of the registering user
-name | Name of the registering user  
+name | Name of the registering user 
+phone | 10-digit phone number 
 
 ### Response Parameters
 
@@ -941,18 +943,20 @@ message| Message indicating registration status
 token | The auth token to be used to authenticate this user in subsequent requests
 id | The id of the user to be included in the URL in subsequent requests where id is required
 email | Confirmation of the email id the user entered. Email id also serves as the user name
-
+phone | mandatory field during registration, it could also be used with login instead of email
 
 ## Login
 
 This endpoint logs an existing user into the Carnot backend. Successfully logged in users get access to an auth token that should be used in subsequent authenticated requests. 
+
+The login can be done using email or phone.
 
 ```shell
 curl "http://<BASE_URL>/users/login/"
   -H "Content-Type: application/json"
   -H "Apikey: <api_key>"  
   -X POST 
-  -d '{"email":"abc@xyz.com","password":"xyz"}'
+  -d '{"email":"<email/phone>","password":"xyz"}'
 ```
 
 > The above command returns JSON structured like this:
@@ -965,7 +969,8 @@ curl "http://<BASE_URL>/users/login/"
       {
         "token": "ae4e00bf6a08cf9cd56a37b99d0162e69db4fd74", 
         "id": 43, 
-        "email": "abc@xyz.com"
+        "email": "abc@xyz.com",
+        "phone": 9988776655
       }
 }
 
@@ -980,7 +985,7 @@ curl "http://<BASE_URL>/users/login/"
 
 Parameter | Description
 --------- | -----------
-email | Email address of the user attempting to login. This should be the email used when registering 
+email | Email address (or phone number) of the user attempting to login. This should be the email or phone used when registering 
 password | Password of the registering user
 
 ### Response Parameters
@@ -990,6 +995,7 @@ Parameter| Description
 token |The auth token to be used to authenticate this user in subsequent requests
 id | The id of the user to be included in the URL in subsequent requests where id is required
 email | Confirmation of the email id the user entered. Email id also serves as the user name
+phone | Phone number of current user
 status |true if successful, false otherwise
 message |Message indicating login status 
 
@@ -1003,7 +1009,7 @@ curl "http://<BASE_URL>/users/logout/"
   -H "Content-Type: application/json" 
   -H "Apikey: <api_key>" 
   -X POST 
-  -d '{"email":"abc@xyz.com"}' 
+  -d '{"email":"<email/phone>"}'
 ```
 
 > The above command returns JSON structured like this:
@@ -1024,6 +1030,7 @@ curl "http://<BASE_URL>/users/logout/"
 Parameter | Description
 --------- | -----------
 email | Email address of the user logging out of system.
+phone | Phone number used during registration
 
 ### Response Parameters
 
