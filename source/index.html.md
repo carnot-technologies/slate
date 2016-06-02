@@ -725,46 +725,53 @@ ID | The ID of the car for which status is to be retrieved
 
 ## Authenticate with Device
 
-<aside class="notice">
-  API method to be updated  
-</aside>
-
-
 ```shell
-curl "http://<BASE_URL>/cars/<ID>/pluggedin/<LabelID>/"
+curl "http://<BASE_URL>/cars/<ID>/getkey/"
   -H "ApiKey: <api_key>"
   -H "Authorization: Token <auth_token>"
+  -X POST
+  -d '{"printedPasscode":"<16-digit passcode>"}'
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-  "status":true,
-  "message":"success",
-  "data":{
-    "key":"654321",
-    "devid":43
-  }
+  "status": true, 
+  "message": "Success", 
+  "data": 
+    {
+      "nrfid": "123456", 
+      "stmid": "C0001", 
+      "key": "5634", 
+      "device_pk": 4
+    }
 }
 ```
 
-This endpoint is used to authenticate device during setup process. 
+This endpoint is used to authenticate device during setup process. The response data can then be used to show device info.
 
 ### HTTP Request
 
-`GET http://<BASE_URL>/cars/<ID>/pluggedin/<LabelID>/`
+`POST http://<BASE_URL>/cars/<ID>/getkey/`
 
 ### URL Parameters
 
 Parameter|Description
 ---------|-----------
 ID | Car ID with which the device is to be connected
-LabelID | User input: Label ID printed on the device
+printedPasscode | 16-digit passcode printed on device
 
+### Response Parameters
+
+Parameter|Description
+---------|-----------
+nfrid | NFR ID of the device
+stmid | STM ID of the device
+key | The key to be sent be to device over Bluetooth for authentication
+device_pk | Device ID to be used for any subsequent device specific API's
 
 # Devices
-
 
 ## Get Device Info
 
