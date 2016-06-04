@@ -254,6 +254,8 @@ brand| Brand name for which models are to be retrieved
 ## Save car info
 
 ```shell
+Add new car details:
+
 curl "http://<BASE_URL>/cars/save/"
   -H "ApiKey: <api_key>"
   -H "Authorization: Token <auth_token>"
@@ -277,7 +279,29 @@ curl "http://<BASE_URL>/cars/save/"
 }
 ```
 
-This method is used to save car info when car setup is complete.
+```shell
+
+Update existing car details
+
+curl "http://<BASE_URL>/cars/save/"
+  -H "ApiKey: <api_key>"
+  -H "Authorization: Token <auth_token>"
+  -X POST
+  -d '{"brand":"<brand>", "model":"<model>", 
+    "name": "<car nickname>", "ln":"<license number>", 
+    "userid":<user_id>, "carid": <ID of car to be updated>}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status": true, 
+  "message": "success"
+}
+```
+
+This method is used to save or update car info when car setup is complete.
 
 ### HTTP Request
 
@@ -285,7 +309,18 @@ This method is used to save car info when car setup is complete.
 
 ### URL Parameters
 
-None
+Parameter|Description
+---------|-----------
+brand | Selected brand of car
+model | Selected car model
+name | Car nickname given
+ln | license number of car
+userid | ID of user to which the car belongs
+carid | ID of car to be updated
+
+<aside class="note">
+  Send <i> carid </i> in POST data only when car details are to be updated
+</aside>
 
 
 ## Speed Limit Settings
@@ -951,6 +986,46 @@ token | The auth token to be used to authenticate this user in subsequent reques
 id | The id of the user to be included in the URL in subsequent requests where id is required
 email | Confirmation of the email id the user entered. Email id also serves as the user name
 phone | mandatory field during registration, it could also be used with login instead of email
+
+## Phone verification
+
+This API is used after user registration, to verify the phone number.
+
+```shell
+curl "http://<BASE_URL>/users/<ID>/verify/"
+  -H "Apikey: <api_key>"
+  -H "Authorization: Token <auth_token>"
+  -X POST 
+  -d '{"phone":"<phone>","otp":"<otp received>"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status" : true,
+  "message": "success"
+}
+```
+
+### HTTP Request
+
+`POST https://<BASE_URL>/users/<ID>/verify/`
+
+### URL Parameters
+
+Parameter | Description
+----------|------------
+ID | ID of the user
+phone | phone number of the user
+otp | OTP received by the user
+
+### Response Parameters
+
+Parameter | Description
+----------|------------
+status | verification status, true when success, false otherwise
+message | success on verification, <i> invalid OTP </i> on failure
 
 ## Login
 
