@@ -372,7 +372,9 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/users/&lt;ID&gt;/econtacts/"</spa
 </tbody></table>
 
 <h2 id="save-car-info">Save car info</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/save/"</span>
+<pre class="highlight shell"><code>Add new car details:
+
+curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/save/"</span>
   -H <span class="s2">"ApiKey: &lt;api_key&gt;"</span>
   -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
   -X POST
@@ -394,8 +396,28 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/users/&lt;ID&gt;/econtacts/"</spa
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<pre class="highlight shell"><code>
+Update existing car details
 
-<p>This method is used to save car info when car setup is complete.</p>
+curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/save/"</span>
+  -H <span class="s2">"ApiKey: &lt;api_key&gt;"</span>
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+  -X POST
+  -d <span class="s1">'{"brand":"&lt;brand&gt;", "model":"&lt;model&gt;", 
+    "name": "&lt;car nickname&gt;", "ln":"&lt;license number&gt;", 
+    "userid":&lt;user_id&gt;, "carid": &lt;ID of car to be updated&gt;}'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This method is used to save or update car info when car setup is complete.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -403,7 +425,41 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/users/&lt;ID&gt;/econtacts/"</spa
 
 <h3 id="url-parameters">URL Parameters</h3>
 
-<p>None</p>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>brand</td>
+<td>Selected brand of car</td>
+</tr>
+<tr>
+<td>model</td>
+<td>Selected car model</td>
+</tr>
+<tr>
+<td>name</td>
+<td>Car nickname given</td>
+</tr>
+<tr>
+<td>ln</td>
+<td>license number of car</td>
+</tr>
+<tr>
+<td>userid</td>
+<td>ID of user to which the car belongs</td>
+</tr>
+<tr>
+<td>carid</td>
+<td>ID of car to be updated</td>
+</tr>
+</tbody></table>
+
+<aside class="note">
+  Send <i> carid </i> in POST data only when car details are to be updated
+</aside>
 
 <h2 id="speed-limit-settings">Speed Limit Settings</h2>
 <pre class="highlight shell"><code>Set Speed Limit
@@ -1219,6 +1275,69 @@ Useful for the Device Info screen on the app. </p>
 <tr>
 <td>phone</td>
 <td>mandatory field during registration, it could also be used with login instead of email</td>
+</tr>
+</tbody></table>
+
+<h2 id="phone-verification">Phone verification</h2>
+
+<p>This API is used after user registration, to verify the phone number.</p>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/&lt;ID&gt;/verify/"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span>
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+  -X POST 
+  -d <span class="s1">'{"phone":"&lt;phone&gt;","otp":"&lt;otp received&gt;"}'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://&lt;BASE_URL&gt;/users/&lt;ID&gt;/verify/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>ID of the user</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>phone number of the user</td>
+</tr>
+<tr>
+<td>otp</td>
+<td>OTP received by the user</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>verification status, true when success, false otherwise</td>
+</tr>
+<tr>
+<td>message</td>
+<td>success on verification, <i> invalid OTP </i> on failure</td>
 </tr>
 </tbody></table>
 
