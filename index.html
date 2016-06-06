@@ -232,6 +232,73 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/users/&lt;ID&gt;/econtacts/"</spa
 </tr>
 </tbody></table>
 
+<h2 id="rider-profile">Rider Profile</h2>
+<pre class="highlight shell"><code>
+Get Rider Profile
+
+curl <span class="s2">"https://&lt;BASE_URL&gt;/users/&lt;ID&gt;/settings/"</span>
+  -H <span class="s2">"ApiKey: &lt;api_key&gt;"</span>
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"nm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;full name&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"gd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;gender&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;rider age&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;profile pic link&gt;"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<pre class="highlight shell"><code>
+Set Rider Profile details
+
+curl <span class="s2">"https://&lt;BASE_URL&gt;/users/&lt;ID&gt;/settings/"</span>
+  -H <span class="s2">"ApiKey: &lt;api_key&gt;"</span>
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+  -X POST
+  -d <span class="s1">'{"nm": "&lt;rider name&gt;", "ag": &lt;age&gt;, "gd": "&lt;gender&gt;", "content_type": "image/&lt;extension&gt;",
+      "file": "&lt;base64 encoded image byte string&gt;"}'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>The endpoint is used to set and retrive Rider profile info.</p>
+
+<h3 id="http-request-get-profile">HTTP Request (Get profile)</h3>
+
+<p><code class="prettyprint">GET https://&lt;BASE URL&gt;/users/&lt;ID&gt;/settings/</code></p>
+
+<h3 id="http-request-set-profile">HTTP Request (Set profile)</h3>
+
+<p><code class="prettyprint">POST https://&lt;BASE URL&gt;/users/&lt;ID&gt;/settings/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>Id of the user</td>
+</tr>
+</tbody></table>
+
 <h2 id="get-user-related-cars">Get user related cars</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/&lt;ID&gt;/cars/"</span>
   -H <span class="s2">"ApiKey: &lt;api_key&gt;"</span>
@@ -275,7 +342,7 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/users/&lt;ID&gt;/econtacts/"</spa
 <h1 id="cars">Cars</h1>
 
 <h2 id="get-car-brands">Get car brands</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/brands"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/brands/"</span>
   -H <span class="s2">"ApiKey: &lt;api_key&gt;"</span>
   -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
@@ -460,6 +527,65 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/save/"</span>
 <aside class="note">
   Send <i> carid </i> in POST data only when car details are to be updated
 </aside>
+
+<h2 id="get-car-info">Get car info</h2>
+<pre class="highlight shell"><code>Add new car details:
+
+curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/overview/"</span>
+  -H <span class="s2">"ApiKey: &lt;api_key&gt;"</span>
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+</code></pre>
+
+<blockquote>
+<p>The above method returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="mi">21</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"ln"</span><span class="p">:</span><span class="s2">"MH01HN3002"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"brand"</span><span class="p">:</span><span class="s2">"Honda"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jazz"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This method is used to get car info when car setup is complete.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/overview/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>brand</td>
+<td>Selected brand of car</td>
+</tr>
+<tr>
+<td>model</td>
+<td>Selected car model</td>
+</tr>
+<tr>
+<td>name</td>
+<td>Car nickname given</td>
+</tr>
+<tr>
+<td>ln</td>
+<td>license number of car</td>
+</tr>
+<tr>
+<td>ID</td>
+<td>ID of car to be retrieved</td>
+</tr>
+</tbody></table>
 
 <h2 id="speed-limit-settings">Speed Limit Settings</h2>
 <pre class="highlight shell"><code>Set Speed Limit
