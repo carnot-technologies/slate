@@ -1313,6 +1313,119 @@ Useful for the Device Info screen on the app. </p>
 
 <h1 id="accounts">Accounts</h1>
 
+<h2 id="send-otp-to-phone">Send OTP to Phone</h2>
+
+<p>This API is used as pre-registration, to send OTP to input phone number.</p>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/getotp/"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span>
+  -X POST 
+  -d <span class="s1">'{"phone":&lt;phone&gt;}'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New code generated and user was sent the code"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://&lt;BASE_URL&gt;/users/getotp/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>phone</td>
+<td>phone number of the user</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>OTP send status, true when success, false otherwise</td>
+</tr>
+<tr>
+<td>message</td>
+<td>success on OTP sent, on failure re-verify</td>
+</tr>
+</tbody></table>
+
+<h2 id="phone-verification">Phone verification</h2>
+
+<p>This API is used after user registration, to verify the phone number.</p>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/verify/"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span>
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+  -X POST 
+  -d <span class="s1">'{"phone":&lt;phone&gt;,"otp":"&lt;otp received&gt;"}'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST https://&lt;BASE_URL&gt;/users/verify/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>phone</td>
+<td>phone number of the user</td>
+</tr>
+<tr>
+<td>otp</td>
+<td>OTP received by the user</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>verification status, true when success, false otherwise</td>
+</tr>
+<tr>
+<td>message</td>
+<td>success on verification, <i> invalid OTP </i> on failure</td>
+</tr>
+</tbody></table>
+
 <h2 id="register">Register</h2>
 
 <p>This endpoint registers a new user to the Carnot backend. </p>
@@ -1401,69 +1514,6 @@ Useful for the Device Info screen on the app. </p>
 <tr>
 <td>phone</td>
 <td>mandatory field during registration, it could also be used with login instead of email</td>
-</tr>
-</tbody></table>
-
-<h2 id="phone-verification">Phone verification</h2>
-
-<p>This API is used after user registration, to verify the phone number.</p>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/&lt;ID&gt;/verify/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span>
-  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
-  -X POST 
-  -d <span class="s1">'{"phone":"&lt;phone&gt;","otp":"&lt;otp received&gt;"}'</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">POST https://&lt;BASE_URL&gt;/users/&lt;ID&gt;/verify/</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>ID of the user</td>
-</tr>
-<tr>
-<td>phone</td>
-<td>phone number of the user</td>
-</tr>
-<tr>
-<td>otp</td>
-<td>OTP received by the user</td>
-</tr>
-</tbody></table>
-
-<h3 id="response-parameters">Response Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>verification status, true when success, false otherwise</td>
-</tr>
-<tr>
-<td>message</td>
-<td>success on verification, <i> invalid OTP </i> on failure</td>
 </tr>
 </tbody></table>
 
