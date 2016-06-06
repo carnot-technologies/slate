@@ -1039,6 +1039,7 @@ ID | The ID of the device, the data of which is to be retrieved
 
 # Accounts
 
+
 ## Send OTP to Phone
 
 This API is used as pre-registration, to send OTP to input phone number.
@@ -1079,7 +1080,7 @@ message | success on OTP sent, on failure re-verify
 
 ## Phone verification
 
-This API is used after user registration, to verify the phone number.
+This API is used before registration, to verify the phone number.
 
 ```shell
 curl "http://<BASE_URL>/users/verify/"
