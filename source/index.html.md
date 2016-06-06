@@ -1039,6 +1039,84 @@ ID | The ID of the device, the data of which is to be retrieved
 
 # Accounts
 
+## Send OTP to Phone
+
+This API is used as pre-registration, to send OTP to input phone number.
+
+```shell
+curl "http://<BASE_URL>/users/getotp/"
+  -H "Apikey: <api_key>"
+  -X POST 
+  -d '{"phone":<phone>}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status" : true,
+  "message": "New code generated and user was sent the code"
+}
+```
+
+### HTTP Request
+
+`POST https://<BASE_URL>/users/getotp/`
+
+### URL Parameters
+
+Parameter | Description
+----------|------------
+phone | phone number of the user
+
+### Response Parameters
+
+Parameter | Description
+----------|------------
+status | OTP send status, true when success, false otherwise
+message | success on OTP sent, on failure re-verify
+
+
+## Phone verification
+
+This API is used after user registration, to verify the phone number.
+
+```shell
+curl "http://<BASE_URL>/users/verify/"
+  -H "Apikey: <api_key>"
+  -H "Authorization: Token <auth_token>"
+  -X POST 
+  -d '{"phone":<phone>,"otp":"<otp received>"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status" : true,
+  "message": "success"
+}
+```
+
+### HTTP Request
+
+`POST https://<BASE_URL>/users/verify/`
+
+### URL Parameters
+
+Parameter | Description
+----------|------------
+phone | phone number of the user
+otp | OTP received by the user
+
+### Response Parameters
+
+Parameter | Description
+----------|------------
+status | verification status, true when success, false otherwise
+message | success on verification, <i> invalid OTP </i> on failure
+
+
 ## Register
 
 This endpoint registers a new user to the Carnot backend. 
@@ -1092,45 +1170,6 @@ id | The id of the user to be included in the URL in subsequent requests where i
 email | Confirmation of the email id the user entered. Email id also serves as the user name
 phone | mandatory field during registration, it could also be used with login instead of email
 
-## Phone verification
-
-This API is used after user registration, to verify the phone number.
-
-```shell
-curl "http://<BASE_URL>/users/<ID>/verify/"
-  -H "Apikey: <api_key>"
-  -H "Authorization: Token <auth_token>"
-  -X POST 
-  -d '{"phone":"<phone>","otp":"<otp received>"}'
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "status" : true,
-  "message": "success"
-}
-```
-
-### HTTP Request
-
-`POST https://<BASE_URL>/users/<ID>/verify/`
-
-### URL Parameters
-
-Parameter | Description
-----------|------------
-ID | ID of the user
-phone | phone number of the user
-otp | OTP received by the user
-
-### Response Parameters
-
-Parameter | Description
-----------|------------
-status | verification status, true when success, false otherwise
-message | success on verification, <i> invalid OTP </i> on failure
 
 ## Login
 
