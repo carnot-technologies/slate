@@ -123,6 +123,69 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the user whose data is to be retrieved 
 
+## Rider Profile
+
+```shell
+
+Get Rider Profile
+
+curl "https://<BASE_URL>/users/<ID>/settings/"
+  -H "ApiKey: <api_key>"
+  -H "Authorization: Token <auth_token>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status": true,
+  "message": "success",
+  "data": {
+    "nm": "<full name>",
+    "gd": "<gender>",
+    "ag": "<rider age>",
+    "photo": "<profile pic link>"
+  }
+}
+```
+
+```shell
+
+Set Rider Profile details
+
+curl "https://<BASE_URL>/users/<ID>/settings/"
+  -H "ApiKey: <api_key>"
+  -H "Authorization: Token <auth_token>"
+  -X POST
+  -d '{"nm": "<rider name>", "ag": <age>, "gd": "<gender>", "content_type": "image/<extension>",
+      "file": "<base64 encoded image byte string>"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status": true,
+  "message": "success"
+}
+```
+
+The endpoint is used to set and retrive Rider profile info.
+
+### HTTP Request (Get profile)
+
+`GET https://<BASE URL>/users/<ID>/settings/`
+
+### HTTP Request (Set profile)
+
+`POST https://<BASE URL>/users/<ID>/settings/`
+
+### URL Parameters
+
+Parameter | Description
+----------|------------
+ID | Id of the user
+
 ## Get user related cars
 
 ```shell
@@ -163,7 +226,7 @@ ID| User ID for which cars are to be retrieved
 ## Get car brands
 
 ```shell
-curl "http://<BASE_URL>/cars/brands"
+curl "http://<BASE_URL>/cars/brands/"
   -H "ApiKey: <api_key>"
   -H "Authorization: Token <auth_token>"
 ```
@@ -321,6 +384,48 @@ carid | ID of car to be updated
 <aside class="note">
   Send <i> carid </i> in POST data only when car details are to be updated
 </aside>
+
+
+## Get car info
+
+```shell
+Add new car details:
+
+curl "http://<BASE_URL>/cars/<ID>/overview/"
+  -H "ApiKey: <api_key>"
+  -H "Authorization: Token <auth_token>"
+```
+
+> The above method returns JSON structured like this:
+
+```json
+{
+  "status":true,
+  "message":"Success",
+  "data":{
+    "name":21,
+    "ln":"MH01HN3002",
+    "brand":"Honda",
+    "model": "Jazz"
+  }
+}
+```
+
+This method is used to get car info when car setup is complete.
+
+### HTTP Request
+
+`GET http://<BASE_URL>/cars/<ID>/overview/`
+
+### URL Parameters
+
+Parameter|Description
+---------|-----------
+brand | Selected brand of car
+model | Selected car model
+name | Car nickname given
+ln | license number of car
+ID | ID of car to be retrieved
 
 
 ## Speed Limit Settings
