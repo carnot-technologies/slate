@@ -438,6 +438,51 @@ curl <span class="s2">"https://&lt;BASE_URL&gt;/users/&lt;ID&gt;/settings/"</spa
 </tr>
 </tbody></table>
 
+<h2 id="get-plug-in-adapter-links">Get Plug-in adapter Links</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/save/"</span>
+  -H <span class="s2">"ApiKey: &lt;api_key&gt;"</span>
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+  -X POST
+  -d <span class="s1">'{"brand":"&lt;brand&gt;", "model":"&lt;model&gt;"}'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON strctured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
+    </span><span class="nt">"imageUrl"</span><span class="p">:</span><span class="s2">"&lt;image_link&gt;"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"videoUrl"</span><span class="p">:</span><span class="s2">"&lt;video_link&gt;"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This method is used for displaying OBD port reference video for a selected brand and model.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://&lt;BASE_URL&gt;/cars/getlinks/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>brand</td>
+<td>Car brand</td>
+</tr>
+<tr>
+<td>model</td>
+<td>Car model</td>
+</tr>
+</tbody></table>
+
 <h2 id="save-car-info">Save car info</h2>
 <pre class="highlight shell"><code>Add new car details:
 
@@ -447,7 +492,7 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/save/"</span>
   -X POST
   -d <span class="s1">'{"brand":"&lt;brand&gt;", "model":"&lt;model&gt;", 
     "name": "&lt;car nickname&gt;", "ln":"&lt;license number&gt;", 
-    "userid":&lt;user_id&gt;}'</span>
+    "userid":&lt;user_id&gt;, "printedPasscode":"&lt;16-digit passcode&gt;"}'</span>
 </code></pre>
 
 <blockquote>
@@ -458,8 +503,10 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/save/"</span>
   </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
     </span><span class="nt">"carId"</span><span class="p">:</span><span class="mi">21</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"imageUrl"</span><span class="p">:</span><span class="s2">"&lt;image_link&gt;"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"videoUrl"</span><span class="p">:</span><span class="s2">"&lt;video_link&gt;"</span><span class="w">
+    </span><span class="nt">"device_pk"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"nrfid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"stmid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C0001"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5634"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -484,7 +531,7 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/save/"</span>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>This method is used to save or update car info when car setup is complete.</p>
+<p>This method is used to save car and it&rsquo;s associated device or update car info when car setup is complete.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -521,6 +568,40 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/save/"</span>
 <tr>
 <td>carid</td>
 <td>ID of car to be updated</td>
+</tr>
+<tr>
+<td>printedPasscode</td>
+<td>16-digit passcode printed on device</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>carId</td>
+<td>ID of the saved car, to be used for any subsequent Car APi&rsquo;s</td>
+</tr>
+<tr>
+<td>nfrid</td>
+<td>NFR ID of the device</td>
+</tr>
+<tr>
+<td>stmid</td>
+<td>STM ID of the device</td>
+</tr>
+<tr>
+<td>key</td>
+<td>The key to be sent be to device over Bluetooth for authentication</td>
+</tr>
+<tr>
+<td>device_pk</td>
+<td>Device ID to be used for any subsequent device specific API&rsquo;s</td>
 </tr>
 </tbody></table>
 
@@ -1102,80 +1183,6 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;car_id&gt;/download/&lt;
 <tr>
 <td>ID</td>
 <td>The ID of the car for which status is to be retrieved</td>
-</tr>
-</tbody></table>
-
-<h2 id="authenticate-with-device">Authenticate with Device</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/getkey/"</span>
-  -H <span class="s2">"ApiKey: &lt;api_key&gt;"</span>
-  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
-  -X POST
-  -d <span class="s1">'{"printedPasscode":"&lt;16-digit passcode&gt;"}'</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> 
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"nrfid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w"> 
-      </span><span class="nt">"stmid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C0001"</span><span class="p">,</span><span class="w"> 
-      </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5634"</span><span class="p">,</span><span class="w"> 
-      </span><span class="nt">"device_pk"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
-<p>This endpoint is used to authenticate device during setup process. The response data can then be used to show device info.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">POST http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/getkey/</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>Car ID with which the device is to be connected</td>
-</tr>
-<tr>
-<td>printedPasscode</td>
-<td>16-digit passcode printed on device</td>
-</tr>
-</tbody></table>
-
-<h3 id="response-parameters">Response Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>nfrid</td>
-<td>NFR ID of the device</td>
-</tr>
-<tr>
-<td>stmid</td>
-<td>STM ID of the device</td>
-</tr>
-<tr>
-<td>key</td>
-<td>The key to be sent be to device over Bluetooth for authentication</td>
-</tr>
-<tr>
-<td>device_pk</td>
-<td>Device ID to be used for any subsequent device specific API&rsquo;s</td>
 </tr>
 </tbody></table>
 
