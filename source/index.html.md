@@ -314,6 +314,43 @@ Parameter|Description
 --------|------------
 brand| Brand name for which models are to be retrieved
 
+## Get Plug-in adapter Links
+
+```shell
+curl "http://<BASE_URL>/cars/save/"
+  -H "ApiKey: <api_key>"
+  -H "Authorization: Token <auth_token>"
+  -X POST
+  -d '{"brand":"<brand>", "model":"<model>"}'
+```
+
+> The above command returns JSON strctured like this:
+
+```json
+{
+  "status":true,
+  "message":"Success",
+  "data":{
+    "imageUrl":"<image_link>",
+    "videoUrl":"<video_link>"
+  }
+}
+```
+
+This method is used for displaying OBD port reference video for a selected brand and model.
+
+### HTTP Request
+
+`POST http://<BASE_URL>/cars/getlinks/`
+
+### URL Parameters
+
+Parameter|Description
+---------|-----------
+brand | Car brand
+model | Car model
+
+
 ## Save car info
 
 ```shell
@@ -325,7 +362,7 @@ curl "http://<BASE_URL>/cars/save/"
   -X POST
   -d '{"brand":"<brand>", "model":"<model>", 
     "name": "<car nickname>", "ln":"<license number>", 
-    "userid":<user_id>}'
+    "userid":<user_id>, "printedPasscode":"<16-digit passcode>"}'
 ```
 
 > The above method returns JSON structured like this:
@@ -336,8 +373,10 @@ curl "http://<BASE_URL>/cars/save/"
   "message":"Success",
   "data":{
     "carId":21,
-    "imageUrl":"<image_link>",
-    "videoUrl":"<video_link>"
+    "device_pk": 42,
+    "nrfid": "123456", 
+    "stmid": "C0001", 
+    "key": "5634"
   }
 }
 ```
@@ -364,7 +403,7 @@ curl "http://<BASE_URL>/cars/save/"
 }
 ```
 
-This method is used to save or update car info when car setup is complete.
+This method is used to save car and it's associated device or update car info when car setup is complete.
 
 ### HTTP Request
 
@@ -380,6 +419,18 @@ name | Car nickname given
 ln | license number of car
 userid | ID of user to which the car belongs
 carid | ID of car to be updated
+printedPasscode | 16-digit passcode printed on device
+
+### Response Parameters
+
+Parameter|Description
+---------|-----------
+carId | ID of the saved car, to be used for any subsequent Car APi's
+nfrid | NFR ID of the device
+stmid | STM ID of the device
+key | The key to be sent be to device over Bluetooth for authentication
+device_pk | Device ID to be used for any subsequent device specific API's
+
 
 <aside class="note">
   Send <i> carid </i> in POST data only when car details are to be updated
@@ -862,54 +913,6 @@ This endpoint retrieves current car status including speed, location and on trip
 Parameter|Description
 ---------|-----------
 ID | The ID of the car for which status is to be retrieved
-
-## Authenticate with Device
-
-```shell
-curl "http://<BASE_URL>/cars/<ID>/getkey/"
-  -H "ApiKey: <api_key>"
-  -H "Authorization: Token <auth_token>"
-  -X POST
-  -d '{"printedPasscode":"<16-digit passcode>"}'
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "status": true, 
-  "message": "Success", 
-  "data": 
-    {
-      "nrfid": "123456", 
-      "stmid": "C0001", 
-      "key": "5634", 
-      "device_pk": 4
-    }
-}
-```
-
-This endpoint is used to authenticate device during setup process. The response data can then be used to show device info.
-
-### HTTP Request
-
-`POST http://<BASE_URL>/cars/<ID>/getkey/`
-
-### URL Parameters
-
-Parameter|Description
----------|-----------
-ID | Car ID with which the device is to be connected
-printedPasscode | 16-digit passcode printed on device
-
-### Response Parameters
-
-Parameter|Description
----------|-----------
-nfrid | NFR ID of the device
-stmid | STM ID of the device
-key | The key to be sent be to device over Bluetooth for authentication
-device_pk | Device ID to be used for any subsequent device specific API's
 
 # Devices
 
