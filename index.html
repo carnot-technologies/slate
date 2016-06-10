@@ -1877,7 +1877,7 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/speedlimit/"</spa
 <h1 id="dtc">DTC</h1>
 
 <h2 id="get-diagnostic-info-for-a-car">Get Diagnostic Info for a car</h2>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/12345/diagnostics/"</span>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/diagnostics/"</span>
   -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
   -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
@@ -1886,23 +1886,32 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/speedlimit/"</spa
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"engine_oil"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"battery_health"</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"tyre_pressure_bottom_right"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"car_errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-      </span><span class="s2">"P0106"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"P0108"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"U0111"</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="nt">"coolant_temperature"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"tyre_pressure_bottom_left"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"tyre_pressure_front_left"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"cabin_temperature"</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"tyre_pressure_front_right"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"tyre_pressure_front_left"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"cabin_temperature"</span><span class="p">:</span><span class="mi">40</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"battery_health"</span><span class="p">:</span><span class="mi">50</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"tyre_pressure_bottom_left"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"engine_oil"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"tyre_pressure_front_right"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"coolant_temperature"</span><span class="p">:</span><span class="mi">80</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"tyre_pressure_bottom_right"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"car_errors"</span><span class="p">:</span><span class="w">
+      </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"category"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"code"</span><span class="p">:</span><span class="s2">"N1002"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"title"</span><span class="p">:</span><span class="s2">"Critically low battery"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="s2">"2016-06-09 07:21:46+00:00"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">68.22</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">23.99</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"metadata"</span><span class="p">:</span><span class="s2">"No Data"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"desc"</span><span class="p">:</span><span class="s2">"Consider charging"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
@@ -1923,6 +1932,78 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/speedlimit/"</spa
 <tr>
 <td>ID</td>
 <td>The ID of the car, the data of which is to be retrieved</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>tyre_pressure_front/bottom_left/right</td>
+<td>Tyre pressures</td>
+</tr>
+<tr>
+<td>engine_oil</td>
+<td>True if OK, False otherwise</td>
+</tr>
+<tr>
+<td>cabin_temperature</td>
+<td>Cabin temperature in degree celsius</td>
+</tr>
+<tr>
+<td>battery_health</td>
+<td>Battary health percentage</td>
+</tr>
+<tr>
+<td>coolant_temperature</td>
+<td>Coolant temperatur in degree celsius</td>
+</tr>
+<tr>
+<td>car errors</td>
+<td>List of car errors</td>
+</tr>
+</tbody></table>
+
+<h3 id="car-error-parameters">Car Error Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Category</td>
+<td>Severity of the error (LOW   = 0, MEDIUM  = 1, CRITICAL= 2)</td>
+</tr>
+<tr>
+<td>Code</td>
+<td>Error code</td>
+</tr>
+<tr>
+<td>Title</td>
+<td>Error Title</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>The time when the error occurred</td>
+</tr>
+<tr>
+<td>longitude - latitude</td>
+<td>The location where the error occurred</td>
+</tr>
+<tr>
+<td>metadata</td>
+<td>Any string metadata related to the error to be displayed as is</td>
+</tr>
+<tr>
+<td>desc</td>
+<td>Error Description</td>
 </tr>
 </tbody></table>
 
