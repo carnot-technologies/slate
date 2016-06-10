@@ -1467,7 +1467,7 @@ ID | The ID of the car, the data of which is to be set/retrieved
 ## Get Diagnostic Info for a car
 
 ```shell
-curl "http://<BASE_URL>/cars/12345/diagnostics/"
+curl "http://<BASE_URL>/cars/<ID>/diagnostics/"
   -H "Apikey: <api_key>" 
   -H "Authorization: Token <auth_token>"
 ```
@@ -1476,23 +1476,32 @@ curl "http://<BASE_URL>/cars/12345/diagnostics/"
 
 ```json
 {
-  "status": true,
-  "data": {
-    "engine_oil": true,
-    "battery_health": 50,
-    "tyre_pressure_bottom_right": 0,
-    "car_errors": [
-      "P0106",
-      "P0108",
-      "U0111"
-    ],
-    "coolant_temperature": 80,
-    "tyre_pressure_bottom_left": 0,
-    "tyre_pressure_front_left": 0,
-    "cabin_temperature": 40,
-    "tyre_pressure_front_right": 0
-  },
-  "message": "Success"
+  "status":true,
+  "message":"Success",
+  "data":
+  {
+      "tyre_pressure_front_left":0,
+      "cabin_temperature":40,
+      "battery_health":50,
+      "tyre_pressure_bottom_left":0,
+      "engine_oil":true,
+      "tyre_pressure_front_right":0,
+      "coolant_temperature":80,
+      "tyre_pressure_bottom_right":0,
+      "car_errors":
+      [
+          {
+            "category":2,
+            "code":"N1002",
+            "title":"Critically low battery",
+            "timestamp":"2016-06-09 07:21:46+00:00",
+            "longitude":68.22,
+            "latitude":23.99,
+            "metadata":"No Data",
+            "desc":"Consider charging"
+          }
+      ]
+  }
 }
 ```
 
@@ -1507,6 +1516,30 @@ This endpoint retrieves the diagnostic info for a car.
 Parameter | Description
 --------- | -----------
 ID | The ID of the car, the data of which is to be retrieved 
+
+
+### Response Parameters
+
+Parameter | Description
+----------|-------------
+tyre_pressure_front/bottom_left/right | Tyre pressures
+engine_oil | True if OK, False otherwise
+cabin_temperature | Cabin temperature in degree celsius
+battery_health | Battary health percentage
+coolant_temperature |  Coolant temperatur in degree celsius
+car errors | List of car errors
+
+### Car Error Parameters
+
+Parameter | Description
+----------|-------------
+Category | Severity of the error (LOW   = 0, MEDIUM  = 1, CRITICAL= 2)
+Code | Error code
+Title | Error Title
+timestamp | The time when the error occurred
+longitude - latitude | The location where the error occurred
+metadata | Any string metadata related to the error to be displayed as is
+desc | Error Description
 
 
 ## Get Error Code Info
