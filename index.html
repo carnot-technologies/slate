@@ -339,6 +339,78 @@ curl <span class="s2">"https://&lt;BASE_URL&gt;/users/&lt;ID&gt;/settings/"</spa
 </tr>
 </tbody></table>
 
+<h2 id="get-user-related-trips">Get user related trips</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/&lt;ID&gt;/trips/"</span>
+  -H <span class="s2">"ApiKey: &lt;api_key&gt;"</span>
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"elat"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"photo"</span><span class="p">:</span><span class="s2">"http://carnotimgs.s3.amazonaws.com/pictures/img_41_profile.jpeg?Signature=TMTwaNYN2i9T8sYxynyxRmiDr50%3D&amp;Expires=1496926310&amp;AWSAccessKeyId=AKIAJCDK5W4ISB6FL7RA"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"slat"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"total_fuel"</span><span class="p">:</span><span class="mf">2.1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hardAcc"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"idling"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"driveScore"</span><span class="p">:</span><span class="mi">25</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"trip_time"</span><span class="p">:</span><span class="mi">7200</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"elon"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"trip_id"</span><span class="p">:</span><span class="mi">120</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"speeding_count"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"slon"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"maxMileage"</span><span class="p">:</span><span class="mi">35</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message_id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"mileage"</span><span class="p">:</span><span class="mf">13.333333333333332</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"end_date"</span><span class="p">:</span><span class="s2">"2016-06-09T11:14:55Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hard_acc_count"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="s2">"2016-06-09T11:16:10Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"speeding"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"total_running_time"</span><span class="p">:</span><span class="mi">7281</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"free_space"</span><span class="p">:</span><span class="mi">290</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"isOnTrip"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"date"</span><span class="p">:</span><span class="s2">"2016-06-09T11:14:55Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hardBreak"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hard_brake_count"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"distance"</span><span class="p">:</span><span class="mi">28</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"Pankaj"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"clutch"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"total_idling_time"</span><span class="p">:</span><span class="mi">81</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"avg_speed"</span><span class="p">:</span><span class="mi">21</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This method is used to retrive all the trips related to a particular user.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/users/&lt;ID&gt;/trips/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>User ID for which trips are to be retrieved</td>
+</tr>
+</tbody></table>
+
 <h1 id="cars">Cars</h1>
 
 <h2 id="get-car-brands">Get car brands</h2>
@@ -665,6 +737,77 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/overview/"</span>
 <tr>
 <td>ID</td>
 <td>ID of car to be retrieved</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-car-related-trips">Get car related trips</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/trips/"</span>
+  -H <span class="s2">"ApiKey: &lt;api_key&gt;"</span>
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"elat"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"photo"</span><span class="p">:</span><span class="s2">"http://carnotimgs.s3.amazonaws.com/pictures/img_41_profile.jpeg?Signature=TMTwaNYN2i9T8sYxynyxRmiDr50%3D&amp;Expires=1496926310&amp;AWSAccessKeyId=AKIAJCDK5W4ISB6FL7RA"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"slat"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"total_fuel"</span><span class="p">:</span><span class="mf">2.1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hardAcc"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"idling"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"driveScore"</span><span class="p">:</span><span class="mi">25</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"trip_time"</span><span class="p">:</span><span class="mi">7200</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"elon"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"trip_id"</span><span class="p">:</span><span class="mi">120</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"speeding_count"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"slon"</span><span class="p">:</span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"maxMileage"</span><span class="p">:</span><span class="mi">35</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message_id"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"mileage"</span><span class="p">:</span><span class="mf">13.333333333333332</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"end_date"</span><span class="p">:</span><span class="s2">"2016-06-09T11:14:55Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hard_acc_count"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="s2">"2016-06-09T11:16:10Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"speeding"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"total_running_time"</span><span class="p">:</span><span class="mi">7281</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"free_space"</span><span class="p">:</span><span class="mi">290</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"isOnTrip"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"date"</span><span class="p">:</span><span class="s2">"2016-06-09T11:14:55Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hardBreak"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hard_brake_count"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"distance"</span><span class="p">:</span><span class="mi">28</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"Pankaj"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"clutch"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"total_idling_time"</span><span class="p">:</span><span class="mi">81</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"avg_speed"</span><span class="p">:</span><span class="mi">21</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This method is used to retrive all the trips related to a particular car.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/trips/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>Car ID for which trips are to be retrieved</td>
 </tr>
 </tbody></table>
 
@@ -1454,7 +1597,8 @@ Useful for the Device Info screen on the app. </p>
         </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ae4e00bf6a08cf9cd56a37b99d0162e69db4fd74"</span><span class="p">,</span><span class="w"> 
         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43</span><span class="p">,</span><span class="w"> 
         </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc@xyz.com"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="mi">9988776655</span><span class="w">
+        </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="mi">9988776655</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"App Dev"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -1515,6 +1659,10 @@ Useful for the Device Info screen on the app. </p>
 <td>The id of the user to be included in the URL in subsequent requests where id is required</td>
 </tr>
 <tr>
+<td>name</td>
+<td>Full name of the user</td>
+</tr>
+<tr>
 <td>email</td>
 <td>Confirmation of the email id the user entered. Email id also serves as the user name</td>
 </tr>
@@ -1547,7 +1695,8 @@ Useful for the Device Info screen on the app. </p>
         </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ae4e00bf6a08cf9cd56a37b99d0162e69db4fd74"</span><span class="p">,</span><span class="w"> 
         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43</span><span class="p">,</span><span class="w"> 
         </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc@xyz.com"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="mi">9988776655</span><span class="w">
+        </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="mi">9988776655</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"App Dev"</span><span class="w">
       </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -1599,6 +1748,10 @@ Useful for the Device Info screen on the app. </p>
 <tr>
 <td>phone</td>
 <td>Phone number of current user</td>
+</tr>
+<tr>
+<td>name</td>
+<td>Full name of the user</td>
 </tr>
 <tr>
 <td>status</td>
