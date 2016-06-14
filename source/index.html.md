@@ -849,42 +849,6 @@ Parameter | Description
 ID | The ID of the car, the data of which is to be retrieved
 error code| The code returned from <all errors> API
 
-## Get all Trips made by a car
-
-```shell
-curl "http://<BASE_URL>/cars/<ID>/trips/"
-  -H "Apikey: <api_key>" 
-  -H "Authorization: Token <auth_token>"
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "status":true,
-  "message":"success",
-  "data":{
-    "trips":[
-      400,
-      401,
-      402
-    ]
-  }
-}
-```
-
-This endpoint retrieves the list of trips made by this car.
-
-### HTTP Request
-
-`GET http://<BASE_URL>/cars/<ID>/trips/`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the car, the data of which is to be retrieved 
-
 ## Get specific trip info
 
 ```shell
