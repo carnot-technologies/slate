@@ -221,6 +221,73 @@ Parameter|Description
 ID| User ID for which cars are to be retrieved
 
 
+## Get user related trips
+
+```shell
+curl "http://<BASE_URL>/users/<ID>/trips/"
+  -H "ApiKey: <api_key>"
+  -H "Authorization: Token <auth_token>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status":true,
+  "message":"Success",
+  "data":
+  [
+    {
+      "elat":null,
+      "photo":"http://carnotimgs.s3.amazonaws.com/pictures/img_41_profile.jpeg?Signature=TMTwaNYN2i9T8sYxynyxRmiDr50%3D&Expires=1496926310&AWSAccessKeyId=AKIAJCDK5W4ISB6FL7RA",
+      "slat":null,
+      "total_fuel":2.1,
+      "hardAcc":20,
+      "idling":20,
+      "driveScore":25,
+      "trip_time":7200,
+      "elon":null,
+      "trip_id":120,
+      "id":7,
+      "speeding_count":1,
+      "slon":null,
+      "maxMileage":35,
+      "message_id":1,
+      "mileage":13.333333333333332,
+      "end_date":"2016-06-09T11:14:55Z",
+      "hard_acc_count":1,
+      "timestamp":"2016-06-09T11:16:10Z",
+      "speeding":20,
+      "total_running_time":7281,
+      "free_space":290,
+      "isOnTrip":false,
+      "date":"2016-06-09T11:14:55Z",
+      "hardBreak":20,
+      "hard_brake_count":2,
+      "distance":28,
+      "name":"Pankaj",
+      "clutch":20,
+      "total_idling_time":81,
+      "avg_speed":21
+    }
+    ...
+  ]
+}
+```
+
+This method is used to retrive all the trips related to a particular user.
+
+### HTTP Request
+
+`GET http://<BASE_URL>/users/<ID>/trips/`
+
+### URL Parameters
+
+Parameter|Description
+---------|-----------
+ID| User ID for which trips are to be retrieved
+
+
 # Cars
 
 ## Get car brands
@@ -478,6 +545,70 @@ name | Car nickname given
 ln | license number of car
 ID | ID of car to be retrieved
 
+## Get car related trips
+
+```shell
+curl "http://<BASE_URL>/cars/<ID>/trips/"
+  -H "ApiKey: <api_key>"
+  -H "Authorization: Token <auth_token>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status":true,
+  "message":"Success",
+  "data":
+  [
+    {
+      "elat":null,
+      "photo":"http://carnotimgs.s3.amazonaws.com/pictures/img_41_profile.jpeg?Signature=TMTwaNYN2i9T8sYxynyxRmiDr50%3D&Expires=1496926310&AWSAccessKeyId=AKIAJCDK5W4ISB6FL7RA",
+      "slat":null,
+      "total_fuel":2.1,
+      "hardAcc":20,
+      "idling":20,
+      "driveScore":25,
+      "trip_time":7200,
+      "elon":null,
+      "trip_id":120,
+      "id":7,
+      "speeding_count":1,
+      "slon":null,
+      "maxMileage":35,
+      "message_id":1,
+      "mileage":13.333333333333332,
+      "end_date":"2016-06-09T11:14:55Z",
+      "hard_acc_count":1,
+      "timestamp":"2016-06-09T11:16:10Z",
+      "speeding":20,
+      "total_running_time":7281,
+      "free_space":290,
+      "isOnTrip":false,
+      "date":"2016-06-09T11:14:55Z",
+      "hardBreak":20,
+      "hard_brake_count":2,
+      "distance":28,
+      "name":"Pankaj",
+      "clutch":20,
+      "total_idling_time":81,
+      "avg_speed":21
+    }
+  ]
+}
+```
+
+This method is used to retrive all the trips related to a particular car.
+
+### HTTP Request
+
+`GET http://<BASE_URL>/cars/<ID>/trips/`
+
+### URL Parameters
+
+Parameter|Description
+---------|-----------
+ID| Car ID for which trips are to be retrieved
 
 ## Speed Limit Settings
 
@@ -1144,7 +1275,8 @@ curl "http://<BASE_URL>/users/register/"
         "token": "ae4e00bf6a08cf9cd56a37b99d0162e69db4fd74", 
         "id": 43, 
         "email": "abc@xyz.com",
-        "phone": 9988776655
+        "phone": 9988776655,
+        "name" : "App Dev"
     }
 }
 
@@ -1171,6 +1303,7 @@ status| true if successful, false otherwise
 message| Message indicating registration status
 token | The auth token to be used to authenticate this user in subsequent requests
 id | The id of the user to be included in the URL in subsequent requests where id is required
+name | Full name of the user
 email | Confirmation of the email id the user entered. Email id also serves as the user name
 phone | mandatory field during registration, it could also be used with login instead of email
 
@@ -1200,7 +1333,8 @@ curl "http://<BASE_URL>/users/login/"
         "token": "ae4e00bf6a08cf9cd56a37b99d0162e69db4fd74", 
         "id": 43, 
         "email": "abc@xyz.com",
-        "phone": 9988776655
+        "phone": 9988776655,
+        "name" : "App Dev"
       }
 }
 
@@ -1226,6 +1360,7 @@ token |The auth token to be used to authenticate this user in subsequent request
 id | The id of the user to be included in the URL in subsequent requests where id is required
 email | Confirmation of the email id the user entered. Email id also serves as the user name
 phone | Phone number of current user
+name  | Full name of the user
 status |true if successful, false otherwise
 message |Message indicating login status 
 
