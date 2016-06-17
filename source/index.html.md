@@ -1154,8 +1154,13 @@ curl "http://<BASE_URL>/users/getotp/"
 
 ```json
 {
-  "status" : true,
-  "message": "New code generated and user was sent the code"
+  "status": true, 
+  "message": "OTP Sent", 
+  "data": 
+    {
+      "otp": "119745", 
+      "phone": 9922883311
+    }
 }
 ```
 
@@ -1175,9 +1180,15 @@ Parameter | Description
 ----------|------------
 status | OTP send status, true when success, false otherwise
 message | success on OTP sent, on failure re-verify
+otp | OTP sent to the number
+phone | Number on which the otp is sent
 
 
 ## Phone verification
+
+<aside class="warning">
+  Deprecated API method
+</aside>
 
 This API is used before registration, to verify the phone number.
 
