@@ -1190,6 +1190,7 @@ phone | Number on which the otp is sent
   Deprecated API method
 </aside>
 
+
 This API is used before registration, to verify the phone number.
 
 ```shell
