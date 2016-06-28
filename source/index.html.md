@@ -1190,6 +1190,37 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the device, the info of which is to be retrieved 
 
+## Reset Device
+
+<aside class="note">
+  Before calling this API, all data on app, for the device (car) should be deleted.
+</aside>
+
+
+```shell
+curl "http://<BASE_URL>/devices/<ID>/reset/"
+  -H "Authorization: Token <auth_token>"
+  -H "ApiKey: <api_key>"
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status": true, 
+  "message": "Device reset successful"
+}
+```
+The endpoint is used to reset device. 
+
+### HTTP Request
+
+`GET http://<BASE_URL>/devices/<ID>/reset/`
+
+### URL Parameters
+
+Parameter | Description
+----------|-------------
+ID | Device ID
 
 ## Get all Devices
 
@@ -1327,50 +1358,6 @@ message | success on OTP sent, on failure re-verify
 otp | OTP sent to the number
 phone | Number on which the otp is sent
 
-
-## Phone verification
-
-<aside class="warning">
-  Deprecated API method
-</aside>
-
-
-This API is used before registration, to verify the phone number.
-
-```shell
-curl "http://<BASE_URL>/users/verify/"
-  -H "Apikey: <api_key>"
-  -H "Authorization: Token <auth_token>"
-  -X POST 
-  -d '{"phone":<phone>,"otp":"<otp received>"}'
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "status" : true,
-  "message": "success"
-}
-```
-
-### HTTP Request
-
-`POST https://<BASE_URL>/users/verify/`
-
-### URL Parameters
-
-Parameter | Description
-----------|------------
-phone | phone number of the user
-otp | OTP received by the user
-
-### Response Parameters
-
-Parameter | Description
-----------|------------
-status | verification status, true when success, false otherwise
-message | success on verification, <i> invalid OTP </i> on failure
 
 
 ## Register
@@ -1528,6 +1515,109 @@ message| Message indicating logout status
 <aside class="notice">
  On successful logout, user token is deleted. Upon re-login new token gets created.
 </aside>
+
+## Forgot Password
+
+```shell
+curl "http://<BASE_URL>/users/<number>/fgpwd/"
+  -H "ApiKey: <api_key>"
+```
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status": true, 
+  "message": "OTP Sent!", 
+  "data": 
+  {
+    "otp": "916985", 
+    "phone": 8123664830
+  }
+}
+```
+
+```json
+"Once OTP is verified, user should be asked his 
+new password and second WS to be called 
+to set the new password."
+```
+
+```shell
+curl "http;//<BASE_URL>/users/<number>/chpwd/"
+  -H "ApiKey: <api_key>"
+  -X POST
+  -d '{"pwd": "<new password>"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status": true, 
+  "message": "Password updated"
+}
+```
+
+The endpoints are used to verify user and set new password. User is verified using OTP. Once OTP on SMS and WS response matches, second WS should be called to set the new password.
+
+### HTTP Request (Verify user)
+
+`GET http://<BASE_URL>/users/<number>/fgpwd/`
+
+### HTTP Request (Set new password)
+
+`POST http://<BASE_URL>/users/<number>/chpwd/`
+
+### URL Parameters
+
+Parameter|Description
+---------|----------------
+number | Users phone number
+
+
+## Phone verification
+
+<aside class="warning">
+  Deprecated API method
+</aside>
+
+
+This API is used before registration, to verify the phone number.
+
+```shell
+curl "http://<BASE_URL>/users/verify/"
+  -H "Apikey: <api_key>"
+  -H "Authorization: Token <auth_token>"
+  -X POST 
+  -d '{"phone":<phone>,"otp":"<otp received>"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status" : true,
+  "message": "success"
+}
+```
+
+### HTTP Request
+
+`POST https://<BASE_URL>/users/verify/`
+
+### URL Parameters
+
+Parameter | Description
+----------|------------
+phone | phone number of the user
+otp | OTP received by the user
+
+### Response Parameters
+
+Parameter | Description
+----------|------------
+status | verification status, true when success, false otherwise
+message | success on verification, <i> invalid OTP </i> on failure
 
 
 # Alerts / Notifications
