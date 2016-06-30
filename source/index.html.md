@@ -1951,6 +1951,10 @@ EID | The error code, the info of which is to be retrieved
 
 ## Get a specific Trip 
 
+<aside class="warning">
+  Current method without drive score information.
+</aside>
+
 ```shell
 curl "http://<BASE_URL>/data/trips/<Trip ID>/<Car ID>/"
   -H "Apikey: <api_key>" 
@@ -2055,6 +2059,127 @@ end_lat, end_long | Trip end lat-longs
 start, end | Start and end addresses of a trip
 trip_id | ID of the next trip
 
+
+## Get a specific Trip 
+
+<aside class="notice">
+  New method to be used with right drive score data
+</aside>
+
+```shell
+curl "http://<BASE_URL>/data/trips/<Trip ID>/<Car ID>/"
+  -H "Apikey: <api_key>" 
+  -H "Authorization: Token <auth_token>"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status":true,
+  "message":"Success",
+  "data":
+  [
+    {
+      "total_running_time":588,
+      "trip_time":740,
+      "route":
+      [
+        {
+          "instant_mileage":100.776752928814,
+          "speed":13,
+          "latitude":19.1240633333333,
+          "sts":"2016-06-21T10:13:27Z",
+          "longitude":72.89248,
+          "id":28323
+        },
+        {
+          "instant_mileage":-0.000028840693651951797,
+          "speed":0,
+          "latitude":19.1240633333333,
+          "sts":"2016-06-21T10:16:44Z",
+          "longitude":72.89248,
+          "id":28405
+        },
+        {
+          "instant_mileage":7.921836250512416,
+          "speed":72,
+          "latitude":19.1205133333333,
+          "sts":"2016-06-20T18:00:50Z",
+          "longitude":72.8991083333333,
+          "id":14174
+        }
+        ...
+      ],
+      "car_id":"88",
+      "total_idling_time":152,
+      "name":"PSJ",
+      "end":" Chandivali",
+      "start_lat":19.1241316666667,
+      "total_fuel":0.0539560429751873,
+      "drive_score":68,
+      "timestamp":"2016-06-21T09:16:29Z",
+      "end_lon":72.8915216666667,
+      "start_lon":72.89125,
+      "avg_speed":19.09,
+      "avg_mileage":72.74,
+      "message_id":1281,
+      "id":2,
+      "start":" Chandivali",
+      "trip_id":719,
+      "start_time":"2016-06-21T10:18:47Z",
+      "end_time":"2016-06-21T09:19:42Z",
+      "end_lat":19.1242366666667,
+      "free_space":0,
+      "photo":"http://carnotimgs.s3.amazonaws.com/pictures/img_73_profile.png",
+      "distance":3.92,
+      "overspeeding": {"score": 10.0, "max":15, "points":["19.2223_72.8712","19.2223_72.8712"]},
+      "hard_accl_brakes": {"score": 15.0, "max":25, "points":["19.2223_72.8712"]},
+      "eco_driving": {"score": 13.0, "max": 20, "points":["19.2223_72.8712"]},
+      "idling": {"score": 18.0, "max":20, "points":["19.2223_72.8712"]},
+      "gear_change": {"score": 12, "max":20, "points":["19.2223_72.8712"]}
+    }
+    ...
+  ]
+} 
+```
+
+This endpoint retrieves bunch of next 5 trips of a car, from trip ID provided.
+
+### HTTP Request
+
+`GET http://<BASE_URL>/data/trips/<Trip ID>/<Car ID>/`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the trip which is to be retrieved  
+
+### Response Parameters
+
+Parameter | Description
+----------|------------
+route | Trips ODB points (max 23)
+car_id | Car ID for which the trip belongs
+name | Name of the driver who has made the trip
+start_lat, start_lon | Trip start lat-longs
+end_lat, end_long | Trip end lat-longs
+start, end | Start and end addresses of a trip
+trip_id | ID of the next trip
+overspeeding | drive score when overspeeding
+hard_accl_brakes | drive score when hard acceleration / hard brakes are used
+eco_driving | drive score when driven properly
+idling | drive score lost due to idling of car
+gear_change | drive score due to proper gear changes
+
+
+### Notes
+id | Note
+----|-----
+1. | max points in route will be 23
+2. | max points in drive scores break-down are 3  
+3. | sum of breakdown points (overspeeding ... gear change) is the drive score in response
 
 ## Get all Trips
 
