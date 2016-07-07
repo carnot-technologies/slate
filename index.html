@@ -2088,6 +2088,50 @@ to set the new password."</span><span class="w">
 
 <h1 id="alerts-notifications">Alerts / Notifications</h1>
 
+<h2 id="cancel-accident-alert">Cancel Accident Alert</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/cancel/"</span>
+  -H <span class="s2">"ApiKey: &lt;api_key&gt;"</span>
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+  -X POST
+  -d <span class="s1">'{"id":"&lt;notification id&gt;"}'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Job removed"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span><span class="err">OR</span><span class="w">
+
+</span><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="err">False</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No such job"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>The endpoint is used when accident alert is pushed on phone and dismiss is clicked within 3 minutes of time.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://&lt;BASE_URL&gt;/users/cancel/</code></p>
+
+<h3 id="request-parameters">Request Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>Notification id for alert code M1005</td>
+</tr>
+</tbody></table>
+
 <h2 id="get-notifications-for-a-car">Get Notifications for a Car</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/12345/notifications/"</span>
   -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
