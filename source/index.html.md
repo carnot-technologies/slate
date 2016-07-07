@@ -1622,6 +1622,46 @@ message | success on verification, <i> invalid OTP </i> on failure
 
 # Alerts / Notifications
 
+
+## Cancel Accident Alert
+```shell
+curl "http://<BASE_URL>/users/cancel/"
+  -H "ApiKey: <api_key>"
+  -H "Authorization: Token <auth_token>"
+  -X POST
+  -d '{"id":"<notification id>"}'
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "status": true, 
+  "message": "Job removed"
+}
+
+OR
+
+{
+  "status": False,
+  "message": "No such job"
+}
+```
+
+The endpoint is used when accident alert is pushed on phone and dismiss is clicked within 3 minutes of time.
+
+### HTTP Request
+
+`POST http://<BASE_URL>/users/cancel/`
+
+
+### Request Parameters
+
+Parameter | Description
+----------|------------
+id | Notification id for alert code M1005
+
+
 ## Get Notifications for a Car
 
 ```shell
