@@ -243,6 +243,7 @@ curl "http://<BASE_URL>/users/<ID>/garage/"
       "speed":20,
       "id":95,
       "latest_trip":782,
+      "flag": 1,
       "lat":19.124119
     },
     {
@@ -252,6 +253,7 @@ curl "http://<BASE_URL>/users/<ID>/garage/"
       "speed":25,
       "id":88,
       "latest_trip":785,
+      "flag":0,
       "lat":19.127045
     }
   ]
@@ -277,6 +279,7 @@ id| Car ID
 lat,lon|Current location of car
 speed|speed in kmph
 latest_trip | ID of recent trip made by the car
+flag | 1 if data sync is pending, 0 if all data synced. 
 
 ## Get User Information and Stats
 
