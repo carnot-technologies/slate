@@ -167,7 +167,8 @@ curl "https://<BASE_URL>/users/<ID>/settings/"
 ```json
 {
   "status": true,
-  "message": "success"
+  "message": "success",
+  "imgUrl": "<uploaded image url>"
 }
 ```
 
@@ -843,7 +844,8 @@ curl "http://<BASE_URL>/cars/<car_id>/upload/"
 ```json
 {
   "status": true, 
-  "message": "success"
+  "message": "success",
+  "imgUrl": "uploaded image url"
 }
 ```
 
