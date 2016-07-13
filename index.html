@@ -709,7 +709,8 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/save/"</span>
   -X POST
   -d <span class="s1">'{"brand":"&lt;brand&gt;", "model":"&lt;model&gt;", 
     "name": "&lt;car nickname&gt;", "ln":"&lt;license number&gt;", 
-    "userid":&lt;user_id&gt;, "printedPasscode":"&lt;16-digit passcode&gt;"}'</span>
+    "ft": "&lt;Fuel type&gt;", "userid":&lt;user_id&gt;,
+    "printedPasscode":"&lt;16-digit passcode&gt;"}'</span>
 </code></pre>
 
 <blockquote>
@@ -779,6 +780,10 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/save/"</span>
 <td>license number of car</td>
 </tr>
 <tr>
+<td>ft</td>
+<td>Fuel type of the car</td>
+</tr>
+<tr>
 <td>userid</td>
 <td>ID of user to which the car belongs</td>
 </tr>
@@ -844,7 +849,8 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/overview/"</span>
     </span><span class="nt">"name"</span><span class="p">:</span><span class="mi">21</span><span class="p">,</span><span class="w">
     </span><span class="nt">"ln"</span><span class="p">:</span><span class="s2">"MH01HN3002"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"brand"</span><span class="p">:</span><span class="s2">"Honda"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jazz"</span><span class="w">
+    </span><span class="nt">"model"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jazz"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"fuel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Diesel"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -882,6 +888,10 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/overview/"</span>
 <tr>
 <td>ID</td>
 <td>ID of car to be retrieved</td>
+</tr>
+<tr>
+<td>fuel</td>
+<td>Fuel type of the car</td>
 </tr>
 </tbody></table>
 
