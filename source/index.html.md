@@ -539,7 +539,8 @@ curl "http://<BASE_URL>/cars/save/"
   -X POST
   -d '{"brand":"<brand>", "model":"<model>", 
     "name": "<car nickname>", "ln":"<license number>", 
-    "userid":<user_id>, "printedPasscode":"<16-digit passcode>"}'
+    "ft": "<Fuel type>", "userid":<user_id>,
+    "printedPasscode":"<16-digit passcode>"}'
 ```
 
 > The above method returns JSON structured like this:
@@ -594,6 +595,7 @@ brand | Selected brand of car
 model | Selected car model
 name | Car nickname given
 ln | license number of car
+ft | Fuel type of the car
 userid | ID of user to which the car belongs
 carid | ID of car to be updated
 printedPasscode | 16-digit passcode printed on device
@@ -634,7 +636,8 @@ curl "http://<BASE_URL>/cars/<ID>/overview/"
     "name":21,
     "ln":"MH01HN3002",
     "brand":"Honda",
-    "model": "Jazz"
+    "model": "Jazz",
+    "fuel": "Diesel"
   }
 }
 ```
@@ -654,6 +657,7 @@ model | Selected car model
 name | Car nickname given
 ln | license number of car
 ID | ID of car to be retrieved
+fuel | Fuel type of the car
 
 ## Car Diagnostics
 
