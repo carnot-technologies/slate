@@ -233,29 +233,32 @@ curl "http://<BASE_URL>/users/<ID>/garage/"
 
 ```json
 {
-  "status":true,
   "message":"Success",
-  "data":
-  [
+  "status":true,
+  "data":[
     {
-      "name":"mycar1",
-      "lon":72.892052,
-      "isOnTrip":true,
-      "speed":20,
-      "id":95,
-      "latest_trip":782,
-      "flag": 1,
-      "lat":19.124119
+      "flag":0,
+      "id":9,
+      "lat":19.1287833333,
+      "isOnTrip":false,
+      "lock":0,
+      "lon":72.8886133333,
+      "name":"My i201",
+      "lut":"2016-07-15T17:05:44Z",
+      "latest_trip":57,
+      "speed":5
     },
     {
-      "name":"mycar2",
-      "lon":72.914902,
-      "isOnTrip":false,
-      "speed":25,
-      "id":88,
-      "latest_trip":785,
       "flag":0,
-      "lat":19.127045
+      "id":3,
+      "lat":23.007577,
+      "isOnTrip":false,
+      "lock":0,
+      "lon":77.810271,
+      "name":"My Swift Dzire",
+      "lut":0,
+      "latest_trip":0,
+      "speed":0
     }
   ]
 }
@@ -281,6 +284,18 @@ lat,lon|Current location of car
 speed|speed in kmph
 latest_trip | ID of recent trip made by the car
 flag | 1 if data sync is pending, 0 if all data synced. 
+lut | Last update time for car data
+lock | Location info
+
+
+### Location Info
+
+Parameter | Description
+----------|------------
+1 | GPS Lock
+2 | GSM Lock
+0 | No Location
+
 
 ## Get User Information and Stats
 
