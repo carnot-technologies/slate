@@ -1466,7 +1466,23 @@ curl "http://<BASE_URL>/users/login/"
         "id": 43, 
         "email": "abc@xyz.com",
         "phone": 9988776655,
-        "name" : "App Dev"
+        "name" : "App Dev",
+        "cars" : [
+            {
+               "carId":21,
+               "device_pk": 42,
+               "nrfid": "123456", 
+               "stmid": "C0001", 
+               "key": "5634"
+            },
+            {
+              "carId":22,
+              "device_pk": 43,
+              "nrfid": "123451", 
+              "stmid": "C0002", 
+              "key": "5631"
+          }
+        ]
       }
 }
 
