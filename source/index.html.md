@@ -1471,7 +1471,7 @@ curl "http://<BASE_URL>/users/login/"
           {
             "stmid":"36ffd6054755303723820743",
             "nrfid":"9de2e874b2fc593a",
-            "fuel_type":"Diesel",
+            "fuel":"Diesel",
             "key":"743ae859e2fc",
             "id":18,
             "device_pk":14
@@ -1479,7 +1479,7 @@ curl "http://<BASE_URL>/users/login/"
           {
             "stmid":"36ffd10547553037268FFFFF",
             "nrfid":"123456789012FFFF",
-            "fuel_type":"Petrol",
+            "fuel":"Petrol",
             "key":"78FF56FF3412",
             "id":19,
             "device_pk":21
