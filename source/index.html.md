@@ -1467,20 +1467,22 @@ curl "http://<BASE_URL>/users/login/"
         "email": "abc@xyz.com",
         "phone": 9988776655,
         "name" : "App Dev",
-        "cars" : [
-            {
-               "carId":21,
-               "device_pk": 42,
-               "nrfid": "123456", 
-               "stmid": "C0001", 
-               "key": "5634"
-            },
-            {
-              "carId":22,
-              "device_pk": 43,
-              "nrfid": "123451", 
-              "stmid": "C0002", 
-              "key": "5631"
+        "cars":[
+          {
+            "stmid":"36ffd6054755303723820743",
+            "nrfid":"9de2e874b2fc593a",
+            "fuel_type":"Diesel",
+            "key":"743ae859e2fc",
+            "id":18,
+            "device_pk":14
+          },
+          {
+            "stmid":"36ffd10547553037268FFFFF",
+            "nrfid":"123456789012FFFF",
+            "fuel_type":"Petrol",
+            "key":"78FF56FF3412",
+            "id":19,
+            "device_pk":21
           }
         ]
       }
