@@ -1565,6 +1565,59 @@ Useful for the Device Info screen on the app. </p>
 </tr>
 </tbody></table>
 
+<h2 id="log-a-production-device">Log a production device</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/devices/log/"</span>
+  -H <span class="s2">"ApiKey: &lt;api_key&gt;"</span>
+  -X POST
+  -d <span class="s1">'{"stn": "&lt;stnid&gt;", "nrf": "&lt;nrfid&gt;", "pc":"&lt;16-digit passcode&gt;", \
+    "flg":&lt;device status&gt;, "lb":&lt;label id&gt;}'</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Device logged into system"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>The endpoint is used to log devices that are in production when labelling is to be done. </p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST http://&lt;BASE_URL&gt;/devices/log/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>stn</td>
+<td>STN ID of the device</td>
+</tr>
+<tr>
+<td>nrf</td>
+<td>NRF ID of the device</td>
+</tr>
+<tr>
+<td>pc</td>
+<td>16-digit passcode for the device</td>
+</tr>
+<tr>
+<td>flg</td>
+<td>device status, 0 for good, 1 for bad</td>
+</tr>
+<tr>
+<td>lb</td>
+<td>ID of the label of the device</td>
+</tr>
+</tbody></table>
+
 <h2 id="reset-device">Reset Device</h2>
 
 <aside class="note">
@@ -1785,7 +1838,8 @@ Useful for the Device Info screen on the app. </p>
         </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43</span><span class="p">,</span><span class="w"> 
         </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc@xyz.com"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="mi">9988776655</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"App Dev"</span><span class="w">
+        </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"App Dev"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"cars"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -2642,6 +2696,184 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/speedlimit/"</spa
 <h1 id="trip">Trip</h1>
 
 <h2 id="get-a-specific-trip">Get a specific Trip</h2>
+<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/data/trips/&lt;Trip ID&gt;/&lt;Car ID&gt;/"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"start"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Chandivali"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"avg_mileage"</span><span class="p">:</span><span class="w"> </span><span class="mf">14.52</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"gc_p"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"total_running_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1506</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"gc_m"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hab_p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19.0213_73.012335,19.0447016667_73.0082683333,19.0213166667_73.0124216667"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"i_sc"</span><span class="p">:</span><span class="w"> </span><span class="mf">14.10891056060791</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"ed_m"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"trip_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">421</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"os_sc"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"end_lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.025861666666664</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"gc_sc"</span><span class="p">:</span><span class="w"> </span><span class="mf">14.800000190734863</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"distance"</span><span class="p">:</span><span class="w"> </span><span class="mf">12.12</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"trip_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">1820</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"ed_p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19.0453616667_73.0082933333,19.02279_73.0083316667,19.0257383333_73.032385"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"route"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.037053333333333</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">56143</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">73.02429833333333</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.037901666666667</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">56151</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">73.02513833333335</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"latitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.038588333333333</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">56157</span><span class="p">,</span><span class="w">
+          </span><span class="nt">"longitude"</span><span class="p">:</span><span class="w"> </span><span class="mf">73.02582333333334</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="err">...</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nt">"free_space"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"end"</span><span class="p">:</span><span class="w"> </span><span class="s2">" Belapur CBD"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"end_lon"</span><span class="p">:</span><span class="w"> </span><span class="mf">73.03227833333334</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"total_idling_time"</span><span class="p">:</span><span class="w"> </span><span class="mi">314</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"avg_speed"</span><span class="p">:</span><span class="w"> </span><span class="mf">24.03</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"total_fuel"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8344447016716003</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">57765</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">88</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"start_lon"</span><span class="p">:</span><span class="w"> </span><span class="mf">73.02429833333333</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"drive_score"</span><span class="p">:</span><span class="w"> </span><span class="mi">75</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-01T16:50:04Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hab_sc"</span><span class="p">:</span><span class="w"> </span><span class="mf">18.8118953704834</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"os_m"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"start_lat"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.037053333333333</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"os_p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19.0453616667_73.0082933333,19.02279_73.0083316667,19.0257383333_73.032385"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"i_p"</span><span class="p">:</span><span class="w"> </span><span class="s2">"19.0655483333_72.9988733333,19.0258616667_73.0322783333,19.044715_73.0082616667"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"end_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-01T16:50:04Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"hab_m"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"start_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-01T16:18:22Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"i_m"</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"car_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"ed_sc"</span><span class="p">:</span><span class="w"> </span><span class="mf">16.78877830505371</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="err">...</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w"> 
+</span></code></pre>
+
+<p>This endpoint retrieves bunch of next 5 trips of a car, from trip ID provided.</p>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/data/trips/&lt;Trip ID&gt;/&lt;Car ID&gt;/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the trip which is to be retrieved</td>
+</tr>
+</tbody></table>
+
+<h3 id="response-parameters">Response Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>route</td>
+<td>Trips ODB points (max 23)</td>
+</tr>
+<tr>
+<td>car_id</td>
+<td>Car ID for which the trip belongs</td>
+</tr>
+<tr>
+<td>name</td>
+<td>Name of the driver who has made the trip</td>
+</tr>
+<tr>
+<td>start_lat, start_lon</td>
+<td>Trip start lat-longs</td>
+</tr>
+<tr>
+<td>end_lat, end_long</td>
+<td>Trip end lat-longs</td>
+</tr>
+<tr>
+<td>start, end</td>
+<td>Start and end addresses of a trip</td>
+</tr>
+<tr>
+<td>trip_id</td>
+<td>ID of the next trip</td>
+</tr>
+<tr>
+<td>overspeeding</td>
+<td>drive score when overspeeding</td>
+</tr>
+<tr>
+<td>hard_accl_brakes</td>
+<td>drive score when hard acceleration / hard brakes are used</td>
+</tr>
+<tr>
+<td>eco_driving</td>
+<td>drive score when driven properly</td>
+</tr>
+<tr>
+<td>idling</td>
+<td>drive score lost due to idling of car</td>
+</tr>
+<tr>
+<td>gear_change</td>
+<td>drive score due to proper gear changes</td>
+</tr>
+</tbody></table>
+
+<h3 id="notes">Notes</h3>
+
+<table><thead>
+<tr>
+<th>id</th>
+<th>Note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>1.</td>
+<td>max points in route will be 23</td>
+</tr>
+<tr>
+<td>2.</td>
+<td>max points in drive scores break-down are 3</td>
+</tr>
+<tr>
+<td>3.</td>
+<td>sum of breakdown points (overspeeding &hellip; gear change) is the drive score in response</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-a-specific-trip">Get a specific Trip</h2>
 
 <aside class="warning">
   Current method without drive score information.
@@ -2780,188 +3012,6 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/speedlimit/"</spa
 <tr>
 <td>trip_id</td>
 <td>ID of the next trip</td>
-</tr>
-</tbody></table>
-
-<h2 id="get-a-specific-trip">Get a specific Trip</h2>
-
-<aside class="notice">
-  New method to be used with right drive score data
-</aside>
-<pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/data/trips/&lt;Trip ID&gt;/&lt;Car ID&gt;/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
-  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
-</code></pre>
-
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w">
-  </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"total_running_time"</span><span class="p">:</span><span class="mi">588</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"trip_time"</span><span class="p">:</span><span class="mi">740</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"route"</span><span class="p">:</span><span class="w">
-      </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"instant_mileage"</span><span class="p">:</span><span class="mf">100.776752928814</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"speed"</span><span class="p">:</span><span class="mi">13</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">19.1240633333333</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"sts"</span><span class="p">:</span><span class="s2">"2016-06-21T10:13:27Z"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">72.89248</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">28323</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"instant_mileage"</span><span class="p">:</span><span class="mf">-0.000028840693651951797</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"speed"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">19.1240633333333</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"sts"</span><span class="p">:</span><span class="s2">"2016-06-21T10:16:44Z"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">72.89248</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">28405</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-          </span><span class="nt">"instant_mileage"</span><span class="p">:</span><span class="mf">7.921836250512416</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"speed"</span><span class="p">:</span><span class="mi">72</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"latitude"</span><span class="p">:</span><span class="mf">19.1205133333333</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"sts"</span><span class="p">:</span><span class="s2">"2016-06-20T18:00:50Z"</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"longitude"</span><span class="p">:</span><span class="mf">72.8991083333333</span><span class="p">,</span><span class="w">
-          </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">14174</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-        </span><span class="err">...</span><span class="w">
-      </span><span class="p">],</span><span class="w">
-      </span><span class="nt">"car_id"</span><span class="p">:</span><span class="s2">"88"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"total_idling_time"</span><span class="p">:</span><span class="mi">152</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"PSJ"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"end"</span><span class="p">:</span><span class="s2">" Chandivali"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"start_lat"</span><span class="p">:</span><span class="mf">19.1241316666667</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"total_fuel"</span><span class="p">:</span><span class="mf">0.0539560429751873</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"drive_score"</span><span class="p">:</span><span class="mi">68</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="s2">"2016-06-21T09:16:29Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"end_lon"</span><span class="p">:</span><span class="mf">72.8915216666667</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"start_lon"</span><span class="p">:</span><span class="mf">72.89125</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"avg_speed"</span><span class="p">:</span><span class="mf">19.09</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"avg_mileage"</span><span class="p">:</span><span class="mf">72.74</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"message_id"</span><span class="p">:</span><span class="mi">1281</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"start"</span><span class="p">:</span><span class="s2">" Chandivali"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"trip_id"</span><span class="p">:</span><span class="mi">719</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"start_time"</span><span class="p">:</span><span class="s2">"2016-06-21T10:18:47Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"end_time"</span><span class="p">:</span><span class="s2">"2016-06-21T09:19:42Z"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"end_lat"</span><span class="p">:</span><span class="mf">19.1242366666667</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"free_space"</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"photo"</span><span class="p">:</span><span class="s2">"http://carnotimgs.s3.amazonaws.com/pictures/img_73_profile.png"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"distance"</span><span class="p">:</span><span class="mf">3.92</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"overspeeding"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"max"</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span><span class="w"> </span><span class="nt">"points"</span><span class="p">:[</span><span class="s2">"19.2223_72.8712"</span><span class="p">,</span><span class="s2">"19.2223_72.8712"</span><span class="p">]},</span><span class="w">
-      </span><span class="nt">"hard_accl_brakes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">15.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"max"</span><span class="p">:</span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="nt">"points"</span><span class="p">:[</span><span class="s2">"19.2223_72.8712"</span><span class="p">]},</span><span class="w">
-      </span><span class="nt">"eco_driving"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">13.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"max"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="nt">"points"</span><span class="p">:[</span><span class="s2">"19.2223_72.8712"</span><span class="p">]},</span><span class="w">
-      </span><span class="nt">"idling"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">18.0</span><span class="p">,</span><span class="w"> </span><span class="nt">"max"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="nt">"points"</span><span class="p">:[</span><span class="s2">"19.2223_72.8712"</span><span class="p">]},</span><span class="w">
-      </span><span class="nt">"gear_change"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="nt">"max"</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="nt">"points"</span><span class="p">:[</span><span class="s2">"19.2223_72.8712"</span><span class="p">]}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-    </span><span class="err">...</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w"> 
-</span></code></pre>
-
-<p>This endpoint retrieves bunch of next 5 trips of a car, from trip ID provided.</p>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET http://&lt;BASE_URL&gt;/data/trips/&lt;Trip ID&gt;/&lt;Car ID&gt;/</code></p>
-
-<h3 id="url-parameters">URL Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the trip which is to be retrieved</td>
-</tr>
-</tbody></table>
-
-<h3 id="response-parameters">Response Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>route</td>
-<td>Trips ODB points (max 23)</td>
-</tr>
-<tr>
-<td>car_id</td>
-<td>Car ID for which the trip belongs</td>
-</tr>
-<tr>
-<td>name</td>
-<td>Name of the driver who has made the trip</td>
-</tr>
-<tr>
-<td>start_lat, start_lon</td>
-<td>Trip start lat-longs</td>
-</tr>
-<tr>
-<td>end_lat, end_long</td>
-<td>Trip end lat-longs</td>
-</tr>
-<tr>
-<td>start, end</td>
-<td>Start and end addresses of a trip</td>
-</tr>
-<tr>
-<td>trip_id</td>
-<td>ID of the next trip</td>
-</tr>
-<tr>
-<td>overspeeding</td>
-<td>drive score when overspeeding</td>
-</tr>
-<tr>
-<td>hard_accl_brakes</td>
-<td>drive score when hard acceleration / hard brakes are used</td>
-</tr>
-<tr>
-<td>eco_driving</td>
-<td>drive score when driven properly</td>
-</tr>
-<tr>
-<td>idling</td>
-<td>drive score lost due to idling of car</td>
-</tr>
-<tr>
-<td>gear_change</td>
-<td>drive score due to proper gear changes</td>
-</tr>
-</tbody></table>
-
-<h3 id="notes">Notes</h3>
-
-<table><thead>
-<tr>
-<th>id</th>
-<th>Note</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>1.</td>
-<td>max points in route will be 23</td>
-</tr>
-<tr>
-<td>2.</td>
-<td>max points in drive scores break-down are 3</td>
-</tr>
-<tr>
-<td>3.</td>
-<td>sum of breakdown points (overspeeding &hellip; gear change) is the drive score in response</td>
 </tr>
 </tbody></table>
 
