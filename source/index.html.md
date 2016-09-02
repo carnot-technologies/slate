@@ -570,7 +570,8 @@ curl "http://<BASE_URL>/cars/save/"
     "device_pk": 42,
     "nrfid": "123456", 
     "stmid": "C0001", 
-    "key": "5634"
+    "key": "5634",
+    "fuel": "Petrol"
   }
 }
 ```
