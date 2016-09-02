@@ -1216,12 +1216,6 @@ ID | The ID of the device, the info of which is to be retrieved
 
 ## Log a production device
 
-["lb"] 
-    stn   = body["stn"]
-    nrf   = body["nrf"]
-    passcode= body["pc"]
-    status  = int(body["flg"])
-
 ```shell
 curl "http://<BASE_URL>/devices/log/"
   -H "ApiKey: <api_key>"
@@ -1244,8 +1238,7 @@ The endpoint is used to log devices that are in production when labelling is to 
 `POST http://<BASE_URL>/devices/log/`
 
 ### URL Parameters
-  -d '{"stn": "<stnid>", "nrf": "<nrfid>", "pc":"<16-digit passcode>", \
-    "flg":<device status>, "lb":<label id>}'
+  
 Parameter | Description
 ----------|-------------
 stn | STN ID of the device
