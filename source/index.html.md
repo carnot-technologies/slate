@@ -824,8 +824,22 @@ ID | The ID of the device, the info of which is to be retrieved
 curl "http://<BASE_URL>/devices/log/"
   -H "ApiKey: <api_key>"
   -X POST
-  -d '{"stn": "<stnid>", "nrf": "<nrfid>", "pc":"<16-digit passcode>", \
-    "flg":<device status>, "lb":<label id>}'
+  -d '{
+      "lb":<label_id>,
+      "pc":"<passcode>",
+      "flg":<device status>,
+      "stm":"<STM ID>",
+      "stmv":<STM version>,
+      "nrf":"<NRF ID>",
+      "nrfv":<NRF version>,
+      "simcc":"<sim ccid>",
+      "stms_st":"<STM status string",
+      "stms_i":<STM status Int>,
+      "nrfs_st":"<NRF status string>",
+      "nrfs_i":<NRF status Int>,
+      "gsmv":"<GSM version string>",
+      "pwr":<power voltage supply: Float>
+    }'
 ```
 > The above command returns JSON structured like this:
 
@@ -845,11 +859,21 @@ The endpoint is used to log devices that are in production when labelling is to 
   
 Parameter | Description
 ----------|-------------
-stn | STN ID of the device
-nrf | NRF ID of the device
-pc  | 16-digit passcode for the device
-flg | device status, 0 for good, 1 for bad
-lb  | ID of the label of the device
+lb| Label ID
+pc| 16-digit passcode
+flg| Device status 1 for Good 0 Otherwise
+stm|STM ID
+stmv|STM version
+nrf|NRF ID
+nrfv|NRF version
+simcc|SIM CCID
+stms_st|STM Status string
+stms_i|STM Status Integer (first 5 bits converted to number)
+nrfs_st|NRF Status string
+nrfs_i|NRF Status Integer (first 4 bits converted to number)
+gsmv|GSM Version
+pwr| Power voltage supply float field
+
 
 
 ## Reset Device
