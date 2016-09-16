@@ -1117,8 +1117,22 @@ Useful for the Device Info screen on the app. </p>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/devices/log/"</span>
   -H <span class="s2">"ApiKey: &lt;api_key&gt;"</span>
   -X POST
-  -d <span class="s1">'{"stn": "&lt;stnid&gt;", "nrf": "&lt;nrfid&gt;", "pc":"&lt;16-digit passcode&gt;", \
-    "flg":&lt;device status&gt;, "lb":&lt;label id&gt;}'</span>
+  -d <span class="s1">'{
+      "lb":&lt;label_id&gt;,
+      "pc":"&lt;passcode&gt;",
+      "flg":&lt;device status&gt;,
+      "stm":"&lt;STM ID&gt;",
+      "stmv":&lt;STM version&gt;,
+      "nrf":"&lt;NRF ID&gt;",
+      "nrfv":&lt;NRF version&gt;,
+      "simcc":"&lt;sim ccid&gt;",
+      "stms_st":"&lt;STM status string",
+      "stms_i":&lt;STM status Int&gt;,
+      "nrfs_st":"&lt;NRF status string&gt;",
+      "nrfs_i":&lt;NRF status Int&gt;,
+      "gsmv":"&lt;GSM version string&gt;",
+      "pwr":&lt;power voltage supply: Float&gt;
+    }'</span>
 </code></pre>
 
 <blockquote>
@@ -1145,24 +1159,60 @@ Useful for the Device Info screen on the app. </p>
 </tr>
 </thead><tbody>
 <tr>
-<td>stn</td>
-<td>STN ID of the device</td>
-</tr>
-<tr>
-<td>nrf</td>
-<td>NRF ID of the device</td>
+<td>lb</td>
+<td>Label ID</td>
 </tr>
 <tr>
 <td>pc</td>
-<td>16-digit passcode for the device</td>
+<td>16-digit passcode</td>
 </tr>
 <tr>
 <td>flg</td>
-<td>device status, 0 for good, 1 for bad</td>
+<td>Device status 1 for Good 0 Otherwise</td>
 </tr>
 <tr>
-<td>lb</td>
-<td>ID of the label of the device</td>
+<td>stm</td>
+<td>STM ID</td>
+</tr>
+<tr>
+<td>stmv</td>
+<td>STM version</td>
+</tr>
+<tr>
+<td>nrf</td>
+<td>NRF ID</td>
+</tr>
+<tr>
+<td>nrfv</td>
+<td>NRF version</td>
+</tr>
+<tr>
+<td>simcc</td>
+<td>SIM CCID</td>
+</tr>
+<tr>
+<td>stms_st</td>
+<td>STM Status string</td>
+</tr>
+<tr>
+<td>stms_i</td>
+<td>STM Status Integer (first 5 bits converted to number)</td>
+</tr>
+<tr>
+<td>nrfs_st</td>
+<td>NRF Status string</td>
+</tr>
+<tr>
+<td>nrfs_i</td>
+<td>NRF Status Integer (first 4 bits converted to number)</td>
+</tr>
+<tr>
+<td>gsmv</td>
+<td>GSM Version</td>
+</tr>
+<tr>
+<td>pwr</td>
+<td>Power voltage supply float field</td>
 </tr>
 </tbody></table>
 
