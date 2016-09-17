@@ -838,7 +838,8 @@ curl "http://<BASE_URL>/devices/log/"
       "nrfs_st":"<NRF status string>",
       "nrfs_i":<NRF status Int>,
       "gsmv":"<GSM version string>",
-      "pwr":<power voltage supply: Float>
+      "pwr":<power voltage supply: Float>,
+      "update": <1 to update existing entries, 0 otherwise>
     }'
 ```
 > The above command returns JSON structured like this:
@@ -873,7 +874,7 @@ nrfs_st|NRF Status string
 nrfs_i|NRF Status Integer (first 4 bits converted to number)
 gsmv|GSM Version
 pwr| Power voltage supply float field
-
+update | Flag to notify if update should be done. (1-> update, 0->otherwise)
 
 
 ## Reset Device
