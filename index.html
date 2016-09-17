@@ -1131,7 +1131,8 @@ Useful for the Device Info screen on the app. </p>
       "nrfs_st":"&lt;NRF status string&gt;",
       "nrfs_i":&lt;NRF status Int&gt;,
       "gsmv":"&lt;GSM version string&gt;",
-      "pwr":&lt;power voltage supply: Float&gt;
+      "pwr":&lt;power voltage supply: Float&gt;,
+      "update": &lt;1 to update existing entries, 0 otherwise&gt;
     }'</span>
 </code></pre>
 
@@ -1213,6 +1214,10 @@ Useful for the Device Info screen on the app. </p>
 <tr>
 <td>pwr</td>
 <td>Power voltage supply float field</td>
+</tr>
+<tr>
+<td>update</td>
+<td>Flag to notify if update should be done. (1-&gt; update, 0-&gt;otherwise)</td>
 </tr>
 </tbody></table>
 
