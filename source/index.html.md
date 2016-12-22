@@ -29,7 +29,7 @@ This API documentation page was created with [Slate](https://github.com/tripit/s
 ```shell
 # With shell, you can just pass the correct header with each request
 curl "api_endpoint_here"
-  -H "Apikey: <api_key>" 
+  -H "Apikey: <api_key>"
   -H "Authorization: Token <auth_token>"
 ```
 
@@ -41,12 +41,12 @@ The API key must be included in all API requests to the server in a header that 
 
 `Apikey: <api_key>`
 
-Apart from the API key all the endpoints that require user authentication require a Token. The token must be supplied in a header that looks as follows: 
+Apart from the API key all the endpoints that require user authentication require a Token. The token must be supplied in a header that looks as follows:
 
 `Authorization: Token <auth_token>`
 
 <aside class="notice">
-You must replace <code>&lt;api_key&gt;</code> with your personal API key. You must replace <code>&lt;auth_token&gt;</code> with the user's auth token. 
+You must replace <code>&lt;api_key&gt;</code> with your personal API key. You must replace <code>&lt;auth_token&gt;</code> with the user's auth token.
 </aside>
 
 
@@ -59,7 +59,7 @@ You must replace <code>&lt;api_key&gt;</code> with your personal API key. You mu
 Get emergency contacts
 
 curl "http://<BASE_URL>/users/<ID>/econtacts/"
-  -H "Apikey: <api_key>" 
+  -H "Apikey: <api_key>"
   -H "Authorization: Token <auth_token>"
 ```
 
@@ -92,7 +92,7 @@ curl "http://<BASE_URL>/users/<ID>/econtacts/"
 Set emergency contacts
 
 curl "http://<BASE_URL>/users/<ID>/econtacts/"
-  -H "Apikey: <api_key>" 
+  -H "Apikey: <api_key>"
   -H "Authorization: Token <auth_token>"
   -X POST
   -d '{"contacts":[{"em": "hello4@openxcell.com", "ph": 8899773321, "nm": "Johny"},
@@ -103,7 +103,7 @@ curl "http://<BASE_URL>/users/<ID>/econtacts/"
 
 ```json
 {
-  "status": true, 
+  "status": true,
   "message": "Success"
 }
 ```
@@ -122,7 +122,7 @@ This endpoint sets and retrieves a user's emergency contact details.
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the user whose data is to be retrieved 
+ID | The ID of the user whose data is to be retrieved
 
 ## Rider Profile
 
@@ -249,7 +249,7 @@ id| Car ID
 lat,lon|Current location of car
 speed|speed in kmph
 latest_trip | ID of recent trip made by the car
-flag | 1 if data sync is pending, 0 if all data synced. 
+flag | 1 if data sync is pending, 0 if all data synced.
 lut | Last update time for car data
 lock | Location info
 
@@ -453,8 +453,8 @@ curl "http://<BASE_URL>/cars/save/"
   -H "ApiKey: <api_key>"
   -H "Authorization: Token <auth_token>"
   -X POST
-  -d '{"brand":"<brand>", "model":"<model>", 
-    "name": "<car nickname>", "ln":"<license number>", 
+  -d '{"brand":"<brand>", "model":"<model>",
+    "name": "<car nickname>", "ln":"<license number>",
     "ft": "<Fuel type>", "userid":<user_id>,
     "printedPasscode":"<16-digit passcode>"}'
 ```
@@ -468,8 +468,8 @@ curl "http://<BASE_URL>/cars/save/"
   "data":{
     "carId":21,
     "device_pk": 42,
-    "nrfid": "123456", 
-    "stmid": "C0001", 
+    "nrfid": "123456",
+    "stmid": "C0001",
     "key": "5634",
     "fuel": "Petrol"
   }
@@ -484,8 +484,8 @@ curl "http://<BASE_URL>/cars/save/"
   -H "ApiKey: <api_key>"
   -H "Authorization: Token <auth_token>"
   -X POST
-  -d '{"brand":"<brand>", "model":"<model>", 
-    "name": "<car nickname>", "ln":"<license number>", 
+  -d '{"brand":"<brand>", "model":"<model>",
+    "name": "<car nickname>", "ln":"<license number>",
     "userid":<user_id>, "carid": <ID of car to be updated>}'
 ```
 
@@ -493,7 +493,7 @@ curl "http://<BASE_URL>/cars/save/"
 
 ```json
 {
-  "status": true, 
+  "status": true,
   "message": "success"
 }
 ```
@@ -602,7 +602,7 @@ curl "http://<BASE_URL>/cars/<ID>/diagnostics/"
   }
 }
 ```
-The API is used to get diagnostics details for a car. The diagnostics data contains list of error info, oil, tyre, cabin and coolant temperature information. 
+The API is used to get diagnostics details for a car. The diagnostics data contains list of error info, oil, tyre, cabin and coolant temperature information.
 
 ### HTTP Request
 
@@ -621,7 +621,7 @@ ID| Car ID
 Set Speed Limit
 
 curl "http://<BASE_URL>/cars/<ID>/speedlimit/"
-  -H "Apikey: <api_key>" 
+  -H "Apikey: <api_key>"
   -H "Authorization: Token <auth_token>"
   -X POST
   -d '{"sl":<limit>}'
@@ -641,12 +641,12 @@ curl "http://<BASE_URL>/cars/<ID>/speedlimit/"
 Get Speed Limit
 
 curl "http://<BASE_URL>/cars/<ID>/speedlimit/"
-  -H "Apikey: <api_key>" 
+  -H "Apikey: <api_key>"
   -H "Authorization: Token <auth_token>"
   -X GET
 ```
 
-> The above command returns JSON structured like this 
+> The above command returns JSON structured like this
 
 ```json
 {
@@ -673,7 +673,7 @@ This endpoint sets and retrieves speed limit for a car.
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the car, the data of which is to be set/retrieved 
+ID | The ID of the car, the data of which is to be set/retrieved
 
 
 ## Car Passport
@@ -683,10 +683,10 @@ ID | The ID of the car, the data of which is to be set/retrieved
 Car Document Upload
 
 curl "http://<BASE_URL>/cars/<car_id>/upload/"
-  -H "Apikey: <api_key>" 
+  -H "Apikey: <api_key>"
   -H "Authorization: Token <auth_token>"
   -X POST
-  -d '{"data": {"dtype": "<document type>", "dinfo":"<document info>", 
+  -d '{"data": {"dtype": "<document type>", "dinfo":"<document info>",
      "content_type": "image/<extension>", "file": "<base64 encoded image byte string>",
      "meta": "<optional placeholder for meta info of document>"}}'
 ```
@@ -695,7 +695,7 @@ curl "http://<BASE_URL>/cars/<car_id>/upload/"
 
 ```json
 {
-  "status": true, 
+  "status": true,
   "message": "success",
   "imgUrl": "uploaded image url"
 }
@@ -706,12 +706,12 @@ curl "http://<BASE_URL>/cars/<car_id>/upload/"
 Car Document Download
 
 curl "http://<BASE_URL>/cars/<car_id>/download/<dtype>"
-  -H "Apikey: <api_key>" 
+  -H "Apikey: <api_key>"
   -H "Authorization: Token <auth_token>"
   -X GET
 ```
 
-> The above command returns JSON structured like this 
+> The above command returns JSON structured like this
 
 > 1. Car Profile Download
 > 2. Car Document (PUC/DL/Insurance/Service) Download
@@ -744,7 +744,7 @@ curl "http://<BASE_URL>/cars/<car_id>/download/<dtype>"
 
 ```
 
-This endpoint sets and retrieves document details of a specific car. This is useful for displaying a car's passport view. 
+This endpoint sets and retrieves document details of a specific car. This is useful for displaying a car's passport view.
 
 The Document type here:
 
@@ -765,7 +765,7 @@ ser| Car Service Document
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the car, the data of which is to be retrieved 
+ID | The ID of the car, the data of which is to be retrieved
 
 ### HTTP Request (Download Documents)
 
@@ -776,10 +776,10 @@ ID | The ID of the car, the data of which is to be retrieved
 Parameter | Description
 --------- | -----------
 ID | The ID of the car, the data of which is to be retrieved
-doc type | Document type 
+doc type | Document type
 
 For more info on base64 encoded image byte strings, see:
-<br/><br/>[1] Encode image: https://www.base64-image.de/ 
+<br/><br/>[1] Encode image: https://www.base64-image.de/
 <br/>[2] Decode image: http://codebeautify.org/base64-to-image-converter
 
 # Devices
@@ -806,7 +806,7 @@ curl "http://<BASE_URL>/devices/<ID>/info/"
 ```
 
 This endpoint retrieves the info of a particular device.
-Useful for the Device Info screen on the app. 
+Useful for the Device Info screen on the app.
 
 ### HTTP Request
 
@@ -816,7 +816,7 @@ Useful for the Device Info screen on the app.
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the device, the info of which is to be retrieved 
+ID | The ID of the device, the info of which is to be retrieved
 
 ## Log a production device
 
@@ -846,18 +846,18 @@ curl "http://<BASE_URL>/devices/log/"
 
 ```json
 {
-  "status": true, 
+  "status": true,
   "message": "Device logged into system"
 }
 ```
-The endpoint is used to log devices that are in production when labelling is to be done. 
+The endpoint is used to log devices that are in production when labelling is to be done.
 
 ### HTTP Request
 
 `POST http://<BASE_URL>/devices/log/`
 
 ### URL Parameters
-  
+
 Parameter | Description
 ----------|-------------
 lb| Label ID
@@ -893,11 +893,11 @@ curl "http://<BASE_URL>/devices/<ID>/reset/"
 
 ```json
 {
-  "status": true, 
+  "status": true,
   "message": "Device reset successful"
 }
 ```
-The endpoint is used to reset device. 
+The endpoint is used to reset device.
 
 ### HTTP Request
 
@@ -918,7 +918,7 @@ This API is used as pre-registration, to send OTP to input phone number.
 ```shell
 curl "http://<BASE_URL>/users/getotp/"
   -H "Apikey: <api_key>"
-  -X POST 
+  -X POST
   -d '{"phone":<phone>}'
 ```
 
@@ -926,11 +926,11 @@ curl "http://<BASE_URL>/users/getotp/"
 
 ```json
 {
-  "status": true, 
-  "message": "OTP Sent", 
-  "data": 
+  "status": true,
+  "message": "OTP Sent",
+  "data":
     {
-      "otp": "119745", 
+      "otp": "119745",
       "phone": 9922883311
     }
 }
@@ -959,26 +959,26 @@ phone | Number on which the otp is sent
 
 ## Register
 
-This endpoint registers a new user to the Carnot backend. 
+This endpoint registers a new user to the Carnot backend.
 
 ```shell
 curl "http://<BASE_URL>/users/register/"
-  -H "Content-Type: application/json" 
-  -H "Apikey: <api_key>" 
-  -X POST 
-  -d '{"email":"abc@xyz.com","password":"xyz","name":"John Doe", "phone": 9988776655}' 
+  -H "Content-Type: application/json"
+  -H "Apikey: <api_key>"
+  -X POST
+  -d '{"email":"abc@xyz.com","password":"xyz","name":"John Doe", "phone": 9988776655}'
 ```
 
 > The above command returns JSON structured like this:
 
 ```json
 {
-    "status": true, 
-    "message": "success", 
-    "data": 
+    "status": true,
+    "message": "success",
+    "data":
     {
-        "token": "ae4e00bf6a08cf9cd56a37b99d0162e69db4fd74", 
-        "id": 43, 
+        "token": "ae4e00bf6a08cf9cd56a37b99d0162e69db4fd74",
+        "id": 43,
         "email": "abc@xyz.com",
         "phone": 9988776655,
         "name" : "App Dev",
@@ -996,10 +996,10 @@ curl "http://<BASE_URL>/users/register/"
 
 Parameter | Description
 --------- | -----------
-email | Email address of the registering user. This eventually becomes the unique username required for login 
+email | Email address of the registering user. This eventually becomes the unique username required for login
 password | Password of the registering user
-name | Name of the registering user 
-phone | 10-digit phone number 
+name | Name of the registering user
+phone | 10-digit phone number
 
 ### Response Parameters
 
@@ -1016,7 +1016,7 @@ phone | mandatory field during registration, it could also be used with login in
 
 ## Login
 
-This endpoint logs an existing user into the Carnot backend. Successfully logged in users get access to an auth token that should be used in subsequent authenticated requests. 
+This endpoint logs an existing user into the Carnot backend. Successfully logged in users get access to an auth token that should be used in subsequent authenticated requests.
 
 The login can be done using email or phone.
 
@@ -1024,7 +1024,7 @@ The login can be done using email or phone.
 curl "http://<BASE_URL>/users/login/"
   -H "Content-Type: application/json"
   -H "Apikey: <api_key>"  
-  -X POST 
+  -X POST
   -d '{"email":"<email/phone>","password":"xyz"}'
 ```
 
@@ -1032,12 +1032,12 @@ curl "http://<BASE_URL>/users/login/"
 
 ```json
 {
-  "status": true, 
-  "message": "Success", 
-  "data": 
+  "status": true,
+  "message": "Success",
+  "data":
       {
-        "token": "ae4e00bf6a08cf9cd56a37b99d0162e69db4fd74", 
-        "id": 43, 
+        "token": "ae4e00bf6a08cf9cd56a37b99d0162e69db4fd74",
+        "id": 43,
         "email": "abc@xyz.com",
         "phone": 9988776655,
         "name" : "App Dev",
@@ -1073,7 +1073,7 @@ curl "http://<BASE_URL>/users/login/"
 
 Parameter | Description
 --------- | -----------
-email | Email address (or phone number) of the user attempting to login. This should be the email or phone used when registering 
+email | Email address (or phone number) of the user attempting to login. This should be the email or phone used when registering
 password | Password of the registering user
 
 ### Response Parameters
@@ -1086,18 +1086,18 @@ email | Confirmation of the email id the user entered. Email id also serves as t
 phone | Phone number of current user
 name  | Full name of the user
 status |true if successful, false otherwise
-message |Message indicating login status 
+message |Message indicating login status
 
 
 ## Logout
 
-This endpoint logs out the user from Carnot backend. 
+This endpoint logs out the user from Carnot backend.
 
 ```shell
 curl "http://<BASE_URL>/users/logout/"
-  -H "Content-Type: application/json" 
-  -H "Apikey: <api_key>" 
-  -X POST 
+  -H "Content-Type: application/json"
+  -H "Apikey: <api_key>"
+  -X POST
   -d '{"email":"<email/phone>"}'
 ```
 
@@ -1105,7 +1105,7 @@ curl "http://<BASE_URL>/users/logout/"
 
 ```json
 {
-    "status": true, 
+    "status": true,
     "message": "Success"
 }
 ```
@@ -1142,19 +1142,19 @@ curl "http://<BASE_URL>/users/<number>/fgpwd/"
 
 ```json
 {
-  "status": true, 
-  "message": "OTP Sent!", 
-  "data": 
+  "status": true,
+  "message": "OTP Sent!",
+  "data":
   {
-    "otp": "916985", 
+    "otp": "916985",
     "phone": 8123664830
   }
 }
 ```
 
 ```json
-"Once OTP is verified, user should be asked his 
-new password and second WS to be called 
+"Once OTP is verified, user should be asked his
+new password and second WS to be called
 to set the new password."
 ```
 
@@ -1169,7 +1169,7 @@ curl "http;//<BASE_URL>/users/<number>/chpwd/"
 
 ```json
 {
-  "status": true, 
+  "status": true,
   "message": "Password updated"
 }
 ```
@@ -1207,7 +1207,7 @@ curl "http://<BASE_URL>/users/cancel/"
 
 ```json
 {
-  "status": true, 
+  "status": true,
   "message": "Job removed"
 }
 
@@ -1239,7 +1239,7 @@ id | Notification id for alert code M1005
 Set Speed Limit
 
 curl "http://<BASE_URL>/cars/<ID>/speedlimit/"
-  -H "Apikey: <api_key>" 
+  -H "Apikey: <api_key>"
   -H "Authorization: Token <auth_token>"
   -X POST
   -d '{"sl":<limit>}'
@@ -1259,12 +1259,12 @@ curl "http://<BASE_URL>/cars/<ID>/speedlimit/"
 Get Speed Limit
 
 curl "http://<BASE_URL>/cars/<ID>/speedlimit/"
-  -H "Apikey: <api_key>" 
+  -H "Apikey: <api_key>"
   -H "Authorization: Token <auth_token>"
   -X GET
 ```
 
-> The above command returns JSON structured like this 
+> The above command returns JSON structured like this
 
 ```json
 {
@@ -1291,7 +1291,7 @@ This endpoint sets and retrieves speed limit for a car.
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the car, the data of which is to be set/retrieved 
+ID | The ID of the car, the data of which is to be set/retrieved
 
 
 
@@ -1301,7 +1301,7 @@ ID | The ID of the car, the data of which is to be set/retrieved
 
 ```shell
 curl "http://<BASE_URL>/cars/<ID>/diagnostics/"
-  -H "Apikey: <api_key>" 
+  -H "Apikey: <api_key>"
   -H "Authorization: Token <auth_token>"
 ```
 
@@ -1348,7 +1348,7 @@ This endpoint retrieves the diagnostic info for a car.
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the car, the data of which is to be retrieved 
+ID | The ID of the car, the data of which is to be retrieved
 
 
 ### Response Parameters
@@ -1374,13 +1374,13 @@ longitude - latitude | The location where the error occurred
 metadata | Any string metadata related to the error to be displayed as is
 desc | Error Description
 
-# Trip 
+# Trip
 
-## Get a specific Trip 
+## Get a specific Trip
 
 ```shell
 curl "http://<BASE_URL>/data/trips/<Trip ID>/<Car ID>/"
-  -H "Apikey: <api_key>" 
+  -H "Apikey: <api_key>"
   -H "Authorization: Token <auth_token>"
 ```
 
@@ -1453,7 +1453,7 @@ curl "http://<BASE_URL>/data/trips/<Trip ID>/<Car ID>/"
     },
     ...
   ]
-} 
+}
 ```
 
 This endpoint retrieves bunch of next 5 trips of a car, from trip ID provided.
@@ -1503,10 +1503,10 @@ id | Note
 Car Document Upload
 
 curl "http://<BASE_URL>/cars/<car_id>/upload/"
-  -H "Apikey: <api_key>" 
+  -H "Apikey: <api_key>"
   -H "Authorization: Token <auth_token>"
   -X POST
-  -d '{"data": {"dtype": "<document type>", "dinfo":"<document info>", 
+  -d '{"data": {"dtype": "<document type>", "dinfo":"<document info>",
      "content_type": "image/<extension>", "file": "<base64 encoded image byte string>",
      "meta": "<optional placeholder for meta info of document>"}}'
 ```
@@ -1515,7 +1515,7 @@ curl "http://<BASE_URL>/cars/<car_id>/upload/"
 
 ```json
 {
-  "status": true, 
+  "status": true,
   "message": "success"
 }
 ```
@@ -1525,12 +1525,12 @@ curl "http://<BASE_URL>/cars/<car_id>/upload/"
 Car Document Download
 
 curl "http://<BASE_URL>/cars/<car_id>/download/<dtype>"
-  -H "Apikey: <api_key>" 
+  -H "Apikey: <api_key>"
   -H "Authorization: Token <auth_token>"
   -X GET
 ```
 
-> The above command returns JSON structured like this 
+> The above command returns JSON structured like this
 
 > 1. Car Profile Download
 > 2. Car Document (PUC/DL/Insurance/Service) Download
@@ -1563,7 +1563,7 @@ curl "http://<BASE_URL>/cars/<car_id>/download/<dtype>"
 
 ```
 
-This endpoint sets and retrieves document details of a specific car. This is useful for displaying a car's passport view. 
+This endpoint sets and retrieves document details of a specific car. This is useful for displaying a car's passport view.
 
 The Document type here:
 
@@ -1584,7 +1584,7 @@ ser| Car Service Document
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the car, the data of which is to be retrieved 
+ID | The ID of the car, the data of which is to be retrieved
 
 ### HTTP Request (Download Documents)
 
@@ -1595,10 +1595,10 @@ ID | The ID of the car, the data of which is to be retrieved
 Parameter | Description
 --------- | -----------
 ID | The ID of the car, the data of which is to be retrieved
-doc type | Document type 
+doc type | Document type
 
 For more info on base64 encoded image byte strings, see:
-<br/><br/>[1] Encode image: https://www.base64-image.de/ 
+<br/><br/>[1] Encode image: https://www.base64-image.de/
 <br/>[2] Decode image: http://codebeautify.org/base64-to-image-converter
 
 API yet to be published
@@ -1607,6 +1607,46 @@ API yet to be published
 
 API yet to be published
 
-# Badges 
+# Badges
 
 API yet to be published
+
+
+#CRM
+
+## Add Ticket
+
+```shell
+Save ticket
+
+curl "http://<BASE_URL>/crm/add_ticket/"
+  -H "Authorization: Token <auth_token>"
+  -X POST
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "staus": "Sync failed/successful/Wrong input params"
+}
+
+```
+
+This endpoint saves data for ticket in the CRM system.  
+
+
+### HTTP Request (Add Ticket)
+
+`POST http://<BASE_URL>/crm/add_ticket/`
+
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+email | Email of the person filling the form. (String -- valid email)
+name | Name of the person filling the form. (String -- Without special characters)
+phone | Phone of the person filling the form. (String -- 10 digits)
+isCarnot | Check if the person is a Carnot Customer. (String -- 'Y' or 'N')
+problem | Email of the person filling the form. (String)
