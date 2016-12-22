@@ -132,7 +132,7 @@
 </blockquote>
 <pre class="highlight shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
 curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span>
   -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
@@ -146,12 +146,12 @@ curl <span class="s2">"api_endpoint_here"</span>
 
 <p><code class="prettyprint">Apikey: &lt;api_key&gt;</code></p>
 
-<p>Apart from the API key all the endpoints that require user authentication require a Token. The token must be supplied in a header that looks as follows: </p>
+<p>Apart from the API key all the endpoints that require user authentication require a Token. The token must be supplied in a header that looks as follows:</p>
 
 <p><code class="prettyprint">Authorization: Token &lt;auth_token&gt;</code></p>
 
 <aside class="notice">
-You must replace <code>&lt;api_key&gt;</code> with your personal API key. You must replace <code>&lt;auth_token&gt;</code> with the user&rsquo;s auth token. 
+You must replace <code>&lt;api_key&gt;</code> with your personal API key. You must replace <code>&lt;auth_token&gt;</code> with the user&rsquo;s auth token.
 </aside>
 
 <h1 id="users">Users</h1>
@@ -161,7 +161,7 @@ You must replace <code>&lt;api_key&gt;</code> with your personal API key. You mu
 Get emergency contacts
 
 curl <span class="s2">"http://&lt;BASE_URL&gt;/users/&lt;ID&gt;/econtacts/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span>
   -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
@@ -192,7 +192,7 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/users/&lt;ID&gt;/econtacts/"</spa
 Set emergency contacts
 
 curl <span class="s2">"http://&lt;BASE_URL&gt;/users/&lt;ID&gt;/econtacts/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span>
   -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
   -X POST
   -d <span class="s1">'{"contacts":[{"em": "hello4@openxcell.com", "ph": 8899773321, "nm": "Johny"},
@@ -203,7 +203,7 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/users/&lt;ID&gt;/econtacts/"</spa
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -629,8 +629,8 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/save/"</span>
   -H <span class="s2">"ApiKey: &lt;api_key&gt;"</span>
   -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
   -X POST
-  -d <span class="s1">'{"brand":"&lt;brand&gt;", "model":"&lt;model&gt;", 
-    "name": "&lt;car nickname&gt;", "ln":"&lt;license number&gt;", 
+  -d <span class="s1">'{"brand":"&lt;brand&gt;", "model":"&lt;model&gt;",
+    "name": "&lt;car nickname&gt;", "ln":"&lt;license number&gt;",
     "ft": "&lt;Fuel type&gt;", "userid":&lt;user_id&gt;,
     "printedPasscode":"&lt;16-digit passcode&gt;"}'</span>
 </code></pre>
@@ -644,8 +644,8 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/save/"</span>
   </span><span class="nt">"data"</span><span class="p">:{</span><span class="w">
     </span><span class="nt">"carId"</span><span class="p">:</span><span class="mi">21</span><span class="p">,</span><span class="w">
     </span><span class="nt">"device_pk"</span><span class="p">:</span><span class="w"> </span><span class="mi">42</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"nrfid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nt">"stmid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C0001"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"nrfid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"stmid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"C0001"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5634"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"fuel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Petrol"</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -658,8 +658,8 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/save/"</span>
   -H <span class="s2">"ApiKey: &lt;api_key&gt;"</span>
   -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
   -X POST
-  -d <span class="s1">'{"brand":"&lt;brand&gt;", "model":"&lt;model&gt;", 
-    "name": "&lt;car nickname&gt;", "ln":"&lt;license number&gt;", 
+  -d <span class="s1">'{"brand":"&lt;brand&gt;", "model":"&lt;model&gt;",
+    "name": "&lt;car nickname&gt;", "ln":"&lt;license number&gt;",
     "userid":&lt;user_id&gt;, "carid": &lt;ID of car to be updated&gt;}'</span>
 </code></pre>
 
@@ -667,7 +667,7 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/save/"</span>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -844,7 +844,7 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/overview/"</span>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>The API is used to get diagnostics details for a car. The diagnostics data contains list of error info, oil, tyre, cabin and coolant temperature information. </p>
+<p>The API is used to get diagnostics details for a car. The diagnostics data contains list of error info, oil, tyre, cabin and coolant temperature information.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -868,7 +868,7 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/overview/"</span>
 <pre class="highlight shell"><code>Set Speed Limit
 
 curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/speedlimit/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span>
   -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
   -X POST
   -d <span class="s1">'{"sl":&lt;limit&gt;}'</span>
@@ -886,13 +886,13 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/speedlimit/"</spa
 <pre class="highlight shell"><code>Get Speed Limit
 
 curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/speedlimit/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span>
   -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
   -X GET
 </code></pre>
 
 <blockquote>
-<p>The above command returns JSON structured like this </p>
+<p>The above command returns JSON structured like this</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -931,10 +931,10 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/speedlimit/"</spa
 <pre class="highlight shell"><code>Car Document Upload
 
 curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;car_id&gt;/upload/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span>
   -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
   -X POST
-  -d <span class="s1">'{"data": {"dtype": "&lt;document type&gt;", "dinfo":"&lt;document info&gt;", 
+  -d <span class="s1">'{"data": {"dtype": "&lt;document type&gt;", "dinfo":"&lt;document info&gt;",
      "content_type": "image/&lt;extension&gt;", "file": "&lt;base64 encoded image byte string&gt;",
      "meta": "&lt;optional placeholder for meta info of document&gt;"}}'</span>
 </code></pre>
@@ -943,7 +943,7 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;car_id&gt;/upload/"</spa
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"imgUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"uploaded image url"</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -951,13 +951,13 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;car_id&gt;/upload/"</spa
 <pre class="highlight shell"><code>Car Document Download
 
 curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;car_id&gt;/download/&lt;dtype&gt;"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span>
   -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
   -X GET
 </code></pre>
 
 <blockquote>
-<p>The above command returns JSON structured like this </p>
+<p>The above command returns JSON structured like this</p>
 
 <ol>
 <li>Car Profile Download</li>
@@ -991,7 +991,7 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;car_id&gt;/download/&lt;
 
 </span></code></pre>
 
-<p>This endpoint sets and retrieves document details of a specific car. This is useful for displaying a car&rsquo;s passport view. </p>
+<p>This endpoint sets and retrieves document details of a specific car. This is useful for displaying a car&rsquo;s passport view.</p>
 
 <p>The Document type here:</p>
 
@@ -1068,7 +1068,7 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;car_id&gt;/download/&lt;
 </tbody></table>
 
 <p>For more info on base64 encoded image byte strings, see:
-<br/><br/>[1] Encode image: https://www.base64-image.de/ 
+<br/><br/>[1] Encode image: https://www.base64-image.de/
 <br/>[2] Decode image: http://codebeautify.org/base64-to-image-converter</p>
 
 <h1 id="devices">Devices</h1>
@@ -1093,7 +1093,7 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;car_id&gt;/download/&lt;
 </span></code></pre>
 
 <p>This endpoint retrieves the info of a particular device.
-Useful for the Device Info screen on the app. </p>
+Useful for the Device Info screen on the app.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1140,12 +1140,12 @@ Useful for the Device Info screen on the app. </p>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Device logged into system"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>The endpoint is used to log devices that are in production when labelling is to be done. </p>
+<p>The endpoint is used to log devices that are in production when labelling is to be done.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1235,12 +1235,12 @@ Useful for the Device Info screen on the app. </p>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Device reset successful"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<p>The endpoint is used to reset device. </p>
+<p>The endpoint is used to reset device.</p>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1267,7 +1267,7 @@ Useful for the Device Info screen on the app. </p>
 <p>This API is used as pre-registration, to send OTP to input phone number.</p>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/getotp/"</span>
   -H <span class="s2">"Apikey: &lt;api_key&gt;"</span>
-  -X POST 
+  -X POST
   -d <span class="s1">'{"phone":&lt;phone&gt;}'</span>
 </code></pre>
 
@@ -1275,11 +1275,11 @@ Useful for the Device Info screen on the app. </p>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OTP Sent"</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> 
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OTP Sent"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"otp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"119745"</span><span class="p">,</span><span class="w"> 
+      </span><span class="nt">"otp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"119745"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="mi">9922883311</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1331,24 +1331,24 @@ Useful for the Device Info screen on the app. </p>
 
 <h2 id="register">Register</h2>
 
-<p>This endpoint registers a new user to the Carnot backend. </p>
+<p>This endpoint registers a new user to the Carnot backend.</p>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/register/"</span>
-  -H <span class="s2">"Content-Type: application/json"</span> 
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
-  -X POST 
-  -d <span class="s1">'{"email":"abc@xyz.com","password":"xyz","name":"John Doe", "phone": 9988776655}'</span> 
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span>
+  -X POST
+  -d <span class="s1">'{"email":"abc@xyz.com","password":"xyz","name":"John Doe", "phone": 9988776655}'</span>
 </code></pre>
 
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w"> 
-    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> 
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"data"</span><span class="p">:</span><span class="w">
     </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ae4e00bf6a08cf9cd56a37b99d0162e69db4fd74"</span><span class="p">,</span><span class="w"> 
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43</span><span class="p">,</span><span class="w"> 
+        </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ae4e00bf6a08cf9cd56a37b99d0162e69db4fd74"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43</span><span class="p">,</span><span class="w">
         </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc@xyz.com"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="mi">9988776655</span><span class="p">,</span><span class="w">
         </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"App Dev"</span><span class="p">,</span><span class="w">
@@ -1428,13 +1428,13 @@ Useful for the Device Info screen on the app. </p>
 
 <h2 id="login">Login</h2>
 
-<p>This endpoint logs an existing user into the Carnot backend. Successfully logged in users get access to an auth token that should be used in subsequent authenticated requests. </p>
+<p>This endpoint logs an existing user into the Carnot backend. Successfully logged in users get access to an auth token that should be used in subsequent authenticated requests.</p>
 
 <p>The login can be done using email or phone.</p>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/login/"</span>
   -H <span class="s2">"Content-Type: application/json"</span>
   -H <span class="s2">"Apikey: &lt;api_key&gt;"</span>  
-  -X POST 
+  -X POST
   -d <span class="s1">'{"email":"&lt;email/phone&gt;","password":"xyz"}'</span>
 </code></pre>
 
@@ -1442,12 +1442,12 @@ Useful for the Device Info screen on the app. </p>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> 
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ae4e00bf6a08cf9cd56a37b99d0162e69db4fd74"</span><span class="p">,</span><span class="w"> 
-        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43</span><span class="p">,</span><span class="w"> 
+        </span><span class="nt">"token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ae4e00bf6a08cf9cd56a37b99d0162e69db4fd74"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">43</span><span class="p">,</span><span class="w">
         </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abc@xyz.com"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="mi">9988776655</span><span class="p">,</span><span class="w">
         </span><span class="nt">"name"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">"App Dev"</span><span class="p">,</span><span class="w">
@@ -1537,11 +1537,11 @@ Useful for the Device Info screen on the app. </p>
 
 <h2 id="logout">Logout</h2>
 
-<p>This endpoint logs out the user from Carnot backend. </p>
+<p>This endpoint logs out the user from Carnot backend.</p>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/users/logout/"</span>
-  -H <span class="s2">"Content-Type: application/json"</span> 
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
-  -X POST 
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span>
+  -X POST
   -d <span class="s1">'{"email":"&lt;email/phone&gt;"}'</span>
 </code></pre>
 
@@ -1549,7 +1549,7 @@ Useful for the Device Info screen on the app. </p>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -1607,17 +1607,17 @@ Useful for the Device Info screen on the app. </p>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OTP Sent!"</span><span class="p">,</span><span class="w"> 
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> 
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"OTP Sent!"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"otp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"916985"</span><span class="p">,</span><span class="w"> 
+    </span><span class="nt">"otp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"916985"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="mi">8123664830</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
-<pre class="highlight json"><code><span class="s2">"Once OTP is verified, user should be asked his 
-new password and second WS to be called 
+<pre class="highlight json"><code><span class="s2">"Once OTP is verified, user should be asked his
+new password and second WS to be called
 to set the new password."</span><span class="w">
 </span></code></pre>
 <pre class="highlight shell"><code>curl <span class="s2">"http;//&lt;BASE_URL&gt;/users/&lt;number&gt;/chpwd/"</span>
@@ -1630,7 +1630,7 @@ to set the new password."</span><span class="w">
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Password updated"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -1673,7 +1673,7 @@ to set the new password."</span><span class="w">
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Job removed"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
@@ -1709,7 +1709,7 @@ to set the new password."</span><span class="w">
 <pre class="highlight shell"><code>Set Speed Limit
 
 curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/speedlimit/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span>
   -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
   -X POST
   -d <span class="s1">'{"sl":&lt;limit&gt;}'</span>
@@ -1727,13 +1727,13 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/speedlimit/"</spa
 <pre class="highlight shell"><code>Get Speed Limit
 
 curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/speedlimit/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span>
   -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
   -X GET
 </code></pre>
 
 <blockquote>
-<p>The above command returns JSON structured like this </p>
+<p>The above command returns JSON structured like this</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
@@ -1772,7 +1772,7 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/speedlimit/"</spa
 
 <h2 id="get-diagnostic-info-for-a-car">Get Diagnostic Info for a car</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/diagnostics/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span>
   -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
@@ -1905,7 +1905,7 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/speedlimit/"</spa
 
 <h2 id="get-a-specific-trip">Get a specific Trip</h2>
 <pre class="highlight shell"><code>curl <span class="s2">"http://&lt;BASE_URL&gt;/data/trips/&lt;Trip ID&gt;/&lt;Car ID&gt;/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span>
   -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
 </code></pre>
 
@@ -1978,7 +1978,7 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/speedlimit/"</spa
     </span><span class="p">},</span><span class="w">
     </span><span class="err">...</span><span class="w">
   </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w"> 
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <p>This endpoint retrieves bunch of next 5 trips of a car, from trip ID provided.</p>
@@ -2087,10 +2087,10 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;ID&gt;/speedlimit/"</spa
 <pre class="highlight shell"><code>Car Document Upload
 
 curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;car_id&gt;/upload/"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span>
   -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
   -X POST
-  -d <span class="s1">'{"data": {"dtype": "&lt;document type&gt;", "dinfo":"&lt;document info&gt;", 
+  -d <span class="s1">'{"data": {"dtype": "&lt;document type&gt;", "dinfo":"&lt;document info&gt;",
      "content_type": "image/&lt;extension&gt;", "file": "&lt;base64 encoded image byte string&gt;",
      "meta": "&lt;optional placeholder for meta info of document&gt;"}}'</span>
 </code></pre>
@@ -2099,20 +2099,20 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;car_id&gt;/upload/"</spa
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> 
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre class="highlight shell"><code>Car Document Download
 
 curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;car_id&gt;/download/&lt;dtype&gt;"</span>
-  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span> 
+  -H <span class="s2">"Apikey: &lt;api_key&gt;"</span>
   -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
   -X GET
 </code></pre>
 
 <blockquote>
-<p>The above command returns JSON structured like this </p>
+<p>The above command returns JSON structured like this</p>
 
 <ol>
 <li>Car Profile Download</li>
@@ -2146,7 +2146,7 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;car_id&gt;/download/&lt;
 
 </span></code></pre>
 
-<p>This endpoint sets and retrieves document details of a specific car. This is useful for displaying a car&rsquo;s passport view. </p>
+<p>This endpoint sets and retrieves document details of a specific car. This is useful for displaying a car&rsquo;s passport view.</p>
 
 <p>The Document type here:</p>
 
@@ -2223,7 +2223,7 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;car_id&gt;/download/&lt;
 </tbody></table>
 
 <p>For more info on base64 encoded image byte strings, see:
-<br/><br/>[1] Encode image: https://www.base64-image.de/ 
+<br/><br/>[1] Encode image: https://www.base64-image.de/
 <br/>[2] Decode image: http://codebeautify.org/base64-to-image-converter</p>
 
 <p>API yet to be published</p>
@@ -2235,6 +2235,61 @@ curl <span class="s2">"http://&lt;BASE_URL&gt;/cars/&lt;car_id&gt;/download/&lt;
 <h1 id="badges">Badges</h1>
 
 <p>API yet to be published</p>
+
+<h1 id="crm">CRM</h1>
+
+<h2 id="add-ticket">Add Ticket</h2>
+<pre class="highlight shell"><code>Save ticket
+
+curl <span class="s2">"http://&lt;BASE_URL&gt;/crm/add_ticket/"</span>
+  -H <span class="s2">"Authorization: Token &lt;auth_token&gt;"</span>
+  -X POST
+</code></pre>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"staus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sync failed/successful/Wrong input params"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<p>This endpoint saves data for ticket in the CRM system.  </p>
+
+<h3 id="http-request-add-ticket">HTTP Request (Add Ticket)</h3>
+
+<p><code class="prettyprint">POST http://&lt;BASE_URL&gt;/crm/add_ticket/</code></p>
+
+<h3 id="url-parameters">URL Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>email</td>
+<td>Email of the person filling the form. (String &ndash; valid email)</td>
+</tr>
+<tr>
+<td>name</td>
+<td>Name of the person filling the form. (String &ndash; Without special characters)</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>Phone of the person filling the form. (String &ndash; 10 digits)</td>
+</tr>
+<tr>
+<td>isCarnot</td>
+<td>Check if the person is a Carnot Customer. (String &ndash; &lsquo;Y&rsquo; or &#39;N&rsquo;)</td>
+</tr>
+<tr>
+<td>problem</td>
+<td>Email of the person filling the form. (String)</td>
+</tr>
+</tbody></table>
 
           <h1 id="errors">Errors</h1>
 
