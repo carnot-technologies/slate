@@ -1,1 +1,1 @@
-<a href="http://prathamesh1729.github.io/slate/">Link for the opening the Carnot Documentation</a>
+<a href="http://prathamesh1729.github.io/slate/">CarSense Documentation</a>
